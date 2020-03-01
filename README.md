@@ -5,6 +5,7 @@ tags:
 - 爬虫
 - python
 ---
+
     今天想学点Java，访问了一下廖老师的网站，结果网很卡，可能廖老师在更新网站，然后突然想到可以写个爬虫一劳永逸。做这个爬虫的目的也是方便学习廖雪峰老师的Java教程，毕竟把网页存在本地方便浏览，并无他意。
 <!--more-->
 # Code
@@ -81,3 +82,4 @@ titles, urls = fetch(domain, resp, headers)
 download(titles,urls)
 ```
 
+- 欢迎pull requests~一起学习😄
