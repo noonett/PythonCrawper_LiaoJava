@@ -1,0 +1,127 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#26041;&#27861;&#37325;&#36733;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 1274998</span>
+    	<a href="/manage/wiki/wikipage_update?id=1260454256258656" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#22312;&#19968;&#20010;&#31867;&#20013;&#65292;&#25105;&#20204;&#21487;&#20197;&#23450;&#20041;&#22810;&#20010;&#26041;&#27861;&#12290;&#22914;&#26524;&#26377;&#19968;&#31995;&#21015;&#26041;&#27861;&#65292;&#23427;&#20204;&#30340;&#21151;&#33021;&#37117;&#26159;&#31867;&#20284;&#30340;&#65292;&#21482;&#26377;&#21442;&#25968;&#26377;&#25152;&#19981;&#21516;&#65292;&#37027;&#20040;&#65292;&#21487;&#20197;&#25226;&#36825;&#19968;&#32452;&#26041;&#27861;&#21517;&#20570;&#25104;<em>&#21516;&#21517;</em>&#26041;&#27861;&#12290;&#20363;&#22914;&#65292;&#22312;<code>Hello</code>&#31867;&#20013;&#65292;&#23450;&#20041;&#22810;&#20010;<code>hello()</code>&#26041;&#27861;&#65306;</p>
+<pre><code>class Hello {
+    public void hello() {
+        System.out.println("Hello, world!");
+    }
+
+    public void hello(String name) {
+        System.out.println("Hello, " + name + "!");
+    }
+
+    public void hello(String name, int age) {
+        if (age &lt; 18) {
+            System.out.println("Hi, " + name + "!");
+        } else {
+            System.out.println("Hello, " + name + "!");
+        }
+    }
+}
+</code></pre>
+<p>&#36825;&#31181;&#26041;&#27861;&#21517;&#30456;&#21516;&#65292;&#20294;&#21508;&#33258;&#30340;&#21442;&#25968;&#19981;&#21516;&#65292;&#31216;&#20026;&#26041;&#27861;&#37325;&#36733;&#65288;<code>Overload</code>&#65289;&#12290;</p>
+<p>&#27880;&#24847;&#65306;&#26041;&#27861;&#37325;&#36733;&#30340;&#36820;&#22238;&#20540;&#31867;&#22411;&#36890;&#24120;&#37117;&#26159;&#30456;&#21516;&#30340;&#12290;</p>
+<p>&#26041;&#27861;&#37325;&#36733;&#30340;&#30446;&#30340;&#26159;&#65292;&#21151;&#33021;&#31867;&#20284;&#30340;&#26041;&#27861;&#20351;&#29992;&#21516;&#19968;&#21517;&#23383;&#65292;&#26356;&#23481;&#26131;&#35760;&#20303;&#65292;&#22240;&#27492;&#65292;&#35843;&#29992;&#36215;&#26469;&#26356;&#31616;&#21333;&#12290;</p>
+<p>&#20030;&#20010;&#20363;&#23376;&#65292;<code>String</code>&#31867;&#25552;&#20379;&#20102;&#22810;&#20010;&#37325;&#36733;&#26041;&#27861;<code>indexOf()</code>&#65292;&#21487;&#20197;&#26597;&#25214;&#23376;&#20018;&#65306;</p>
+<ul>
+<li>
+<p><code>int indexOf(int ch)</code>&#65306;&#26681;&#25454;&#23383;&#31526;&#30340;Unicode&#30721;&#26597;&#25214;&#65307;</p>
+</li>
+<li>
+<p><code>int indexOf(String str)</code>&#65306;&#26681;&#25454;&#23383;&#31526;&#20018;&#26597;&#25214;&#65307;</p>
+</li>
+<li>
+<p><code>int indexOf(int ch, int fromIndex)</code>&#65306;&#26681;&#25454;&#23383;&#31526;&#26597;&#25214;&#65292;&#20294;&#25351;&#23450;&#36215;&#22987;&#20301;&#32622;&#65307;</p>
+</li>
+<li>
+<p><code>int indexOf(String str, int fromIndex)</code>&#26681;&#25454;&#23383;&#31526;&#20018;&#26597;&#25214;&#65292;&#20294;&#25351;&#23450;&#36215;&#22987;&#20301;&#32622;&#12290;</p>
+</li>
+</ul>
+<p>&#35797;&#19968;&#35797;&#65306;</p>
+<pre><code class="language-x-java">// String.indexOf()
+----
+public class Main {
+    public static void main(String[] args) {
+        String s = "Test string";
+        int n1 = s.indexOf('t');
+        int n2 = s.indexOf("st");
+        int n3 = s.indexOf("st", 4);
+        System.out.println(n1);
+        System.out.println(n2);
+        System.out.println(n3);
+    }
+}
+</code></pre>
+<h3>&#32451;&#20064;</h3>
+<pre><code class="language-x-java">public class Main {
+    public static void main(String[] args) {
+        Person ming = new Person();
+        Person hong = new Person();
+        ming.setName("Xiao Ming");
+        // TODO: &#32473;Person&#22686;&#21152;&#37325;&#36733;&#26041;&#27861;setName(String, String):
+        hong.setName("Xiao", "Hong");
+        System.out.println(ming.getName());
+        System.out.println(hong.getName());
+    }
+}
+----
+class Person {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+</code></pre>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/20.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B.1255943520012800/10.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80.1260451488854880/30.%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD.1260454256258656/oop-overload.zip">&#32473;Person&#22686;&#21152;&#37325;&#36733;&#26041;&#27861;</a></p>
+<h3>&#23567;&#32467;</h3>
+<p>&#26041;&#27861;&#37325;&#36733;&#26159;&#25351;&#22810;&#20010;&#26041;&#27861;&#30340;&#26041;&#27861;&#21517;&#30456;&#21516;&#65292;&#20294;&#21508;&#33258;&#30340;&#21442;&#25968;&#19981;&#21516;&#65307;</p>
+<p>&#37325;&#36733;&#26041;&#27861;&#24212;&#35813;&#23436;&#25104;&#31867;&#20284;&#30340;&#21151;&#33021;&#65292;&#21442;&#32771;<code>String</code>&#30340;<code>indexOf()</code>&#65307;</p>
+<p>&#37325;&#36733;&#26041;&#27861;&#36820;&#22238;&#20540;&#31867;&#22411;&#24212;&#35813;&#30456;&#21516;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

@@ -1,0 +1,135 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#20351;&#29992;SLF4J&#21644;Logback</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 275505</span>
+    	<a href="/manage/wiki/wikipage_update?id=1264739155914176" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#21069;&#38754;&#20171;&#32461;&#20102;Commons Logging&#21644;Log4j&#36825;&#19968;&#23545;&#22909;&#22522;&#21451;&#65292;&#23427;&#20204;&#19968;&#20010;&#36127;&#36131;&#20805;&#24403;&#26085;&#24535;API&#65292;&#19968;&#20010;&#36127;&#36131;&#23454;&#29616;&#26085;&#24535;&#24213;&#23618;&#65292;&#25645;&#37197;&#20351;&#29992;&#38750;&#24120;&#20415;&#20110;&#24320;&#21457;&#12290;</p>
+<p>&#26377;&#30340;&#31461;&#38795;&#21487;&#33021;&#36824;&#21548;&#35828;&#36807;SLF4J&#21644;Logback&#12290;&#36825;&#20004;&#20010;&#19996;&#19996;&#30475;&#19978;&#21435;&#20063;&#20687;&#26085;&#24535;&#65292;&#23427;&#20204;&#21448;&#26159;&#21861;&#65311;</p>
+<p>&#20854;&#23454;SLF4J&#31867;&#20284;&#20110;Commons Logging&#65292;&#20063;&#26159;&#19968;&#20010;&#26085;&#24535;&#25509;&#21475;&#65292;&#32780;Logback&#31867;&#20284;&#20110;Log4j&#65292;&#26159;&#19968;&#20010;&#26085;&#24535;&#30340;&#23454;&#29616;&#12290;</p>
+<p>&#20026;&#20160;&#20040;&#26377;&#20102;Commons Logging&#21644;Log4j&#65292;&#21448;&#20250;&#36454;&#20986;&#26469;SLF4J&#21644;Logback&#65311;&#36825;&#26159;&#22240;&#20026;Java&#26377;&#30528;&#38750;&#24120;&#24736;&#20037;&#30340;&#24320;&#28304;&#21382;&#21490;&#65292;&#19981;&#20294;OpenJDK&#26412;&#36523;&#26159;&#24320;&#28304;&#30340;&#65292;&#32780;&#19988;&#25105;&#20204;&#29992;&#21040;&#30340;&#31532;&#19977;&#26041;&#24211;&#65292;&#20960;&#20046;&#20840;&#37096;&#37117;&#26159;&#24320;&#28304;&#30340;&#12290;&#24320;&#28304;&#29983;&#24577;&#20016;&#23500;&#30340;&#19968;&#20010;&#29305;&#23450;&#23601;&#26159;&#65292;&#21516;&#19968;&#20010;&#21151;&#33021;&#65292;&#21487;&#20197;&#25214;&#21040;&#33509;&#24178;&#31181;&#20114;&#30456;&#31454;&#20105;&#30340;&#24320;&#28304;&#24211;&#12290;</p>
+<p>&#22240;&#20026;&#23545;Commons Logging&#30340;&#25509;&#21475;&#19981;&#28385;&#24847;&#65292;&#26377;&#20154;&#23601;&#25630;&#20102;SLF4J&#12290;&#22240;&#20026;&#23545;Log4j&#30340;&#24615;&#33021;&#19981;&#28385;&#24847;&#65292;&#26377;&#20154;&#23601;&#25630;&#20102;Logback&#12290;</p>
+<p>&#25105;&#20204;&#20808;&#26469;&#30475;&#30475;SLF4J&#23545;Commons Logging&#30340;&#25509;&#21475;&#26377;&#20309;&#25913;&#36827;&#12290;&#22312;Commons Logging&#20013;&#65292;&#25105;&#20204;&#35201;&#25171;&#21360;&#26085;&#24535;&#65292;&#26377;&#26102;&#20505;&#24471;&#36825;&#20040;&#20889;&#65306;</p>
+<pre><code>int score = 99;
+p.setScore(score);
+log.info("Set score " + score + " for Person " + p.getName() + " ok.");
+</code></pre>
+<p>&#25340;&#23383;&#31526;&#20018;&#26159;&#19968;&#20010;&#38750;&#24120;&#40635;&#28902;&#30340;&#20107;&#24773;&#65292;&#25152;&#20197;SLF4J&#30340;&#26085;&#24535;&#25509;&#21475;&#25913;&#36827;&#25104;&#36825;&#26679;&#20102;&#65306;</p>
+<pre><code>int score = 99;
+p.setScore(score);
+logger.info("Set score {} for Person {} ok.", score, p.getName());
+</code></pre>
+<p>&#25105;&#20204;&#38752;&#29468;&#20063;&#33021;&#29468;&#20986;&#26469;&#65292;SLF4J&#30340;&#26085;&#24535;&#25509;&#21475;&#20256;&#20837;&#30340;&#26159;&#19968;&#20010;&#24102;&#21344;&#20301;&#31526;&#30340;&#23383;&#31526;&#20018;&#65292;&#29992;&#21518;&#38754;&#30340;&#21464;&#37327;&#33258;&#21160;&#26367;&#25442;&#21344;&#20301;&#31526;&#65292;&#25152;&#20197;&#30475;&#36215;&#26469;&#26356;&#21152;&#33258;&#28982;&#12290;</p>
+<p>&#22914;&#20309;&#20351;&#29992;SLF4J&#65311;&#23427;&#30340;&#25509;&#21475;&#23454;&#38469;&#19978;&#21644;Commons Logging&#20960;&#20046;&#19968;&#27169;&#19968;&#26679;&#65306;</p>
+<pre><code>import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+class Main {
+    final Logger logger = LoggerFactory.getLogger(getClass());
+}
+</code></pre>
+<p>&#23545;&#27604;&#19968;&#19979;Commons Logging&#21644;SLF4J&#30340;&#25509;&#21475;&#65306;</p>
+<table>
+<thead>
+<tr>
+<th>Commons Logging</th>
+<th>SLF4J</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.apache.commons.logging.Log</td>
+<td>org.slf4j.Logger</td>
+</tr>
+<tr>
+<td>org.apache.commons.logging.LogFactory</td>
+<td>org.slf4j.LoggerFactory</td>
+</tr>
+</tbody>
+</table>
+<p>&#19981;&#21516;&#20043;&#22788;&#23601;&#26159;Log&#21464;&#25104;&#20102;Logger&#65292;LogFactory&#21464;&#25104;&#20102;LoggerFactory&#12290;</p>
+<p>&#20351;&#29992;SLF4J&#21644;Logback&#21644;&#21069;&#38754;&#35762;&#21040;&#30340;&#20351;&#29992;Commons Logging&#21152;Log4j&#26159;&#31867;&#20284;&#30340;&#65292;&#20808;&#20998;&#21035;&#19979;&#36733;<a href="https://www.slf4j.org/download.html">SLF4J</a>&#21644;<a href="https://logback.qos.ch/download.html">Logback</a>&#65292;&#28982;&#21518;&#25226;&#20197;&#19979;jar&#21253;&#25918;&#21040;classpath&#19979;&#65306;</p>
+<ul>
+<li>slf4j-api-1.7.x.jar</li>
+<li>logback-classic-1.2.x.jar</li>
+<li>logback-core-1.2.x.jar</li>
+</ul>
+<p>&#28982;&#21518;&#20351;&#29992;SLF4J&#30340;Logger&#21644;LoggerFactory&#21363;&#21487;&#12290;&#21644;Log4j&#31867;&#20284;&#65292;&#25105;&#20204;&#20173;&#28982;&#38656;&#35201;&#19968;&#20010;Logback&#30340;&#37197;&#32622;&#25991;&#20214;&#65292;&#25226;<code>logback.xml</code>&#25918;&#21040;classpath&#19979;&#65292;&#37197;&#32622;&#22914;&#19979;&#65306;</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;configuration&gt;
+
+	&lt;appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender"&gt;
+		&lt;encoder&gt;
+			&lt;pattern&gt;%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n&lt;/pattern&gt;
+		&lt;/encoder&gt;
+	&lt;/appender&gt;
+
+	&lt;appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"&gt;
+		&lt;encoder&gt;
+			&lt;pattern&gt;%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n&lt;/pattern&gt;
+			&lt;charset&gt;utf-8&lt;/charset&gt;
+		&lt;/encoder&gt;
+		&lt;file&gt;log/output.log&lt;/file&gt;
+		&lt;rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy"&gt;
+			&lt;fileNamePattern&gt;log/output.log.%i&lt;/fileNamePattern&gt;
+		&lt;/rollingPolicy&gt;
+		&lt;triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy"&gt;
+			&lt;MaxFileSize&gt;1MB&lt;/MaxFileSize&gt;
+		&lt;/triggeringPolicy&gt;
+	&lt;/appender&gt;
+
+	&lt;root level="INFO"&gt;
+		&lt;appender-ref ref="CONSOLE" /&gt;
+		&lt;appender-ref ref="FILE" /&gt;
+	&lt;/root&gt;
+&lt;/configuration&gt;
+</code></pre>
+<p>&#36816;&#34892;&#21363;&#21487;&#33719;&#24471;&#31867;&#20284;&#22914;&#19979;&#30340;&#36755;&#20986;&#65306;</p>
+<pre><code>13:15:25.328 [main] INFO  com.itranswarp.learnjava.Main - Start process...
+</code></pre>
+<p>&#20174;&#30446;&#21069;&#30340;&#36235;&#21183;&#26469;&#30475;&#65292;&#36234;&#26469;&#36234;&#22810;&#30340;&#24320;&#28304;&#39033;&#30446;&#20174;Commons Logging&#21152;Log4j&#36716;&#21521;&#20102;SLF4J&#21152;Logback&#12290;</p>
+<h3>&#32451;&#20064;</h3>
+<p>&#26681;&#25454;&#37197;&#32622;&#25991;&#20214;&#65292;&#35266;&#23519;Logback&#20889;&#20837;&#30340;&#26085;&#24535;&#25991;&#20214;&#12290;</p>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/30.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.1255943543190176/90.%E4%BD%BF%E7%94%A8SLF4J%E5%92%8CLogback.1264739155914176/logging-slf4j.zip">slf4j+logback</a></p>
+<h3>&#23567;&#32467;</h3>
+<p>SLF4J&#21644;Logback&#21487;&#20197;&#21462;&#20195;Commons Logging&#21644;Log4j&#65307;</p>
+<p>&#22987;&#32456;&#20351;&#29992;SLF4J&#30340;&#25509;&#21475;&#20889;&#20837;&#26085;&#24535;&#65292;&#20351;&#29992;Logback&#21482;&#38656;&#35201;&#37197;&#32622;&#65292;&#19981;&#38656;&#35201;&#20462;&#25913;&#20195;&#30721;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

@@ -1,0 +1,290 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#25243;&#20986;&#24322;&#24120;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 377211</span>
+    	<a href="/manage/wiki/wikipage_update?id=1264738764506656" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<h3>&#24322;&#24120;&#30340;&#20256;&#25773;</h3>
+<p>&#24403;&#26576;&#20010;&#26041;&#27861;&#25243;&#20986;&#20102;&#24322;&#24120;&#26102;&#65292;&#22914;&#26524;&#24403;&#21069;&#26041;&#27861;&#27809;&#26377;&#25429;&#33719;&#24322;&#24120;&#65292;&#24322;&#24120;&#23601;&#20250;&#34987;&#25243;&#21040;&#19978;&#23618;&#35843;&#29992;&#26041;&#27861;&#65292;&#30452;&#21040;&#36935;&#21040;&#26576;&#20010;<code>try ... catch</code>&#34987;&#25429;&#33719;&#20026;&#27490;&#65306;</p>
+<pre><code class="language-x-java">// exception
+----
+public class Main {
+    public static void main(String[] args) {
+        try {
+            process1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void process1() {
+        process2();
+    }
+
+    static void process2() {
+        Integer.parseInt(null); // &#20250;&#25243;&#20986;NumberFormatException
+    }
+}
+</code></pre>
+<p>&#36890;&#36807;<code>printStackTrace()</code>&#21487;&#20197;&#25171;&#21360;&#20986;&#26041;&#27861;&#30340;&#35843;&#29992;&#26632;&#65292;&#31867;&#20284;&#65306;</p>
+<pre><code>java.lang.NumberFormatException: null
+    at java.base/java.lang.Integer.parseInt(Integer.java:614)
+    at java.base/java.lang.Integer.parseInt(Integer.java:770)
+    at Main.process2(Main.java:16)
+    at Main.process1(Main.java:12)
+    at Main.main(Main.java:5)
+</code></pre>
+<p><code>printStackTrace()</code>&#23545;&#20110;&#35843;&#35797;&#38169;&#35823;&#38750;&#24120;&#26377;&#29992;&#65292;&#19978;&#36848;&#20449;&#24687;&#34920;&#31034;&#65306;<code>NumberFormatException</code>&#26159;&#22312;<code>java.lang.Integer.parseInt</code>&#26041;&#27861;&#20013;&#34987;&#25243;&#20986;&#30340;&#65292;&#35843;&#29992;&#23618;&#27425;&#20174;&#19978;&#21040;&#19979;&#20381;&#27425;&#26159;&#65306;</p>
+<ol>
+<li>
+<code>main()</code>&#35843;&#29992;<code>process1()</code>&#65307;</li>
+<li>
+<code>process1()</code>&#35843;&#29992;<code>process2()</code>&#65307;</li>
+<li>
+<code>process2()</code>&#35843;&#29992;<code>Integer.parseInt(String)</code>&#65307;</li>
+<li>
+<code>Integer.parseInt(String)</code>&#35843;&#29992;<code>Integer.parseInt(String, int)</code>&#12290;</li>
+</ol>
+<p>&#26597;&#30475;<code>Integer.java</code>&#28304;&#30721;&#21487;&#30693;&#65292;&#25243;&#20986;&#24322;&#24120;&#30340;&#26041;&#27861;&#20195;&#30721;&#22914;&#19979;&#65306;</p>
+<pre><code>public static int parseInt(String s, int radix) throws NumberFormatException {
+    if (s == null) {
+        throw new NumberFormatException("null");
+    }
+    ...
+}
+</code></pre>
+<p>&#24182;&#19988;&#65292;&#27599;&#23618;&#35843;&#29992;&#22343;&#32473;&#20986;&#20102;&#28304;&#20195;&#30721;&#30340;&#34892;&#21495;&#65292;&#21487;&#30452;&#25509;&#23450;&#20301;&#12290;</p>
+<h3>&#25243;&#20986;&#24322;&#24120;</h3>
+<p>&#24403;&#21457;&#29983;&#38169;&#35823;&#26102;&#65292;&#20363;&#22914;&#65292;&#29992;&#25143;&#36755;&#20837;&#20102;&#38750;&#27861;&#30340;&#23383;&#31526;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#25243;&#20986;&#24322;&#24120;&#12290;</p>
+<p>&#22914;&#20309;&#25243;&#20986;&#24322;&#24120;&#65311;&#21442;&#32771;<code>Integer.parseInt()</code>&#26041;&#27861;&#65292;&#25243;&#20986;&#24322;&#24120;&#20998;&#20004;&#27493;&#65306;</p>
+<ol>
+<li>&#21019;&#24314;&#26576;&#20010;<code>Exception</code>&#30340;&#23454;&#20363;&#65307;</li>
+<li>&#29992;<code>throw</code>&#35821;&#21477;&#25243;&#20986;&#12290;</li>
+</ol>
+<p>&#19979;&#38754;&#26159;&#19968;&#20010;&#20363;&#23376;&#65306;</p>
+<pre><code>void process2(String s) {
+    if (s==null) {
+        NullPointerException e = new NullPointerException();
+        throw e;
+    }
+}
+</code></pre>
+<p>&#23454;&#38469;&#19978;&#65292;&#32477;&#22823;&#37096;&#20998;&#25243;&#20986;&#24322;&#24120;&#30340;&#20195;&#30721;&#37117;&#20250;&#21512;&#24182;&#20889;&#25104;&#19968;&#34892;&#65306;</p>
+<pre><code>void process2(String s) {
+    if (s==null) {
+        throw new NullPointerException();
+    }
+}
+</code></pre>
+<p>&#22914;&#26524;&#19968;&#20010;&#26041;&#27861;&#25429;&#33719;&#20102;&#26576;&#20010;&#24322;&#24120;&#21518;&#65292;&#21448;&#22312;<code>catch</code>&#23376;&#21477;&#20013;&#25243;&#20986;&#26032;&#30340;&#24322;&#24120;&#65292;&#23601;&#30456;&#24403;&#20110;&#25226;&#25243;&#20986;&#30340;&#24322;&#24120;&#31867;&#22411;&#8220;&#36716;&#25442;&#8221;&#20102;&#65306;</p>
+<pre><code>void process1(String s) {
+    try {
+        process2();
+    } catch (NullPointerException e) {
+        throw new IllegalArgumentException();
+    }
+}
+
+void process2(String s) {
+    if (s==null) {
+        throw new NullPointerException();
+    }
+}
+</code></pre>
+<p>&#24403;<code>process2()</code>&#25243;&#20986;<code>NullPointerException</code>&#21518;&#65292;&#34987;<code>process1()</code>&#25429;&#33719;&#65292;&#28982;&#21518;&#25243;&#20986;<code>IllegalArgumentException()</code>&#12290;</p>
+<p>&#22914;&#26524;&#22312;<code>main()</code>&#20013;&#25429;&#33719;<code>IllegalArgumentException</code>&#65292;&#25105;&#20204;&#30475;&#30475;&#25171;&#21360;&#30340;&#24322;&#24120;&#26632;&#65306;</p>
+<pre><code class="language-x-java">// exception
+----
+public class Main {
+    public static void main(String[] args) {
+        try {
+            process1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void process1() {
+        try {
+            process2();
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static void process2() {
+        throw new NullPointerException();
+    }
+}
+</code></pre>
+<p>&#25171;&#21360;&#20986;&#30340;&#24322;&#24120;&#26632;&#31867;&#20284;&#65306;</p>
+<pre><code>java.lang.IllegalArgumentException
+    at Main.process1(Main.java:15)
+    at Main.main(Main.java:5)
+</code></pre>
+<p>&#36825;&#35828;&#26126;&#26032;&#30340;&#24322;&#24120;&#20002;&#22833;&#20102;&#21407;&#22987;&#24322;&#24120;&#20449;&#24687;&#65292;&#25105;&#20204;&#24050;&#32463;&#30475;&#19981;&#21040;&#21407;&#22987;&#24322;&#24120;<code>NullPointerException</code>&#30340;&#20449;&#24687;&#20102;&#12290;</p>
+<p>&#20026;&#20102;&#33021;&#36861;&#36394;&#21040;&#23436;&#25972;&#30340;&#24322;&#24120;&#26632;&#65292;&#22312;&#26500;&#36896;&#24322;&#24120;&#30340;&#26102;&#20505;&#65292;&#25226;&#21407;&#22987;&#30340;<code>Exception</code>&#23454;&#20363;&#20256;&#36827;&#21435;&#65292;&#26032;&#30340;<code>Exception</code>&#23601;&#21487;&#20197;&#25345;&#26377;&#21407;&#22987;<code>Exception</code>&#20449;&#24687;&#12290;&#23545;&#19978;&#36848;&#20195;&#30721;&#25913;&#36827;&#22914;&#19979;&#65306;</p>
+<pre><code class="language-x-java">// exception
+----
+public class Main {
+    public static void main(String[] args) {
+        try {
+            process1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void process1() {
+        try {
+            process2();
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    static void process2() {
+        throw new NullPointerException();
+    }
+}
+</code></pre>
+<p>&#36816;&#34892;&#19978;&#36848;&#20195;&#30721;&#65292;&#25171;&#21360;&#20986;&#30340;&#24322;&#24120;&#26632;&#31867;&#20284;&#65306;</p>
+<pre><code>java.lang.IllegalArgumentException: java.lang.NullPointerException
+    at Main.process1(Main.java:15)
+    at Main.main(Main.java:5)
+Caused by: java.lang.NullPointerException
+    at Main.process2(Main.java:20)
+    at Main.process1(Main.java:13)
+</code></pre>
+<p>&#27880;&#24847;&#21040;<code>Caused by: Xxx</code>&#65292;&#35828;&#26126;&#25429;&#33719;&#30340;<code>IllegalArgumentException</code>&#24182;&#19981;&#26159;&#36896;&#25104;&#38382;&#39064;&#30340;&#26681;&#28304;&#65292;&#26681;&#28304;&#22312;&#20110;<code>NullPointerException</code>&#65292;&#26159;&#22312;<code>Main.process2()</code>&#26041;&#27861;&#25243;&#20986;&#30340;&#12290;</p>
+<p>&#22312;&#20195;&#30721;&#20013;&#33719;&#21462;&#21407;&#22987;&#24322;&#24120;&#21487;&#20197;&#20351;&#29992;<code>Throwable.getCause()</code>&#26041;&#27861;&#12290;&#22914;&#26524;&#36820;&#22238;<code>null</code>&#65292;&#35828;&#26126;&#24050;&#32463;&#26159;&#8220;&#26681;&#24322;&#24120;&#8221;&#20102;&#12290;</p>
+<p>&#26377;&#20102;&#23436;&#25972;&#30340;&#24322;&#24120;&#26632;&#30340;&#20449;&#24687;&#65292;&#25105;&#20204;&#25165;&#33021;&#24555;&#36895;&#23450;&#20301;&#24182;&#20462;&#22797;&#20195;&#30721;&#30340;&#38382;&#39064;&#12290;</p>
+<p>&#22914;&#26524;&#25105;&#20204;&#22312;<code>try</code>&#25110;&#32773;<code>catch</code>&#35821;&#21477;&#22359;&#20013;&#25243;&#20986;&#24322;&#24120;&#65292;<code>finally</code>&#35821;&#21477;&#26159;&#21542;&#20250;&#25191;&#34892;&#65311;&#20363;&#22914;&#65306;</p>
+<pre><code class="language-x-java">// exception
+----
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Integer.parseInt("abc");
+        } catch (Exception e) {
+            System.out.println("catched");
+            throw new RuntimeException(e);
+        } finally {
+            System.out.println("finally");
+        }
+    }
+}
+</code></pre>
+<p>&#19978;&#36848;&#20195;&#30721;&#25191;&#34892;&#32467;&#26524;&#22914;&#19979;&#65306;</p>
+<pre><code>catched
+finally
+Exception in thread "main" java.lang.RuntimeException: java.lang.NumberFormatException: For input string: "abc"
+    at Main.main(Main.java:8)
+Caused by: java.lang.NumberFormatException: For input string: "abc"
+    at ...
+</code></pre>
+<p>&#31532;&#19968;&#34892;&#25171;&#21360;&#20102;<code>catched</code>&#65292;&#35828;&#26126;&#36827;&#20837;&#20102;<code>catch</code>&#35821;&#21477;&#22359;&#12290;&#31532;&#20108;&#34892;&#25171;&#21360;&#20102;<code>finally</code>&#65292;&#35828;&#26126;&#25191;&#34892;&#20102;<code>finally</code>&#35821;&#21477;&#22359;&#12290;</p>
+<p>&#22240;&#27492;&#65292;&#22312;<code>catch</code>&#20013;&#25243;&#20986;&#24322;&#24120;&#65292;&#19981;&#20250;&#24433;&#21709;<code>finally</code>&#30340;&#25191;&#34892;&#12290;JVM&#20250;&#20808;&#25191;&#34892;<code>finally</code>&#65292;&#28982;&#21518;&#25243;&#20986;&#24322;&#24120;&#12290;</p>
+<h3>&#24322;&#24120;&#23631;&#34109;</h3>
+<p>&#22914;&#26524;&#22312;&#25191;&#34892;<code>finally</code>&#35821;&#21477;&#26102;&#25243;&#20986;&#24322;&#24120;&#65292;&#37027;&#20040;&#65292;<code>catch</code>&#35821;&#21477;&#30340;&#24322;&#24120;&#36824;&#33021;&#21542;&#32487;&#32493;&#25243;&#20986;&#65311;&#20363;&#22914;&#65306;</p>
+<pre><code class="language-x-java">// exception
+----
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Integer.parseInt("abc");
+        } catch (Exception e) {
+            System.out.println("catched");
+            throw new RuntimeException(e);
+        } finally {
+            System.out.println("finally");
+            throw new IllegalArgumentException();
+        }
+    }
+}
+</code></pre>
+<p>&#25191;&#34892;&#19978;&#36848;&#20195;&#30721;&#65292;&#21457;&#29616;&#24322;&#24120;&#20449;&#24687;&#22914;&#19979;&#65306;</p>
+<pre><code>catched
+finally
+Exception in thread "main" java.lang.IllegalArgumentException
+    at Main.main(Main.java:11)
+</code></pre>
+<p>&#36825;&#35828;&#26126;<code>finally</code>&#25243;&#20986;&#24322;&#24120;&#21518;&#65292;&#21407;&#26469;&#22312;<code>catch</code>&#20013;&#20934;&#22791;&#25243;&#20986;&#30340;&#24322;&#24120;&#23601;&#8220;&#28040;&#22833;&#8221;&#20102;&#65292;&#22240;&#20026;&#21482;&#33021;&#25243;&#20986;&#19968;&#20010;&#24322;&#24120;&#12290;&#27809;&#26377;&#34987;&#25243;&#20986;&#30340;&#24322;&#24120;&#31216;&#20026;&#8220;&#34987;&#23631;&#34109;&#8221;&#30340;&#24322;&#24120;&#65288;Suppressed Exception&#65289;&#12290;</p>
+<p>&#22312;&#26497;&#23569;&#25968;&#30340;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#38656;&#35201;&#33719;&#30693;&#25152;&#26377;&#30340;&#24322;&#24120;&#12290;&#22914;&#20309;&#20445;&#23384;&#25152;&#26377;&#30340;&#24322;&#24120;&#20449;&#24687;&#65311;&#26041;&#27861;&#26159;&#20808;&#29992;<code>origin</code>&#21464;&#37327;&#20445;&#23384;&#21407;&#22987;&#24322;&#24120;&#65292;&#28982;&#21518;&#35843;&#29992;<code>Throwable.addSuppressed()</code>&#65292;&#25226;&#21407;&#22987;&#24322;&#24120;&#28155;&#21152;&#36827;&#26469;&#65292;&#26368;&#21518;&#22312;<code>finally</code>&#25243;&#20986;&#65306;</p>
+<pre><code class="language-x-java">// exception
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Exception origin = null;
+        try {
+            System.out.println(Integer.parseInt("abc"));
+        } catch (Exception e) {
+            origin = e;
+            throw e;
+        } finally {
+            Exception e = new IllegalArgumentException();
+            if (origin != null) {
+                e.addSuppressed(origin);
+            }
+            throw e;
+        }
+    }
+}
+</code></pre>
+<p>&#24403;<code>catch</code>&#21644;<code>finally</code>&#37117;&#25243;&#20986;&#20102;&#24322;&#24120;&#26102;&#65292;&#34429;&#28982;<code>catch</code>&#30340;&#24322;&#24120;&#34987;&#23631;&#34109;&#20102;&#65292;&#20294;&#26159;&#65292;<code>finally</code>&#25243;&#20986;&#30340;&#24322;&#24120;&#20173;&#28982;&#21253;&#21547;&#20102;&#23427;&#65306;</p>
+<pre><code>Exception in thread "main" java.lang.IllegalArgumentException
+    at Main.main(Main.java:11)
+Suppressed: java.lang.NumberFormatException: For input string: "abc"
+    at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+    at java.base/java.lang.Integer.parseInt(Integer.java:652)
+    at java.base/java.lang.Integer.parseInt(Integer.java:770)
+    at Main.main(Main.java:6)
+</code></pre>
+<p>&#36890;&#36807;<code>Throwable.getSuppressed()</code>&#21487;&#20197;&#33719;&#21462;&#25152;&#26377;&#30340;<code>Suppressed Exception</code>&#12290;</p>
+<p>&#32477;&#22823;&#22810;&#25968;&#24773;&#20917;&#19979;&#65292;&#22312;<code>finally</code>&#20013;&#19981;&#35201;&#25243;&#20986;&#24322;&#24120;&#12290;&#22240;&#27492;&#65292;&#25105;&#20204;&#36890;&#24120;&#19981;&#38656;&#35201;&#20851;&#24515;<code>Suppressed Exception</code>&#12290;</p>
+<h3>&#32451;&#20064;</h3>
+<p>&#22914;&#26524;&#20256;&#20837;&#30340;&#21442;&#25968;&#20026;&#36127;&#65292;&#21017;&#25243;&#20986;IllegalArgumentException&#12290;</p>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/30.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.1255943543190176/30.%E6%8A%9B%E5%87%BA%E5%BC%82%E5%B8%B8.1264738764506656/exception-throw.zip">&#25243;&#20986;&#24322;&#24120;&#32451;&#20064;</a></p>
+<h3>&#23567;&#32467;</h3>
+<p>&#35843;&#29992;<code>printStackTrace()</code>&#21487;&#20197;&#25171;&#21360;&#24322;&#24120;&#30340;&#20256;&#25773;&#26632;&#65292;&#23545;&#20110;&#35843;&#35797;&#38750;&#24120;&#26377;&#29992;&#65307;</p>
+<p>&#25429;&#33719;&#24322;&#24120;&#24182;&#20877;&#27425;&#25243;&#20986;&#26032;&#30340;&#24322;&#24120;&#26102;&#65292;&#24212;&#35813;&#25345;&#26377;&#21407;&#22987;&#24322;&#24120;&#20449;&#24687;&#65307;</p>
+<p>&#36890;&#24120;&#19981;&#35201;&#22312;<code>finally</code>&#20013;&#25243;&#20986;&#24322;&#24120;&#12290;&#22914;&#26524;&#22312;<code>finally</code>&#20013;&#25243;&#20986;&#24322;&#24120;&#65292;&#24212;&#35813;&#21407;&#22987;&#24322;&#24120;&#21152;&#20837;&#21040;&#21407;&#26377;&#24322;&#24120;&#20013;&#12290;&#35843;&#29992;&#26041;&#21487;&#36890;&#36807;<code>Throwable.getSuppressed()</code>&#33719;&#21462;&#25152;&#26377;&#28155;&#21152;&#30340;<code>Suppressed Exception</code>&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

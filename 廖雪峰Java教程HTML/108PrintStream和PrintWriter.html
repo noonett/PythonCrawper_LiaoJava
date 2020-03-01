@@ -1,0 +1,90 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>PrintStream&#21644;PrintWriter</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 27584</span>
+    	<a href="/manage/wiki/wikipage_update?id=1302299230076961" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p><code>PrintStream</code>&#26159;&#19968;&#31181;<code>FilterOutputStream</code>&#65292;&#23427;&#22312;<code>OutputStream</code>&#30340;&#25509;&#21475;&#19978;&#65292;&#39069;&#22806;&#25552;&#20379;&#20102;&#19968;&#20123;&#20889;&#20837;&#21508;&#31181;&#25968;&#25454;&#31867;&#22411;&#30340;&#26041;&#27861;&#65306;</p>
+<ul>
+<li>&#20889;&#20837;<code>int</code>&#65306;<code>print(int)</code>
+</li>
+<li>&#20889;&#20837;<code>boolean</code>&#65306;<code>print(boolean)</code>
+</li>
+<li>&#20889;&#20837;<code>String</code>&#65306;<code>print(String)</code>
+</li>
+<li>&#20889;&#20837;<code>Object</code>&#65306;<code>print(Object)</code>&#65292;&#23454;&#38469;&#19978;&#30456;&#24403;&#20110;<code>print(object.toString())</code>
+</li>
+<li>...</li>
+</ul>
+<p>&#20197;&#21450;&#23545;&#24212;&#30340;&#19968;&#32452;<code>println()</code>&#26041;&#27861;&#65292;&#23427;&#20250;&#33258;&#21160;&#21152;&#19978;&#25442;&#34892;&#31526;&#12290;</p>
+<p>&#25105;&#20204;&#32463;&#24120;&#20351;&#29992;&#30340;<code>System.out.println()</code>&#23454;&#38469;&#19978;&#23601;&#26159;&#20351;&#29992;<code>PrintStream</code>&#25171;&#21360;&#21508;&#31181;&#25968;&#25454;&#12290;&#20854;&#20013;&#65292;<code>System.out</code>&#26159;&#31995;&#32479;&#40664;&#35748;&#25552;&#20379;&#30340;<code>PrintStream</code>&#65292;&#34920;&#31034;&#26631;&#20934;&#36755;&#20986;&#65306;</p>
+<pre><code>System.out.print(12345); // &#36755;&#20986;12345
+System.out.print(new Object()); // &#36755;&#20986;&#31867;&#20284;java.lang.Object@3c7a835a
+System.out.println("Hello"); // &#36755;&#20986;Hello&#24182;&#25442;&#34892;
+</code></pre>
+<p><code>System.err</code>&#26159;&#31995;&#32479;&#40664;&#35748;&#25552;&#20379;&#30340;&#26631;&#20934;&#38169;&#35823;&#36755;&#20986;&#12290;</p>
+<p><code>PrintStream</code>&#21644;<code>OutputStream</code>&#30456;&#27604;&#65292;&#38500;&#20102;&#28155;&#21152;&#20102;&#19968;&#32452;<code>print()</code>/<code>println()</code>&#26041;&#27861;&#65292;&#21487;&#20197;&#25171;&#21360;&#21508;&#31181;&#25968;&#25454;&#31867;&#22411;&#65292;&#27604;&#36739;&#26041;&#20415;&#22806;&#65292;&#23427;&#36824;&#26377;&#19968;&#20010;&#39069;&#22806;&#30340;&#20248;&#28857;&#65292;&#23601;&#26159;&#19981;&#20250;&#25243;&#20986;<code>IOException</code>&#65292;&#36825;&#26679;&#25105;&#20204;&#22312;&#32534;&#20889;&#20195;&#30721;&#30340;&#26102;&#20505;&#65292;&#23601;&#19981;&#24517;&#25429;&#33719;<code>IOException</code>&#12290;</p>
+<h3>PrintWriter</h3>
+<p><code>PrintStream</code>&#26368;&#32456;&#36755;&#20986;&#30340;&#24635;&#26159;byte&#25968;&#25454;&#65292;&#32780;<code>PrintWriter</code>&#21017;&#26159;&#25193;&#23637;&#20102;<code>Writer</code>&#25509;&#21475;&#65292;&#23427;&#30340;<code>print()</code>/<code>println()</code>&#26041;&#27861;&#26368;&#32456;&#36755;&#20986;&#30340;&#26159;<code>char</code>&#25968;&#25454;&#12290;&#20004;&#32773;&#30340;&#20351;&#29992;&#26041;&#27861;&#20960;&#20046;&#26159;&#19968;&#27169;&#19968;&#26679;&#30340;&#65306;</p>
+<pre><code class="language-x-java">import java.io.*;
+----
+public class Main {
+    public static void main(String[] args)     {
+        StringWriter buffer = new StringWriter();
+        try (PrintWriter pw = new PrintWriter(buffer)) {
+            pw.println("Hello");
+            pw.println(12345);
+            pw.println(true);
+        }
+        System.out.println(buffer.toString());
+    }
+}
+</code></pre>
+<h3>&#23567;&#32467;</h3>
+<p><code>PrintStream</code>&#26159;&#19968;&#31181;&#33021;&#25509;&#25910;&#21508;&#31181;&#25968;&#25454;&#31867;&#22411;&#30340;&#36755;&#20986;&#65292;&#25171;&#21360;&#25968;&#25454;&#26102;&#27604;&#36739;&#26041;&#20415;&#65306;</p>
+<ul>
+<li>
+<code>System.out</code>&#26159;&#26631;&#20934;&#36755;&#20986;&#65307;</li>
+<li>
+<code>System.err</code>&#26159;&#26631;&#20934;&#38169;&#35823;&#36755;&#20986;&#12290;</li>
+</ul>
+<p><code>PrintWriter</code>&#26159;&#22522;&#20110;<code>Writer</code>&#30340;&#36755;&#20986;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

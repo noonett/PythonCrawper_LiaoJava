@@ -1,0 +1,88 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#35843;&#29992;&#26500;&#36896;&#26041;&#27861;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 152748</span>
+    	<a href="/manage/wiki/wikipage_update?id=1264802263123712" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#25105;&#20204;&#36890;&#24120;&#20351;&#29992;<code>new</code>&#25805;&#20316;&#31526;&#21019;&#24314;&#26032;&#30340;&#23454;&#20363;&#65306;</p>
+<pre><code>Person p = new Person();
+</code></pre>
+<p>&#22914;&#26524;&#36890;&#36807;&#21453;&#23556;&#26469;&#21019;&#24314;&#26032;&#30340;&#23454;&#20363;&#65292;&#21487;&#20197;&#35843;&#29992;Class&#25552;&#20379;&#30340;newInstance()&#26041;&#27861;&#65306;</p>
+<pre><code>Person p = Person.class.newInstance();
+</code></pre>
+<p>&#35843;&#29992;Class.newInstance()&#30340;&#23616;&#38480;&#26159;&#65292;&#23427;&#21482;&#33021;&#35843;&#29992;&#35813;&#31867;&#30340;public&#26080;&#21442;&#25968;&#26500;&#36896;&#26041;&#27861;&#12290;&#22914;&#26524;&#26500;&#36896;&#26041;&#27861;&#24102;&#26377;&#21442;&#25968;&#65292;&#25110;&#32773;&#19981;&#26159;public&#65292;&#23601;&#26080;&#27861;&#30452;&#25509;&#36890;&#36807;Class.newInstance()&#26469;&#35843;&#29992;&#12290;</p>
+<p>&#20026;&#20102;&#35843;&#29992;&#20219;&#24847;&#30340;&#26500;&#36896;&#26041;&#27861;&#65292;Java&#30340;&#21453;&#23556;API&#25552;&#20379;&#20102;Constructor&#23545;&#35937;&#65292;&#23427;&#21253;&#21547;&#19968;&#20010;&#26500;&#36896;&#26041;&#27861;&#30340;&#25152;&#26377;&#20449;&#24687;&#65292;&#21487;&#20197;&#21019;&#24314;&#19968;&#20010;&#23454;&#20363;&#12290;Constructor&#23545;&#35937;&#21644;Method&#38750;&#24120;&#31867;&#20284;&#65292;&#19981;&#21516;&#20043;&#22788;&#20165;&#22312;&#20110;&#23427;&#26159;&#19968;&#20010;&#26500;&#36896;&#26041;&#27861;&#65292;&#24182;&#19988;&#65292;&#35843;&#29992;&#32467;&#26524;&#24635;&#26159;&#36820;&#22238;&#23454;&#20363;&#65306;</p>
+<pre><code class="language-x-java">import java.lang.reflect.Constructor;
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // &#33719;&#21462;&#26500;&#36896;&#26041;&#27861;Integer(int):
+        Constructor cons1 = Integer.class.getConstructor(int.class);
+        // &#35843;&#29992;&#26500;&#36896;&#26041;&#27861;:
+        Integer n1 = (Integer) cons1.newInstance(123);
+        System.out.println(n1);
+
+        // &#33719;&#21462;&#26500;&#36896;&#26041;&#27861;Integer(String)
+        Constructor cons2 = Integer.class.getConstructor(String.class);
+        Integer n2 = (Integer) cons2.newInstance("456");
+        System.out.println(n2);
+    }
+}
+</code></pre>
+<p>&#36890;&#36807;Class&#23454;&#20363;&#33719;&#21462;Constructor&#30340;&#26041;&#27861;&#22914;&#19979;&#65306;</p>
+<ul>
+<li>
+<code>getConstructor(Class...)</code>&#65306;&#33719;&#21462;&#26576;&#20010;<code>public</code>&#30340;<code>Constructor</code>&#65307;</li>
+<li>
+<code>getDeclaredConstructor(Class...)</code>&#65306;&#33719;&#21462;&#26576;&#20010;<code>Constructor</code>&#65307;</li>
+<li>
+<code>getConstructors()</code>&#65306;&#33719;&#21462;&#25152;&#26377;<code>public</code>&#30340;<code>Constructor</code>&#65307;</li>
+<li>
+<code>getDeclaredConstructors()</code>&#65306;&#33719;&#21462;&#25152;&#26377;<code>Constructor</code>&#12290;</li>
+</ul>
+<p>&#27880;&#24847;<code>Constructor</code>&#24635;&#26159;&#24403;&#21069;&#31867;&#23450;&#20041;&#30340;&#26500;&#36896;&#26041;&#27861;&#65292;&#21644;&#29238;&#31867;&#26080;&#20851;&#65292;&#22240;&#27492;&#19981;&#23384;&#22312;&#22810;&#24577;&#30340;&#38382;&#39064;&#12290;</p>
+<p>&#35843;&#29992;&#38750;<code>public</code>&#30340;<code>Constructor</code>&#26102;&#65292;&#24517;&#39035;&#39318;&#20808;&#36890;&#36807;<code>setAccessible(true)</code>&#35774;&#32622;&#20801;&#35768;&#35775;&#38382;&#12290;<code>setAccessible(true)</code>&#21487;&#33021;&#20250;&#22833;&#36133;&#12290;</p>
+<h3>&#23567;&#32467;</h3>
+<p><code>Constructor</code>&#23545;&#35937;&#23553;&#35013;&#20102;&#26500;&#36896;&#26041;&#27861;&#30340;&#25152;&#26377;&#20449;&#24687;&#65307;</p>
+<p>&#36890;&#36807;<code>Class</code>&#23454;&#20363;&#30340;&#26041;&#27861;&#21487;&#20197;&#33719;&#21462;<code>Constructor</code>&#23454;&#20363;&#65306;<code>getConstructor()</code>&#65292;<code>getConstructors()</code>&#65292;<code>getDeclaredConstructor()</code>&#65292;<code>getDeclaredConstructors()</code>&#65307;</p>
+<p>&#36890;&#36807;<code>Constructor</code>&#23454;&#20363;&#21487;&#20197;&#21019;&#24314;&#19968;&#20010;&#23454;&#20363;&#23545;&#35937;&#65306;<code>newInstance(Object... parameters)</code>&#65307;
+&#36890;&#36807;&#35774;&#32622;<code>setAccessible(true)</code>&#26469;&#35775;&#38382;&#38750;<code>public</code>&#26500;&#36896;&#26041;&#27861;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

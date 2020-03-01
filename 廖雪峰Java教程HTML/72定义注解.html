@@ -1,0 +1,166 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#23450;&#20041;&#27880;&#35299;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 350715</span>
+    	<a href="/manage/wiki/wikipage_update?id=1265102803921888" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>Java&#35821;&#35328;&#20351;&#29992;<code>@interface</code>&#35821;&#27861;&#26469;&#23450;&#20041;&#27880;&#35299;&#65288;<code>Annotation</code>&#65289;&#65292;&#23427;&#30340;&#26684;&#24335;&#22914;&#19979;&#65306;</p>
+<pre><code>public @interface Report {
+    int type() default 0;
+    String level() default "info";
+    String value() default "";
+}
+</code></pre>
+<p>&#27880;&#35299;&#30340;&#21442;&#25968;&#31867;&#20284;&#26080;&#21442;&#25968;&#26041;&#27861;&#65292;&#21487;&#20197;&#29992;<code>default</code>&#35774;&#23450;&#19968;&#20010;&#40664;&#35748;&#20540;&#65288;&#24378;&#28872;&#25512;&#33616;&#65289;&#12290;&#26368;&#24120;&#29992;&#30340;&#21442;&#25968;&#24212;&#24403;&#21629;&#21517;&#20026;<code>value</code>&#12290;</p>
+<h3>&#20803;&#27880;&#35299;</h3>
+<p>&#26377;&#19968;&#20123;&#27880;&#35299;&#21487;&#20197;&#20462;&#39280;&#20854;&#20182;&#27880;&#35299;&#65292;&#36825;&#20123;&#27880;&#35299;&#23601;&#31216;&#20026;&#20803;&#27880;&#35299;&#65288;meta annotation&#65289;&#12290;Java&#26631;&#20934;&#24211;&#24050;&#32463;&#23450;&#20041;&#20102;&#19968;&#20123;&#20803;&#27880;&#35299;&#65292;&#25105;&#20204;&#21482;&#38656;&#35201;&#20351;&#29992;&#20803;&#27880;&#35299;&#65292;&#36890;&#24120;&#19981;&#38656;&#35201;&#33258;&#24049;&#21435;&#32534;&#20889;&#20803;&#27880;&#35299;&#12290;</p>
+<h4>@Target</h4>
+<p>&#26368;&#24120;&#29992;&#30340;&#20803;&#27880;&#35299;&#26159;<code>@Target</code>&#12290;&#20351;&#29992;<code>@Target</code>&#21487;&#20197;&#23450;&#20041;<code>Annotation</code>&#33021;&#22815;&#34987;&#24212;&#29992;&#20110;&#28304;&#30721;&#30340;&#21738;&#20123;&#20301;&#32622;&#65306;</p>
+<ul>
+<li>&#31867;&#25110;&#25509;&#21475;&#65306;<code>ElementType.TYPE</code>&#65307;</li>
+<li>&#23383;&#27573;&#65306;<code>ElementType.FIELD</code>&#65307;</li>
+<li>&#26041;&#27861;&#65306;<code>ElementType.METHOD</code>&#65307;</li>
+<li>&#26500;&#36896;&#26041;&#27861;&#65306;<code>ElementType.CONSTRUCTOR</code>&#65307;</li>
+<li>&#26041;&#27861;&#21442;&#25968;&#65306;<code>ElementType.PARAMETER</code>&#12290;</li>
+</ul>
+<p>&#20363;&#22914;&#65292;&#23450;&#20041;&#27880;&#35299;<code>@Report</code>&#21487;&#29992;&#22312;&#26041;&#27861;&#19978;&#65292;&#25105;&#20204;&#24517;&#39035;&#28155;&#21152;&#19968;&#20010;<code>@Target(ElementType.METHOD)</code>&#65306;</p>
+<pre><code>@Target(ElementType.METHOD)
+public @interface Report {
+    int type() default 0;
+    String level() default "info";
+    String value() default "";
+}
+</code></pre>
+<p>&#23450;&#20041;&#27880;&#35299;<code>@Report</code>&#21487;&#29992;&#22312;&#26041;&#27861;&#25110;&#23383;&#27573;&#19978;&#65292;&#21487;&#20197;&#25226;<code>@Target</code>&#27880;&#35299;&#21442;&#25968;&#21464;&#20026;&#25968;&#32452;<code>{ ElementType.METHOD, ElementType.FIELD }</code>&#65306;</p>
+<pre><code>@Target({
+    ElementType.METHOD,
+    ElementType.FIELD
+})
+public @interface Report {
+    ...
+}
+</code></pre>
+<p>&#23454;&#38469;&#19978;<code>@Target</code>&#23450;&#20041;&#30340;<code>value</code>&#26159;<code>ElementType[]</code>&#25968;&#32452;&#65292;&#21482;&#26377;&#19968;&#20010;&#20803;&#32032;&#26102;&#65292;&#21487;&#20197;&#30465;&#30053;&#25968;&#32452;&#30340;&#20889;&#27861;&#12290;</p>
+<h4>@Retention</h4>
+<p>&#21478;&#19968;&#20010;&#37325;&#35201;&#30340;&#20803;&#27880;&#35299;<code>@Retention</code>&#23450;&#20041;&#20102;<code>Annotation</code>&#30340;&#29983;&#21629;&#21608;&#26399;&#65306;</p>
+<ul>
+<li>&#20165;&#32534;&#35793;&#26399;&#65306;<code>RetentionPolicy.SOURCE</code>&#65307;</li>
+<li>&#20165;class&#25991;&#20214;&#65306;<code>RetentionPolicy.CLASS</code>&#65307;</li>
+<li>&#36816;&#34892;&#26399;&#65306;<code>RetentionPolicy.RUNTIME</code>&#12290;</li>
+</ul>
+<p>&#22914;&#26524;<code>@Retention</code>&#19981;&#23384;&#22312;&#65292;&#21017;&#35813;<code>Annotation</code>&#40664;&#35748;&#20026;<code>CLASS</code>&#12290;&#22240;&#20026;&#36890;&#24120;&#25105;&#20204;&#33258;&#23450;&#20041;&#30340;<code>Annotation</code>&#37117;&#26159;<code>RUNTIME</code>&#65292;&#25152;&#20197;&#65292;&#21153;&#24517;&#35201;&#21152;&#19978;<code>@Retention(RetentionPolicy.RUNTIME)</code>&#36825;&#20010;&#20803;&#27880;&#35299;&#65306;</p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+public @interface Report {
+    int type() default 0;
+    String level() default "info";
+    String value() default "";
+}
+</code></pre>
+<h4>@Repeatable</h4>
+<p>&#20351;&#29992;<code>@Repeatable</code>&#36825;&#20010;&#20803;&#27880;&#35299;&#21487;&#20197;&#23450;&#20041;<code>Annotation</code>&#26159;&#21542;&#21487;&#37325;&#22797;&#12290;&#36825;&#20010;&#27880;&#35299;&#24212;&#29992;&#19981;&#26159;&#29305;&#21035;&#24191;&#27867;&#12290;</p>
+<pre><code>@Repeatable(Reports.class)
+@Target(ElementType.TYPE)
+public @interface Report {
+    int type() default 0;
+    String level() default "info";
+    String value() default "";
+}
+
+@Target(ElementType.TYPE)
+public @interface Reports {
+    Report[] value();
+}
+</code></pre>
+<p>&#32463;&#36807;<code>@Repeatable</code>&#20462;&#39280;&#21518;&#65292;&#22312;&#26576;&#20010;&#31867;&#22411;&#22768;&#26126;&#22788;&#65292;&#23601;&#21487;&#20197;&#28155;&#21152;&#22810;&#20010;<code>@Report</code>&#27880;&#35299;&#65306;</p>
+<pre><code>@Report(type=1, level="debug")
+@Report(type=2, level="warning")
+public class Hello {
+}
+</code></pre>
+<h4>@Inherited</h4>
+<p>&#20351;&#29992;<code>@Inherited</code>&#23450;&#20041;&#23376;&#31867;&#26159;&#21542;&#21487;&#32487;&#25215;&#29238;&#31867;&#23450;&#20041;&#30340;<code>Annotation</code>&#12290;<code>@Inherited</code>&#20165;&#38024;&#23545;<code>@Target(ElementType.TYPE)</code>&#31867;&#22411;&#30340;<code>annotation</code>&#26377;&#25928;&#65292;&#24182;&#19988;&#20165;&#38024;&#23545;<code>class</code>&#30340;&#32487;&#25215;&#65292;&#23545;<code>interface</code>&#30340;&#32487;&#25215;&#26080;&#25928;&#65306;</p>
+<pre><code>@Inherited
+@Target(ElementType.TYPE)
+public @interface Report {
+    int type() default 0;
+    String level() default "info";
+    String value() default "";
+}
+</code></pre>
+<p>&#22312;&#20351;&#29992;&#30340;&#26102;&#20505;&#65292;&#22914;&#26524;&#19968;&#20010;&#31867;&#29992;&#21040;&#20102;<code>@Report</code>&#65306;</p>
+<pre><code>@Report(type=1)
+public class Person {
+}
+</code></pre>
+<p>&#21017;&#23427;&#30340;&#23376;&#31867;&#40664;&#35748;&#20063;&#23450;&#20041;&#20102;&#35813;&#27880;&#35299;&#65306;</p>
+<pre><code>public class Student extends Person {
+}
+</code></pre>
+<h3>&#22914;&#20309;&#23450;&#20041;Annotation</h3>
+<p>&#25105;&#20204;&#24635;&#32467;&#19968;&#19979;&#23450;&#20041;<code>Annotation</code>&#30340;&#27493;&#39588;&#65306;</p>
+<p>&#31532;&#19968;&#27493;&#65292;&#29992;<code>@interface</code>&#23450;&#20041;&#27880;&#35299;&#65306;</p>
+<pre><code>public @interface Report {
+}
+</code></pre>
+<p>&#31532;&#20108;&#27493;&#65292;&#28155;&#21152;&#21442;&#25968;&#12289;&#40664;&#35748;&#20540;&#65306;</p>
+<pre><code>public @interface Report {
+    int type() default 0;
+    String level() default "info";
+    String value() default "";
+}
+</code></pre>
+<p>&#25226;&#26368;&#24120;&#29992;&#30340;&#21442;&#25968;&#23450;&#20041;&#20026;<code>value()</code>&#65292;&#25512;&#33616;&#25152;&#26377;&#21442;&#25968;&#37117;&#23613;&#37327;&#35774;&#32622;&#40664;&#35748;&#20540;&#12290;</p>
+<p>&#31532;&#19977;&#27493;&#65292;&#29992;&#20803;&#27880;&#35299;&#37197;&#32622;&#27880;&#35299;&#65306;</p>
+<pre><code>@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Report {
+    int type() default 0;
+    String level() default "info";
+    String value() default "";
+}
+</code></pre>
+<p>&#20854;&#20013;&#65292;&#24517;&#39035;&#35774;&#32622;<code>@Target</code>&#21644;<code>@Retention</code>&#65292;<code>@Retention</code>&#19968;&#33324;&#35774;&#32622;&#20026;<code>RUNTIME</code>&#65292;&#22240;&#20026;&#25105;&#20204;&#33258;&#23450;&#20041;&#30340;&#27880;&#35299;&#36890;&#24120;&#35201;&#27714;&#22312;&#36816;&#34892;&#26399;&#35835;&#21462;&#12290;&#19968;&#33324;&#24773;&#20917;&#19979;&#65292;&#19981;&#24517;&#20889;<code>@Inherited</code>&#21644;<code>@Repeatable</code>&#12290;</p>
+<h3>&#23567;&#32467;</h3>
+<p>Java&#20351;&#29992;<code>@interface</code>&#23450;&#20041;&#27880;&#35299;&#65306;</p>
+<p>&#21487;&#23450;&#20041;&#22810;&#20010;&#21442;&#25968;&#21644;&#40664;&#35748;&#20540;&#65292;&#26680;&#24515;&#21442;&#25968;&#20351;&#29992;<code>value</code>&#21517;&#31216;&#65307;</p>
+<p>&#24517;&#39035;&#35774;&#32622;<code>@Target</code>&#26469;&#25351;&#23450;<code>Annotation</code>&#21487;&#20197;&#24212;&#29992;&#30340;&#33539;&#22260;&#65307;</p>
+<p>&#24212;&#24403;&#35774;&#32622;<code>@Retention(RetentionPolicy.RUNTIME)</code>&#20415;&#20110;&#36816;&#34892;&#26399;&#35835;&#21462;&#35813;<code>Annotation</code>&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

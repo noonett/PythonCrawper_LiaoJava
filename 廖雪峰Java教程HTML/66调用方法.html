@@ -1,0 +1,208 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#35843;&#29992;&#26041;&#27861;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 252381</span>
+    	<a href="/manage/wiki/wikipage_update?id=1264803678201760" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#25105;&#20204;&#24050;&#32463;&#33021;&#36890;&#36807;<code>Class</code>&#23454;&#20363;&#33719;&#21462;&#25152;&#26377;<code>Field</code>&#23545;&#35937;&#65292;&#21516;&#26679;&#30340;&#65292;&#21487;&#20197;&#36890;&#36807;<code>Class</code>&#23454;&#20363;&#33719;&#21462;&#25152;&#26377;<code>Method</code>&#20449;&#24687;&#12290;<code>Class</code>&#31867;&#25552;&#20379;&#20102;&#20197;&#19979;&#20960;&#20010;&#26041;&#27861;&#26469;&#33719;&#21462;<code>Method</code>&#65306;</p>
+<ul>
+<li>
+<code>Method getMethod(name, Class...)</code>&#65306;&#33719;&#21462;&#26576;&#20010;<code>public</code>&#30340;<code>Method</code>&#65288;&#21253;&#25324;&#29238;&#31867;&#65289;</li>
+<li>
+<code>Method getDeclaredMethod(name, Class...)</code>&#65306;&#33719;&#21462;&#24403;&#21069;&#31867;&#30340;&#26576;&#20010;<code>Method</code>&#65288;&#19981;&#21253;&#25324;&#29238;&#31867;&#65289;</li>
+<li>
+<code>Method[] getMethods()</code>&#65306;&#33719;&#21462;&#25152;&#26377;<code>public</code>&#30340;<code>Method</code>&#65288;&#21253;&#25324;&#29238;&#31867;&#65289;</li>
+<li>
+<code>Method[] getDeclaredMethods()</code>&#65306;&#33719;&#21462;&#24403;&#21069;&#31867;&#30340;&#25152;&#26377;<code>Method</code>&#65288;&#19981;&#21253;&#25324;&#29238;&#31867;&#65289;</li>
+</ul>
+<p>&#25105;&#20204;&#26469;&#30475;&#19968;&#19979;&#31034;&#20363;&#20195;&#30721;&#65306;</p>
+<pre><code class="language-x-java">// reflection
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Class stdClass = Student.class;
+        // &#33719;&#21462;public&#26041;&#27861;getScore&#65292;&#21442;&#25968;&#20026;String:
+        System.out.println(stdClass.getMethod("getScore", String.class));
+        // &#33719;&#21462;&#32487;&#25215;&#30340;public&#26041;&#27861;getName&#65292;&#26080;&#21442;&#25968;:
+        System.out.println(stdClass.getMethod("getName"));
+        // &#33719;&#21462;private&#26041;&#27861;getGrade&#65292;&#21442;&#25968;&#20026;int:
+        System.out.println(stdClass.getDeclaredMethod("getGrade", int.class));
+    }
+}
+
+class Student extends Person {
+    public int getScore(String type) {
+        return 99;
+    }
+    private int getGrade(int year) {
+        return 1;
+    }
+}
+
+class Person {
+    public String getName() {
+        return "Person";
+    }
+}
+</code></pre>
+<p>&#19978;&#36848;&#20195;&#30721;&#39318;&#20808;&#33719;&#21462;<code>Student</code>&#30340;<code>Class</code>&#23454;&#20363;&#65292;&#28982;&#21518;&#65292;&#20998;&#21035;&#33719;&#21462;<code>public</code>&#26041;&#27861;&#12289;&#32487;&#25215;&#30340;<code>public</code>&#26041;&#27861;&#20197;&#21450;<code>private</code>&#26041;&#27861;&#65292;&#25171;&#21360;&#20986;&#30340;<code>Method</code>&#31867;&#20284;&#65306;</p>
+<pre><code>public int Student.getScore(java.lang.String)
+public java.lang.String Person.getName()
+private int Student.getGrade(int)
+</code></pre>
+<p>&#19968;&#20010;<code>Method</code>&#23545;&#35937;&#21253;&#21547;&#19968;&#20010;&#26041;&#27861;&#30340;&#25152;&#26377;&#20449;&#24687;&#65306;</p>
+<ul>
+<li>
+<code>getName()</code>&#65306;&#36820;&#22238;&#26041;&#27861;&#21517;&#31216;&#65292;&#20363;&#22914;&#65306;<code>"getScore"</code>&#65307;</li>
+<li>
+<code>getReturnType()</code>&#65306;&#36820;&#22238;&#26041;&#27861;&#36820;&#22238;&#20540;&#31867;&#22411;&#65292;&#20063;&#26159;&#19968;&#20010;Class&#23454;&#20363;&#65292;&#20363;&#22914;&#65306;<code>String.class</code>&#65307;</li>
+<li>
+<code>getParameterTypes()</code>&#65306;&#36820;&#22238;&#26041;&#27861;&#30340;&#21442;&#25968;&#31867;&#22411;&#65292;&#26159;&#19968;&#20010;Class&#25968;&#32452;&#65292;&#20363;&#22914;&#65306;<code>{String.class, int.class}</code>&#65307;</li>
+<li>
+<code>getModifiers()</code>&#65306;&#36820;&#22238;&#26041;&#27861;&#30340;&#20462;&#39280;&#31526;&#65292;&#23427;&#26159;&#19968;&#20010;<code>int</code>&#65292;&#19981;&#21516;&#30340;bit&#34920;&#31034;&#19981;&#21516;&#30340;&#21547;&#20041;&#12290;</li>
+</ul>
+<h3>&#35843;&#29992;&#26041;&#27861;</h3>
+<p>&#24403;&#25105;&#20204;&#33719;&#21462;&#21040;&#19968;&#20010;<code>Method</code>&#23545;&#35937;&#26102;&#65292;&#23601;&#21487;&#20197;&#23545;&#23427;&#36827;&#34892;&#35843;&#29992;&#12290;&#25105;&#20204;&#20197;&#19979;&#38754;&#30340;&#20195;&#30721;&#20026;&#20363;&#65306;</p>
+<pre><code>String s = "Hello world";
+String r = s.substring(6); // "world"
+</code></pre>
+<p>&#22914;&#26524;&#29992;&#21453;&#23556;&#26469;&#35843;&#29992;<code>substring</code>&#26041;&#27861;&#65292;&#38656;&#35201;&#20197;&#19979;&#20195;&#30721;&#65306;</p>
+<pre><code class="language-x-java">// reflection
+import java.lang.reflect.Method;
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // String&#23545;&#35937;:
+        String s = "Hello world";
+        // &#33719;&#21462;String substring(int)&#26041;&#27861;&#65292;&#21442;&#25968;&#20026;int:
+        Method m = String.class.getMethod("substring", int.class);
+        // &#22312;s&#23545;&#35937;&#19978;&#35843;&#29992;&#35813;&#26041;&#27861;&#24182;&#33719;&#21462;&#32467;&#26524;:
+        String r = (String) m.invoke(s, 6);
+        // &#25171;&#21360;&#35843;&#29992;&#32467;&#26524;:
+        System.out.println(r);
+    }
+}
+</code></pre>
+<p>&#27880;&#24847;&#21040;<code>substring()</code>&#26377;&#20004;&#20010;&#37325;&#36733;&#26041;&#27861;&#65292;&#25105;&#20204;&#33719;&#21462;&#30340;&#26159;<code>String substring(int)</code>&#36825;&#20010;&#26041;&#27861;&#12290;&#24605;&#32771;&#19968;&#19979;&#22914;&#20309;&#33719;&#21462;<code>String substring(int, int)</code>&#26041;&#27861;&#12290;</p>
+<p>&#23545;<code>Method</code>&#23454;&#20363;&#35843;&#29992;<code>invoke</code>&#23601;&#30456;&#24403;&#20110;&#35843;&#29992;&#35813;&#26041;&#27861;&#65292;<code>invoke</code>&#30340;&#31532;&#19968;&#20010;&#21442;&#25968;&#26159;&#23545;&#35937;&#23454;&#20363;&#65292;&#21363;&#22312;&#21738;&#20010;&#23454;&#20363;&#19978;&#35843;&#29992;&#35813;&#26041;&#27861;&#65292;&#21518;&#38754;&#30340;&#21487;&#21464;&#21442;&#25968;&#35201;&#19982;&#26041;&#27861;&#21442;&#25968;&#19968;&#33268;&#65292;&#21542;&#21017;&#23558;&#25253;&#38169;&#12290;</p>
+<h3>&#35843;&#29992;&#38745;&#24577;&#26041;&#27861;</h3>
+<p>&#22914;&#26524;&#33719;&#21462;&#21040;&#30340;Method&#34920;&#31034;&#19968;&#20010;&#38745;&#24577;&#26041;&#27861;&#65292;&#35843;&#29992;&#38745;&#24577;&#26041;&#27861;&#26102;&#65292;&#30001;&#20110;&#26080;&#38656;&#25351;&#23450;&#23454;&#20363;&#23545;&#35937;&#65292;&#25152;&#20197;<code>invoke</code>&#26041;&#27861;&#20256;&#20837;&#30340;&#31532;&#19968;&#20010;&#21442;&#25968;&#27704;&#36828;&#20026;<code>null</code>&#12290;&#25105;&#20204;&#20197;<code>Integer.parseInt(String)</code>&#20026;&#20363;&#65306;</p>
+<pre><code class="language-x-java">// reflection
+import java.lang.reflect.Method;
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // &#33719;&#21462;Integer.parseInt(String)&#26041;&#27861;&#65292;&#21442;&#25968;&#20026;String:
+        Method m = Integer.class.getMethod("parseInt", String.class);
+        // &#35843;&#29992;&#35813;&#38745;&#24577;&#26041;&#27861;&#24182;&#33719;&#21462;&#32467;&#26524;:
+        Integer n = (Integer) m.invoke(null, "12345");
+        // &#25171;&#21360;&#35843;&#29992;&#32467;&#26524;:
+        System.out.println(n);
+    }
+}
+</code></pre>
+<h3>&#35843;&#29992;&#38750;public&#26041;&#27861;</h3>
+<p>&#21644;Field&#31867;&#20284;&#65292;&#23545;&#20110;&#38750;public&#26041;&#27861;&#65292;&#25105;&#20204;&#34429;&#28982;&#21487;&#20197;&#36890;&#36807;<code>Class.getDeclaredMethod()</code>&#33719;&#21462;&#35813;&#26041;&#27861;&#23454;&#20363;&#65292;&#20294;&#30452;&#25509;&#23545;&#20854;&#35843;&#29992;&#23558;&#24471;&#21040;&#19968;&#20010;<code>IllegalAccessException</code>&#12290;&#20026;&#20102;&#35843;&#29992;&#38750;public&#26041;&#27861;&#65292;&#25105;&#20204;&#36890;&#36807;<code>Method.setAccessible(true)</code>&#20801;&#35768;&#20854;&#35843;&#29992;&#65306;</p>
+<pre><code class="language-x-java">// reflection
+import java.lang.reflect.Method;
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Person p = new Person();
+        Method m = p.getClass().getDeclaredMethod("setName", String.class);
+        m.setAccessible(true);
+        m.invoke(p, "Bob");
+        System.out.println(p.name);
+    }
+}
+
+class Person {
+    String name;
+    private void setName(String name) {
+        this.name = name;
+    }
+}
+</code></pre>
+<p>&#27492;&#22806;&#65292;<code>setAccessible(true)</code>&#21487;&#33021;&#20250;&#22833;&#36133;&#12290;&#22914;&#26524;JVM&#36816;&#34892;&#26399;&#23384;&#22312;<code>SecurityManager</code>&#65292;&#37027;&#20040;&#23427;&#20250;&#26681;&#25454;&#35268;&#21017;&#36827;&#34892;&#26816;&#26597;&#65292;&#26377;&#21487;&#33021;&#38459;&#27490;<code>setAccessible(true)</code>&#12290;&#20363;&#22914;&#65292;&#26576;&#20010;<code>SecurityManager</code>&#21487;&#33021;&#19981;&#20801;&#35768;&#23545;<code>java</code>&#21644;<code>javax</code>&#24320;&#22836;&#30340;<code>package</code>&#30340;&#31867;&#35843;&#29992;<code>setAccessible(true)</code>&#65292;&#36825;&#26679;&#21487;&#20197;&#20445;&#35777;JVM&#26680;&#24515;&#24211;&#30340;&#23433;&#20840;&#12290;</p>
+<h3>&#22810;&#24577;</h3>
+<p>&#25105;&#20204;&#26469;&#32771;&#23519;&#36825;&#26679;&#19968;&#31181;&#24773;&#20917;&#65306;&#19968;&#20010;<code>Person</code>&#31867;&#23450;&#20041;&#20102;<code>hello()</code>&#26041;&#27861;&#65292;&#24182;&#19988;&#23427;&#30340;&#23376;&#31867;<code>Student</code>&#20063;&#35206;&#20889;&#20102;<code>hello()</code>&#26041;&#27861;&#65292;&#37027;&#20040;&#65292;&#20174;<code>Person.class</code>&#33719;&#21462;&#30340;<code>Method</code>&#65292;&#20316;&#29992;&#20110;<code>Student</code>&#23454;&#20363;&#26102;&#65292;&#35843;&#29992;&#30340;&#26041;&#27861;&#21040;&#24213;&#26159;&#21738;&#20010;&#65311;</p>
+<pre><code class="language-x-java">// reflection
+import java.lang.reflect.Method;
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // &#33719;&#21462;Person&#30340;hello&#26041;&#27861;:
+        Method h = Person.class.getMethod("hello");
+        // &#23545;Student&#23454;&#20363;&#35843;&#29992;hello&#26041;&#27861;:
+        h.invoke(new Student());
+    }
+}
+
+class Person {
+    public void hello() {
+        System.out.println("Person:hello");
+    }
+}
+
+class Student extends Person {
+    public void hello() {
+        System.out.println("Student:hello");
+    }
+}
+</code></pre>
+<p>&#36816;&#34892;&#19978;&#36848;&#20195;&#30721;&#65292;&#21457;&#29616;&#25171;&#21360;&#20986;&#30340;&#26159;<code>Student:hello</code>&#65292;&#22240;&#27492;&#65292;&#20351;&#29992;&#21453;&#23556;&#35843;&#29992;&#26041;&#27861;&#26102;&#65292;&#20173;&#28982;&#36981;&#24490;&#22810;&#24577;&#21407;&#21017;&#65306;&#21363;&#24635;&#26159;&#35843;&#29992;&#23454;&#38469;&#31867;&#22411;&#30340;&#35206;&#20889;&#26041;&#27861;&#65288;&#22914;&#26524;&#23384;&#22312;&#65289;&#12290;&#19978;&#36848;&#30340;&#21453;&#23556;&#20195;&#30721;&#65306;</p>
+<pre><code>Method m = Person.class.getMethod("hello");
+m.invoke(new Student());
+</code></pre>
+<p>&#23454;&#38469;&#19978;&#30456;&#24403;&#20110;&#65306;</p>
+<pre><code>Person p = new Student();
+p.hello();
+</code></pre>
+<h3>&#32451;&#20064;</h3>
+<p>&#21033;&#29992;&#21453;&#23556;&#35843;&#29992;&#26041;&#27861;&#65306;<a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/40.%E5%8F%8D%E5%B0%84.1252599548343744/30.%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95.1264803678201760/reflect-method.zip">reflect-method</a></p>
+<h3>&#23567;&#32467;</h3>
+<p>Java&#30340;&#21453;&#23556;API&#25552;&#20379;&#30340;Method&#23545;&#35937;&#23553;&#35013;&#20102;&#26041;&#27861;&#30340;&#25152;&#26377;&#20449;&#24687;&#65306;</p>
+<p>&#36890;&#36807;<code>Class</code>&#23454;&#20363;&#30340;&#26041;&#27861;&#21487;&#20197;&#33719;&#21462;<code>Method</code>&#23454;&#20363;&#65306;<code>getMethod()</code>&#65292;<code>getMethods()</code>&#65292;<code>getDeclaredMethod()</code>&#65292;<code>getDeclaredMethods()</code>&#65307;</p>
+<p>&#36890;&#36807;<code>Method</code>&#23454;&#20363;&#21487;&#20197;&#33719;&#21462;&#26041;&#27861;&#20449;&#24687;&#65306;<code>getName()</code>&#65292;<code>getReturnType()</code>&#65292;<code>getParameterTypes()</code>&#65292;<code>getModifiers()</code>&#65307;</p>
+<p>&#36890;&#36807;<code>Method</code>&#23454;&#20363;&#21487;&#20197;&#35843;&#29992;&#26576;&#20010;&#23545;&#35937;&#30340;&#26041;&#27861;&#65306;<code>Object invoke(Object instance, Object... parameters)</code>&#65307;</p>
+<p>&#36890;&#36807;&#35774;&#32622;<code>setAccessible(true)</code>&#26469;&#35775;&#38382;&#38750;<code>public</code>&#26041;&#27861;&#65307;</p>
+<p>&#36890;&#36807;&#21453;&#23556;&#35843;&#29992;&#26041;&#27861;&#26102;&#65292;&#20173;&#28982;&#36981;&#24490;&#22810;&#24577;&#21407;&#21017;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

@@ -1,0 +1,104 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#20351;&#29992;Condition</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 14993</span>
+    	<a href="/manage/wiki/wikipage_update?id=1306581033549858" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#20351;&#29992;<code>ReentrantLock</code>&#27604;&#30452;&#25509;&#20351;&#29992;<code>synchronized</code>&#26356;&#23433;&#20840;&#65292;&#21487;&#20197;&#26367;&#20195;<code>synchronized</code>&#36827;&#34892;&#32447;&#31243;&#21516;&#27493;&#12290;</p>
+<p>&#20294;&#26159;&#65292;<code>synchronized</code>&#21487;&#20197;&#37197;&#21512;<code>wait</code>&#21644;<code>notify</code>&#23454;&#29616;&#32447;&#31243;&#22312;&#26465;&#20214;&#19981;&#28385;&#36275;&#26102;&#31561;&#24453;&#65292;&#26465;&#20214;&#28385;&#36275;&#26102;&#21796;&#37266;&#65292;&#29992;<code>ReentrantLock</code>&#25105;&#20204;&#24590;&#20040;&#32534;&#20889;<code>wait</code>&#21644;<code>notify</code>&#30340;&#21151;&#33021;&#21602;&#65311;</p>
+<p>&#31572;&#26696;&#26159;&#20351;&#29992;<code>Condition</code>&#23545;&#35937;&#26469;&#23454;&#29616;<code>wait</code>&#21644;<code>notify</code>&#30340;&#21151;&#33021;&#12290;</p>
+<p>&#25105;&#20204;&#20173;&#28982;&#20197;<code>TaskQueue</code>&#20026;&#20363;&#65292;&#25226;&#21069;&#38754;&#29992;<code>synchronized</code>&#23454;&#29616;&#30340;&#21151;&#33021;&#36890;&#36807;<code>ReentrantLock</code>&#21644;<code>Condition</code>&#26469;&#23454;&#29616;&#65306;</p>
+<pre><code>class TaskQueue {
+    private final Lock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
+    private Queue&lt;String&gt; queue = new LinkedList&lt;&gt;();
+
+    public void addTask(String s) {
+        lock.lock();
+        try {
+            queue.add(s);
+            condition.signalAll();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public String getTask() {
+        lock.lock();
+        try {
+            while (queue.isEmpty()) {
+                condition.await();
+            }
+            return queue.remove();
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+</code></pre>
+<p>&#21487;&#35265;&#65292;&#20351;&#29992;<code>Condition</code>&#26102;&#65292;&#24341;&#29992;&#30340;<code>Condition</code>&#23545;&#35937;&#24517;&#39035;&#20174;<code>Lock</code>&#23454;&#20363;&#30340;<code>newCondition()</code>&#36820;&#22238;&#65292;&#36825;&#26679;&#25165;&#33021;&#33719;&#24471;&#19968;&#20010;&#32465;&#23450;&#20102;<code>Lock</code>&#23454;&#20363;&#30340;<code>Condition</code>&#23454;&#20363;&#12290;</p>
+<p><code>Condition</code>&#25552;&#20379;&#30340;<code>await()</code>&#12289;<code>signal()</code>&#12289;<code>signalAll()</code>&#21407;&#29702;&#21644;<code>synchronized</code>&#38145;&#23545;&#35937;&#30340;<code>wait()</code>&#12289;<code>notify()</code>&#12289;<code>notifyAll()</code>&#26159;&#19968;&#33268;&#30340;&#65292;&#24182;&#19988;&#20854;&#34892;&#20026;&#20063;&#26159;&#19968;&#26679;&#30340;&#65306;</p>
+<ul>
+<li>
+<p><code>await()</code>&#20250;&#37322;&#25918;&#24403;&#21069;&#38145;&#65292;&#36827;&#20837;&#31561;&#24453;&#29366;&#24577;&#65307;</p>
+</li>
+<li>
+<p><code>signal()</code>&#20250;&#21796;&#37266;&#26576;&#20010;&#31561;&#24453;&#32447;&#31243;&#65307;</p>
+</li>
+<li>
+<p><code>signalAll()</code>&#20250;&#21796;&#37266;&#25152;&#26377;&#31561;&#24453;&#32447;&#31243;&#65307;</p>
+</li>
+<li>
+<p>&#21796;&#37266;&#32447;&#31243;&#20174;<code>await()</code>&#36820;&#22238;&#21518;&#38656;&#35201;&#37325;&#26032;&#33719;&#24471;&#38145;&#12290;</p>
+</li>
+</ul>
+<p>&#27492;&#22806;&#65292;&#21644;<code>tryLock()</code>&#31867;&#20284;&#65292;<code>await()</code>&#21487;&#20197;&#22312;&#31561;&#24453;&#25351;&#23450;&#26102;&#38388;&#21518;&#65292;&#22914;&#26524;&#36824;&#27809;&#26377;&#34987;&#20854;&#20182;&#32447;&#31243;&#36890;&#36807;<code>signal()</code>&#25110;<code>signalAll()</code>&#21796;&#37266;&#65292;&#21487;&#20197;&#33258;&#24049;&#37266;&#26469;&#65306;</p>
+<pre><code>if (condition.await(1, TimeUnit.SECOND)) {
+    // &#34987;&#20854;&#20182;&#32447;&#31243;&#21796;&#37266;
+} else {
+    // &#25351;&#23450;&#26102;&#38388;&#20869;&#27809;&#26377;&#34987;&#20854;&#20182;&#32447;&#31243;&#21796;&#37266;
+}
+</code></pre>
+<p>&#21487;&#35265;&#65292;&#20351;&#29992;<code>Condition</code>&#37197;&#21512;<code>Lock</code>&#65292;&#25105;&#20204;&#21487;&#20197;&#23454;&#29616;&#26356;&#28789;&#27963;&#30340;&#32447;&#31243;&#21516;&#27493;&#12290;</p>
+<h3>&#23567;&#32467;</h3>
+<p><code>Condition</code>&#21487;&#20197;&#26367;&#20195;<code>wait</code>&#21644;<code>notify</code>&#65307;</p>
+<p><code>Condition</code>&#23545;&#35937;&#24517;&#39035;&#20174;<code>Lock</code>&#23545;&#35937;&#33719;&#21462;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

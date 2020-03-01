@@ -1,0 +1,212 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#20351;&#29992;Map</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 230430</span>
+    	<a href="/manage/wiki/wikipage_update?id=1265118019954528" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#25105;&#20204;&#30693;&#36947;&#65292;<code>List</code>&#26159;&#19968;&#31181;&#39034;&#24207;&#21015;&#34920;&#65292;&#22914;&#26524;&#26377;&#19968;&#20010;&#23384;&#20648;&#23398;&#29983;<code>Student</code>&#23454;&#20363;&#30340;<code>List</code>&#65292;&#35201;&#22312;<code>List</code>&#20013;&#26681;&#25454;<code>name</code>&#26597;&#25214;&#26576;&#20010;&#25351;&#23450;&#30340;<code>Student</code>&#30340;&#20998;&#25968;&#65292;&#24212;&#35813;&#24590;&#20040;&#21150;&#65311;</p>
+<p>&#26368;&#31616;&#21333;&#30340;&#26041;&#27861;&#26159;&#36941;&#21382;<code>List</code>&#24182;&#21028;&#26029;<code>name</code>&#26159;&#21542;&#30456;&#31561;&#65292;&#28982;&#21518;&#36820;&#22238;&#25351;&#23450;&#20803;&#32032;&#65306;</p>
+<pre><code>List&lt;Student&gt; list = ...
+Student target = null;
+for (Student s : list) {
+    if ("Xiao Ming".equals(s.name)) {
+        target = s;
+        break;
+    }
+}
+System.out.println(target.score);
+</code></pre>
+<p>&#36825;&#31181;&#38656;&#27714;&#20854;&#23454;&#38750;&#24120;&#24120;&#35265;&#65292;&#21363;&#36890;&#36807;&#19968;&#20010;&#38190;&#21435;&#26597;&#35810;&#23545;&#24212;&#30340;&#20540;&#12290;&#20351;&#29992;<code>List</code>&#26469;&#23454;&#29616;&#23384;&#22312;&#25928;&#29575;&#38750;&#24120;&#20302;&#30340;&#38382;&#39064;&#65292;&#22240;&#20026;&#24179;&#22343;&#38656;&#35201;&#25195;&#25551;&#19968;&#21322;&#30340;&#20803;&#32032;&#25165;&#33021;&#30830;&#23450;&#65292;&#32780;<code>Map</code>&#36825;&#31181;&#38190;&#20540;&#65288;key-value&#65289;&#26144;&#23556;&#34920;&#30340;&#25968;&#25454;&#32467;&#26500;&#65292;&#20316;&#29992;&#23601;&#26159;&#33021;&#39640;&#25928;&#36890;&#36807;<code>key</code>&#24555;&#36895;&#26597;&#25214;<code>value</code>&#65288;&#20803;&#32032;&#65289;&#12290;</p>
+<p>&#29992;<code>Map</code>&#26469;&#23454;&#29616;&#26681;&#25454;<code>name</code>&#26597;&#35810;&#26576;&#20010;<code>Student</code>&#30340;&#20195;&#30721;&#22914;&#19979;&#65306;</p>
+<pre><code class="language-x-java">import java.util.HashMap;
+import java.util.Map;
+----
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student("Xiao Ming", 99);
+        Map&lt;String, Student&gt; map = new HashMap&lt;&gt;();
+        map.put("Xiao Ming", s); // &#23558;"Xiao Ming"&#21644;Student&#23454;&#20363;&#26144;&#23556;&#24182;&#20851;&#32852;
+        Student target = map.get("Xiao Ming"); // &#36890;&#36807;key&#26597;&#25214;&#24182;&#36820;&#22238;&#26144;&#23556;&#30340;Student&#23454;&#20363;
+        System.out.println(target == s); // true&#65292;&#21516;&#19968;&#20010;&#23454;&#20363;
+        System.out.println(target.score); // 99
+        Student another = map.get("Bob"); // &#36890;&#36807;&#21478;&#19968;&#20010;key&#26597;&#25214;
+        System.out.println(another); // &#26410;&#25214;&#21040;&#36820;&#22238;null
+    }
+}
+
+class Student {
+    public String name;
+    public int score;
+    public Student(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
+}
+</code></pre>
+<p>&#36890;&#36807;&#19978;&#36848;&#20195;&#30721;&#21487;&#30693;&#65306;<code>Map&lt;K, V&gt;</code>&#26159;&#19968;&#31181;&#38190;-&#20540;&#26144;&#23556;&#34920;&#65292;&#24403;&#25105;&#20204;&#35843;&#29992;<code>put(K key, V value)</code>&#26041;&#27861;&#26102;&#65292;&#23601;&#25226;<code>key</code>&#21644;<code>value</code>&#20570;&#20102;&#26144;&#23556;&#24182;&#25918;&#20837;<code>Map</code>&#12290;&#24403;&#25105;&#20204;&#35843;&#29992;<code>V get(K key)</code>&#26102;&#65292;&#23601;&#21487;&#20197;&#36890;&#36807;<code>key</code>&#33719;&#21462;&#21040;&#23545;&#24212;&#30340;<code>value</code>&#12290;&#22914;&#26524;<code>key</code>&#19981;&#23384;&#22312;&#65292;&#21017;&#36820;&#22238;<code>null</code>&#12290;&#21644;<code>List</code>&#31867;&#20284;&#65292;<code>Map</code>&#20063;&#26159;&#19968;&#20010;&#25509;&#21475;&#65292;&#26368;&#24120;&#29992;&#30340;&#23454;&#29616;&#31867;&#26159;<code>HashMap</code>&#12290;</p>
+<p>&#22914;&#26524;&#21482;&#26159;&#24819;&#26597;&#35810;&#26576;&#20010;<code>key</code>&#26159;&#21542;&#23384;&#22312;&#65292;&#21487;&#20197;&#35843;&#29992;<code>boolean containsKey(K key)</code>&#26041;&#27861;&#12290;</p>
+<p>&#22914;&#26524;&#25105;&#20204;&#22312;&#23384;&#20648;<code>Map</code>&#26144;&#23556;&#20851;&#31995;&#30340;&#26102;&#20505;&#65292;&#23545;&#21516;&#19968;&#20010;key&#35843;&#29992;&#20004;&#27425;<code>put()</code>&#26041;&#27861;&#65292;&#20998;&#21035;&#25918;&#20837;&#19981;&#21516;&#30340;<code>value</code>&#65292;&#20250;&#26377;&#20160;&#20040;&#38382;&#39064;&#21602;&#65311;&#20363;&#22914;&#65306;</p>
+<pre><code class="language-x-java">import java.util.HashMap;
+import java.util.Map;
+----
+public class Main {
+    public static void main(String[] args) {
+        Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put("apple", 123);
+        map.put("pear", 456);
+        System.out.println(map.get("apple")); // 123
+        map.put("apple", 789); // &#20877;&#27425;&#25918;&#20837;apple&#20316;&#20026;key&#65292;&#20294;value&#21464;&#20026;789
+        System.out.println(map.get("apple")); // 789
+    }
+}
+</code></pre>
+<p>&#37325;&#22797;&#25918;&#20837;<code>key-value</code>&#24182;&#19981;&#20250;&#26377;&#20219;&#20309;&#38382;&#39064;&#65292;&#20294;&#26159;&#19968;&#20010;<code>key</code>&#21482;&#33021;&#20851;&#32852;&#19968;&#20010;<code>value</code>&#12290;&#22312;&#19978;&#38754;&#30340;&#20195;&#30721;&#20013;&#65292;&#19968;&#24320;&#22987;&#25105;&#20204;&#25226;<code>key</code>&#23545;&#35937;<code>"apple"</code>&#26144;&#23556;&#21040;<code>Integer</code>&#23545;&#35937;<code>123</code>&#65292;&#28982;&#21518;&#20877;&#27425;&#35843;&#29992;<code>put()</code>&#26041;&#27861;&#25226;<code>"apple"</code>&#26144;&#23556;&#21040;<code>789</code>&#65292;&#36825;&#26102;&#65292;&#21407;&#26469;&#20851;&#32852;&#30340;<code>value</code>&#23545;&#35937;<code>123</code>&#23601;&#34987;&#8220;&#20914;&#25481;&#8221;&#20102;&#12290;&#23454;&#38469;&#19978;&#65292;<code>put()</code>&#26041;&#27861;&#30340;&#31614;&#21517;&#26159;<code>V put(K key, V value)</code>&#65292;&#22914;&#26524;&#25918;&#20837;&#30340;<code>key</code>&#24050;&#32463;&#23384;&#22312;&#65292;<code>put()</code>&#26041;&#27861;&#20250;&#36820;&#22238;&#34987;&#21024;&#38500;&#30340;&#26087;&#30340;<code>value</code>&#65292;&#21542;&#21017;&#65292;&#36820;&#22238;<code>null</code>&#12290;</p>
+<pre><code class="language-!">&#22987;&#32456;&#29282;&#35760;&#65306;Map&#20013;&#19981;&#23384;&#22312;&#37325;&#22797;&#30340;key&#65292;&#22240;&#20026;&#25918;&#20837;&#30456;&#21516;&#30340;key&#65292;&#21482;&#20250;&#25226;&#21407;&#26377;&#30340;key-value&#23545;&#24212;&#30340;value&#32473;&#26367;&#25442;&#25481;&#12290;
+</code></pre>
+<p>&#27492;&#22806;&#65292;&#22312;&#19968;&#20010;<code>Map</code>&#20013;&#65292;&#34429;&#28982;<code>key</code>&#19981;&#33021;&#37325;&#22797;&#65292;&#20294;<code>value</code>&#26159;&#21487;&#20197;&#37325;&#22797;&#30340;&#65306;</p>
+<pre><code>Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+map.put("apple", 123);
+map.put("pear", 123); // ok
+</code></pre>
+<h3>&#36941;&#21382;Map</h3>
+<p>&#23545;<code>Map</code>&#26469;&#35828;&#65292;&#35201;&#36941;&#21382;<code>key</code>&#21487;&#20197;&#20351;&#29992;<code>for each</code>&#24490;&#29615;&#36941;&#21382;<code>Map</code>&#23454;&#20363;&#30340;<code>keySet()</code>&#26041;&#27861;&#36820;&#22238;&#30340;<code>Set</code>&#38598;&#21512;&#65292;&#23427;&#21253;&#21547;&#19981;&#37325;&#22797;&#30340;<code>key</code>&#30340;&#38598;&#21512;&#65306;</p>
+<pre><code class="language-x-java">import java.util.HashMap;
+import java.util.Map;
+----
+public class Main {
+    public static void main(String[] args) {
+        Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put("apple", 123);
+        map.put("pear", 456);
+        map.put("banana", 789);
+        for (String key : map.keySet()) {
+            Integer value = map.get(key);
+            System.out.println(key + " = " + value);
+        }
+    }
+}
+</code></pre>
+<p>&#21516;&#26102;&#36941;&#21382;<code>key</code>&#21644;<code>value</code>&#21487;&#20197;&#20351;&#29992;<code>for each</code>&#24490;&#29615;&#36941;&#21382;<code>Map</code>&#23545;&#35937;&#30340;<code>entrySet()</code>&#38598;&#21512;&#65292;&#23427;&#21253;&#21547;&#27599;&#19968;&#20010;<code>key-value</code>&#26144;&#23556;&#65306;</p>
+<pre><code class="language-x-java">import java.util.HashMap;
+import java.util.Map;
+----
+public class Main {
+    public static void main(String[] args) {
+        Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put("apple", 123);
+        map.put("pear", 456);
+        map.put("banana", 789);
+        for (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(key + " = " + value);
+        }
+    }
+}
+</code></pre>
+<p><code>Map</code>&#21644;<code>List</code>&#19981;&#21516;&#30340;&#26159;&#65292;<code>Map</code>&#23384;&#20648;&#30340;&#26159;<code>key-value</code>&#30340;&#26144;&#23556;&#20851;&#31995;&#65292;&#24182;&#19988;&#65292;&#23427;<em>&#19981;&#20445;&#35777;&#39034;&#24207;</em>&#12290;&#22312;&#36941;&#21382;&#30340;&#26102;&#20505;&#65292;&#36941;&#21382;&#30340;&#39034;&#24207;&#26082;&#19981;&#19968;&#23450;&#26159;<code>put()</code>&#26102;&#25918;&#20837;&#30340;<code>key</code>&#30340;&#39034;&#24207;&#65292;&#20063;&#19981;&#19968;&#23450;&#26159;<code>key</code>&#30340;&#25490;&#24207;&#39034;&#24207;&#12290;&#20351;&#29992;<code>Map</code>&#26102;&#65292;&#20219;&#20309;&#20381;&#36182;&#39034;&#24207;&#30340;&#36923;&#36753;&#37117;&#26159;&#19981;&#21487;&#38752;&#30340;&#12290;&#20197;<code>HashMap</code>&#20026;&#20363;&#65292;&#20551;&#35774;&#25105;&#20204;&#25918;&#20837;<code>"A"</code>&#65292;<code>"B"</code>&#65292;<code>"C"</code>&#36825;3&#20010;<code>key</code>&#65292;&#36941;&#21382;&#30340;&#26102;&#20505;&#65292;&#27599;&#20010;<code>key</code>&#20250;&#20445;&#35777;&#34987;&#36941;&#21382;&#19968;&#27425;&#19988;&#20165;&#36941;&#21382;&#19968;&#27425;&#65292;&#20294;&#39034;&#24207;&#23436;&#20840;&#27809;&#26377;&#20445;&#35777;&#65292;&#29978;&#33267;&#23545;&#20110;&#19981;&#21516;&#30340;JDK&#29256;&#26412;&#65292;&#30456;&#21516;&#30340;&#20195;&#30721;&#36941;&#21382;&#30340;&#36755;&#20986;&#39034;&#24207;&#37117;&#26159;&#19981;&#21516;&#30340;&#65281;</p>
+<pre><code class="language-!">&#36941;&#21382;Map&#26102;&#65292;&#19981;&#21487;&#20551;&#35774;&#36755;&#20986;&#30340;key&#26159;&#26377;&#24207;&#30340;&#65281;
+</code></pre>
+<h3>&#32451;&#20064;</h3>
+<p>&#35831;&#32534;&#20889;&#19968;&#20010;&#26681;&#25454;<code>name</code>&#26597;&#25214;<code>score</code>&#30340;&#31243;&#24207;&#65292;&#24182;&#21033;&#29992;<code>Map</code>&#20805;&#24403;&#32531;&#23384;&#65292;&#20197;&#25552;&#39640;&#26597;&#25214;&#25928;&#29575;&#65306;</p>
+<pre><code class="language-x-java">import java.util.*;
+----
+public class Main {
+    public static void main(String[] args) {
+        List&lt;Student&gt; list = List.of(
+            new Student("Bob", 78),
+            new Student("Alice", 85),
+            new Student("Brush", 66),
+            new Student("Newton", 99));
+        var holder = new Students(list);
+        System.out.println(holder.getScore("Bob") == 78 ? "&#27979;&#35797;&#25104;&#21151;!" : "&#27979;&#35797;&#22833;&#36133;!");
+        System.out.println(holder.getScore("Alice") == 85 ? "&#27979;&#35797;&#25104;&#21151;!" : "&#27979;&#35797;&#22833;&#36133;!");
+        System.out.println(holder.getScore("Tom") == -1 ? "&#27979;&#35797;&#25104;&#21151;!" : "&#27979;&#35797;&#22833;&#36133;!");
+    }
+}
+
+class Students {
+    List&lt;Student&gt; list;
+    Map&lt;String, Integer&gt; cache;
+
+    Students(List&lt;Student&gt; list) {
+        this.list = list;
+        cache = new HashMap&lt;&gt;();
+    }
+
+    /**
+     * &#26681;&#25454;name&#26597;&#25214;score&#65292;&#25214;&#21040;&#36820;&#22238;score&#65292;&#26410;&#25214;&#21040;&#36820;&#22238;-1
+     */
+    int getScore(String name) {
+        // &#20808;&#22312;Map&#20013;&#26597;&#25214;:
+        Integer score = this.cache.get(name);
+        if (score == null) {
+            // TODO:
+        }
+        return score == null ? -1 : score.intValue();
+    }
+
+    Integer findInList(String name) {
+        for (var ss : this.list) {
+            if (ss.name.equals(name)) {
+                return ss.score;
+            }
+        }
+        return null;
+    }
+}
+
+class Student {
+    String name;
+    int score;
+
+    Student(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
+}
+</code></pre>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/70.%E9%9B%86%E5%90%88.1255943629175808/40.%E4%BD%BF%E7%94%A8Map.1265118019954528/coll-map.zip">find-student-score</a></p>
+<h3>&#23567;&#32467;</h3>
+<p><code>Map</code>&#26159;&#19968;&#31181;&#26144;&#23556;&#34920;&#65292;&#21487;&#20197;&#36890;&#36807;<code>key</code>&#24555;&#36895;&#26597;&#25214;<code>value</code>&#12290;</p>
+<p>&#21487;&#20197;&#36890;&#36807;<code>for each</code>&#36941;&#21382;<code>keySet()</code>&#65292;&#20063;&#21487;&#20197;&#36890;&#36807;<code>for each</code>&#36941;&#21382;<code>entrySet()</code>&#65292;&#30452;&#25509;&#33719;&#21462;<code>key-value</code>&#12290;</p>
+<p>&#26368;&#24120;&#29992;&#30340;&#19968;&#31181;<code>Map</code>&#23454;&#29616;&#26159;<code>HashMap</code>&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

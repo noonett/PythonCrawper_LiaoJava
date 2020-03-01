@@ -1,0 +1,116 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#20351;&#29992;SAX</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 5689</span>
+    	<a href="/manage/wiki/wikipage_update?id=1320418577219618" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#20351;&#29992;DOM&#35299;&#26512;XML&#30340;&#20248;&#28857;&#26159;&#29992;&#36215;&#26469;&#30465;&#20107;&#65292;&#20294;&#23427;&#30340;&#20027;&#35201;&#32570;&#28857;&#26159;&#20869;&#23384;&#21344;&#29992;&#22826;&#22823;&#12290;</p>
+<p>&#21478;&#19968;&#31181;&#35299;&#26512;XML&#30340;&#26041;&#24335;&#26159;SAX&#12290;SAX&#26159;Simple API for XML&#30340;&#32553;&#20889;&#65292;&#23427;&#26159;&#19968;&#31181;&#22522;&#20110;&#27969;&#30340;&#35299;&#26512;&#26041;&#24335;&#65292;&#36793;&#35835;&#21462;XML&#36793;&#35299;&#26512;&#65292;&#24182;&#20197;&#20107;&#20214;&#22238;&#35843;&#30340;&#26041;&#24335;&#35753;&#35843;&#29992;&#32773;&#33719;&#21462;&#25968;&#25454;&#12290;&#22240;&#20026;&#26159;&#19968;&#36793;&#35835;&#19968;&#36793;&#35299;&#26512;&#65292;&#25152;&#20197;&#26080;&#35770;XML&#26377;&#22810;&#22823;&#65292;&#21344;&#29992;&#30340;&#20869;&#23384;&#37117;&#24456;&#23567;&#12290;</p>
+<p>SAX&#35299;&#26512;&#20250;&#35302;&#21457;&#19968;&#31995;&#21015;&#20107;&#20214;&#65306;</p>
+<ul>
+<li>startDocument&#65306;&#24320;&#22987;&#35835;&#21462;XML&#25991;&#26723;&#65307;</li>
+<li>startElement&#65306;&#35835;&#21462;&#21040;&#20102;&#19968;&#20010;&#20803;&#32032;&#65292;&#20363;&#22914;<code>&lt;book&gt;</code>&#65307;</li>
+<li>characters&#65306;&#35835;&#21462;&#21040;&#20102;&#23383;&#31526;&#65307;</li>
+<li>endElement&#65306;&#35835;&#21462;&#21040;&#20102;&#19968;&#20010;&#32467;&#26463;&#30340;&#20803;&#32032;&#65292;&#20363;&#22914;<code>&lt;/book&gt;</code>&#65307;</li>
+<li>endDocument&#65306;&#35835;&#21462;XML&#25991;&#26723;&#32467;&#26463;&#12290;</li>
+</ul>
+<p>&#22914;&#26524;&#25105;&#20204;&#29992;SAX API&#35299;&#26512;XML&#65292;Java&#20195;&#30721;&#22914;&#19979;&#65306;</p>
+<pre><code>InputStream input = Main.class.getResourceAsStream("/book.xml");
+SAXParserFactory spf = SAXParserFactory.newInstance();
+SAXParser saxParser = spf.newSAXParser();
+saxParser.parse(input, new MyHandler());
+</code></pre>
+<p>&#20851;&#38190;&#20195;&#30721;<code>SAXParser.parse()</code>&#38500;&#20102;&#38656;&#35201;&#20256;&#20837;&#19968;&#20010;<code>InputStream</code>&#22806;&#65292;&#36824;&#38656;&#35201;&#20256;&#20837;&#19968;&#20010;&#22238;&#35843;&#23545;&#35937;&#65292;&#36825;&#20010;&#23545;&#35937;&#35201;&#32487;&#25215;&#33258;<code>DefaultHandler</code>&#65306;</p>
+<pre><code>class MyHandler extends DefaultHandler {
+    public void startDocument() throws SAXException {
+        print("start document");
+    }
+
+    public void endDocument() throws SAXException {
+        print("end document");
+    }
+
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+        print("start element:", localName, qName);
+    }
+
+    public void endElement(String uri, String localName, String qName) throws SAXException {
+        print("end element:", localName, qName);
+    }
+
+    public void characters(char[] ch, int start, int length) throws SAXException {
+        print("characters:", new String(ch, start, length));
+    }
+
+    public void error(SAXParseException e) throws SAXException {
+        print("error:", e);
+    }
+
+    void print(Object... objs) {
+        for (Object obj : objs) {
+            System.out.print(obj);
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+}
+</code></pre>
+<p>&#36816;&#34892;SAX&#35299;&#26512;&#20195;&#30721;&#65292;&#21487;&#20197;&#25171;&#21360;&#20986;&#19979;&#38754;&#30340;&#32467;&#26524;&#65306;</p>
+<pre><code>start document
+start element:  book
+characters:
+     
+start element:  name
+characters: Java&#26680;&#24515;&#25216;&#26415;
+end element:  name
+characters:
+     
+start element:  author
+...
+</code></pre>
+<p>&#22914;&#26524;&#35201;&#35835;&#21462;<code>&lt;name&gt;</code>&#33410;&#28857;&#30340;&#25991;&#26412;&#65292;&#25105;&#20204;&#23601;&#24517;&#39035;&#22312;&#35299;&#26512;&#36807;&#31243;&#20013;&#26681;&#25454;<code>startElement()</code>&#21644;<code>endElement()</code>&#23450;&#20301;&#24403;&#21069;&#27491;&#22312;&#35835;&#21462;&#30340;&#33410;&#28857;&#65292;&#21487;&#20197;&#20351;&#29992;&#26632;&#32467;&#26500;&#20445;&#23384;&#65292;&#27599;&#36935;&#21040;&#19968;&#20010;<code>startElement()</code>&#20837;&#26632;&#65292;&#27599;&#36935;&#21040;&#19968;&#20010;<code>endElement()</code>&#20986;&#26632;&#65292;&#36825;&#26679;&#65292;&#35835;&#21040;<code>characters()</code>&#26102;&#25105;&#20204;&#25165;&#30693;&#36947;&#24403;&#21069;&#35835;&#21462;&#30340;&#25991;&#26412;&#26159;&#21738;&#20010;&#33410;&#28857;&#30340;&#12290;&#21487;&#35265;&#65292;&#20351;&#29992;SAX API&#20173;&#28982;&#27604;&#36739;&#40635;&#28902;&#12290;</p>
+<h3>&#32451;&#20064;</h3>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/160.XML%E4%B8%8EJSON.1255945389334784/30.%E4%BD%BF%E7%94%A8SAX.1320418577219618/xml-sax.zip">&#20351;&#29992;SAX&#35299;&#26512;XML</a></p>
+<h3>&#23567;&#32467;</h3>
+<p>SAX&#26159;&#19968;&#31181;&#27969;&#24335;&#35299;&#26512;XML&#30340;API&#65307;</p>
+<p>SAX&#36890;&#36807;&#20107;&#20214;&#35302;&#21457;&#65292;&#35835;&#21462;&#36895;&#24230;&#24555;&#65292;&#28040;&#32791;&#20869;&#23384;&#23569;&#65307;</p>
+<p>&#35843;&#29992;&#26041;&#24517;&#39035;&#36890;&#36807;&#22238;&#35843;&#26041;&#27861;&#33719;&#24471;&#35299;&#26512;&#36807;&#31243;&#20013;&#30340;&#25968;&#25454;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

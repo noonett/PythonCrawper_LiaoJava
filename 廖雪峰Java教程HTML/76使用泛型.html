@@ -1,0 +1,171 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#20351;&#29992;&#27867;&#22411;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 252936</span>
+    	<a href="/manage/wiki/wikipage_update?id=1265103567584000" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#20351;&#29992;<code>ArrayList</code>&#26102;&#65292;&#22914;&#26524;&#19981;&#23450;&#20041;&#27867;&#22411;&#31867;&#22411;&#26102;&#65292;&#27867;&#22411;&#31867;&#22411;&#23454;&#38469;&#19978;&#23601;&#26159;<code>Object</code>&#65306;</p>
+<pre><code>// &#32534;&#35793;&#22120;&#35686;&#21578;:
+List list = new ArrayList();
+list.add("Hello");
+list.add("World");
+String first = (String) list.get(0);
+String second = (String) list.get(1);
+</code></pre>
+<p>&#27492;&#26102;&#65292;&#21482;&#33021;&#25226;<code>&lt;T&gt;</code>&#24403;&#20316;<code>Object</code>&#20351;&#29992;&#65292;&#27809;&#26377;&#21457;&#25381;&#27867;&#22411;&#30340;&#20248;&#21183;&#12290;</p>
+<p>&#24403;&#25105;&#20204;&#23450;&#20041;&#27867;&#22411;&#31867;&#22411;<code>&lt;String&gt;</code>&#21518;&#65292;<code>List&lt;T&gt;</code>&#30340;&#27867;&#22411;&#25509;&#21475;&#21464;&#20026;&#24378;&#31867;&#22411;<code>List&lt;String&gt;</code>&#65306;</p>
+<pre><code>// &#26080;&#32534;&#35793;&#22120;&#35686;&#21578;:
+List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+list.add("Hello");
+list.add("World");
+// &#26080;&#24378;&#21046;&#36716;&#22411;:
+String first = list.get(0);
+String second = list.get(1);
+</code></pre>
+<p>&#24403;&#25105;&#20204;&#23450;&#20041;&#27867;&#22411;&#31867;&#22411;<code>&lt;Number&gt;</code>&#21518;&#65292;<code>List&lt;T&gt;</code>&#30340;&#27867;&#22411;&#25509;&#21475;&#21464;&#20026;&#24378;&#31867;&#22411;<code>List&lt;Number&gt;</code>&#65306;</p>
+<pre><code>List&lt;Number&gt; list = new ArrayList&lt;Number&gt;();
+list.add(new Integer(123));
+list.add(new Double(12.34));
+Number first = list.get(0);
+Number second = list.get(1);
+</code></pre>
+<p>&#32534;&#35793;&#22120;&#22914;&#26524;&#33021;&#33258;&#21160;&#25512;&#26029;&#20986;&#27867;&#22411;&#31867;&#22411;&#65292;&#23601;&#21487;&#20197;&#30465;&#30053;&#21518;&#38754;&#30340;&#27867;&#22411;&#31867;&#22411;&#12290;&#20363;&#22914;&#65292;&#23545;&#20110;&#19979;&#38754;&#30340;&#20195;&#30721;&#65306;</p>
+<pre><code>List&lt;Number&gt; list = new ArrayList&lt;Number&gt;();
+</code></pre>
+<p>&#32534;&#35793;&#22120;&#30475;&#21040;&#27867;&#22411;&#31867;&#22411;<code>List&lt;Number&gt;</code>&#23601;&#21487;&#20197;&#33258;&#21160;&#25512;&#26029;&#20986;&#21518;&#38754;&#30340;<code>ArrayList&lt;T&gt;</code>&#30340;&#27867;&#22411;&#31867;&#22411;&#24517;&#39035;&#26159;<code>ArrayList&lt;Number&gt;</code>&#65292;&#22240;&#27492;&#65292;&#21487;&#20197;&#25226;&#20195;&#30721;&#31616;&#20889;&#20026;&#65306;</p>
+<pre><code>// &#21487;&#20197;&#30465;&#30053;&#21518;&#38754;&#30340;Number&#65292;&#32534;&#35793;&#22120;&#21487;&#20197;&#33258;&#21160;&#25512;&#26029;&#27867;&#22411;&#31867;&#22411;&#65306;
+List&lt;Number&gt; list = new ArrayList&lt;&gt;();
+</code></pre>
+<h3>&#27867;&#22411;&#25509;&#21475;</h3>
+<p>&#38500;&#20102;<code>ArrayList&lt;T&gt;</code>&#20351;&#29992;&#20102;&#27867;&#22411;&#65292;&#36824;&#21487;&#20197;&#22312;&#25509;&#21475;&#20013;&#20351;&#29992;&#27867;&#22411;&#12290;&#20363;&#22914;&#65292;<code>Arrays.sort(Object[])</code>&#21487;&#20197;&#23545;&#20219;&#24847;&#25968;&#32452;&#36827;&#34892;&#25490;&#24207;&#65292;&#20294;&#24453;&#25490;&#24207;&#30340;&#20803;&#32032;&#24517;&#39035;&#23454;&#29616;<code>Comparable&lt;T&gt;</code>&#36825;&#20010;&#27867;&#22411;&#25509;&#21475;&#65306;</p>
+<pre><code>public interface Comparable&lt;T&gt; {
+    /**
+     * &#36820;&#22238;-1: &#24403;&#21069;&#23454;&#20363;&#27604;&#21442;&#25968;o&#23567;
+     * &#36820;&#22238;0: &#24403;&#21069;&#23454;&#20363;&#19982;&#21442;&#25968;o&#30456;&#31561;
+     * &#36820;&#22238;1: &#24403;&#21069;&#23454;&#20363;&#27604;&#21442;&#25968;o&#22823;
+     */
+    int compareTo(T o);
+}
+</code></pre>
+<p>&#21487;&#20197;&#30452;&#25509;&#23545;<code>String</code>&#25968;&#32452;&#36827;&#34892;&#25490;&#24207;&#65306;</p>
+<pre><code class="language-x-java">// sort
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+----
+        String[] ss = new String[] { "Orange", "Apple", "Pear" };
+        Arrays.sort(ss);
+        System.out.println(Arrays.toString(ss));
+----
+    }
+}
+</code></pre>
+<p>&#36825;&#26159;&#22240;&#20026;<code>String</code>&#26412;&#36523;&#24050;&#32463;&#23454;&#29616;&#20102;<code>Comparable&lt;String&gt;</code>&#25509;&#21475;&#12290;&#22914;&#26524;&#25442;&#25104;&#25105;&#20204;&#33258;&#23450;&#20041;&#30340;<code>Person</code>&#31867;&#22411;&#35797;&#35797;&#65306;</p>
+<pre><code class="language-x-java">// sort
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+----
+        Person[] ps = new Person[] {
+            new Person("Bob", 61),
+            new Person("Alice", 88),
+            new Person("Lily", 75),
+        };
+        Arrays.sort(ps);
+        System.out.println(Arrays.toString(ps));
+----
+    }
+}
+
+class Person {
+    String name;
+    int score;
+    Person(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
+    public String toString() {
+        return this.name + "," + this.score;
+    }
+}
+</code></pre>
+<p>&#36816;&#34892;&#31243;&#24207;&#65292;&#25105;&#20204;&#20250;&#24471;&#21040;<code>ClassCastException</code>&#65292;&#21363;&#26080;&#27861;&#23558;<code>Person</code>&#36716;&#22411;&#20026;<code>Comparable</code>&#12290;&#25105;&#20204;&#20462;&#25913;&#20195;&#30721;&#65292;&#35753;<code>Person</code>&#23454;&#29616;<code>Comparable&lt;T&gt;</code>&#25509;&#21475;&#65306;</p>
+<pre><code class="language-x-java">// sort
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Person[] ps = new Person[] {
+            new Person("Bob", 61),
+            new Person("Alice", 88),
+            new Person("Lily", 75),
+        };
+        Arrays.sort(ps);
+        System.out.println(Arrays.toString(ps));
+    }
+}
+
+----
+class Person implements Comparable&lt;Person&gt; {
+    String name;
+    int score;
+    Person(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
+    public int compareTo(Person other) {
+        return this.name.compareTo(other.name);
+    }
+    public String toString() {
+        return this.name + "," + this.score;
+    }
+}
+</code></pre>
+<p>&#36816;&#34892;&#19978;&#36848;&#20195;&#30721;&#65292;&#21487;&#20197;&#27491;&#30830;&#23454;&#29616;&#25353;<code>name</code>&#36827;&#34892;&#25490;&#24207;&#12290;</p>
+<p>&#20063;&#21487;&#20197;&#20462;&#25913;&#27604;&#36739;&#36923;&#36753;&#65292;&#20363;&#22914;&#65292;&#25353;<code>score</code>&#20174;&#39640;&#21040;&#20302;&#25490;&#24207;&#12290;&#35831;&#33258;&#34892;&#20462;&#25913;&#27979;&#35797;&#12290;</p>
+<h3>&#23567;&#32467;</h3>
+<p>&#20351;&#29992;&#27867;&#22411;&#26102;&#65292;&#25226;&#27867;&#22411;&#21442;&#25968;<code>&lt;T&gt;</code>&#26367;&#25442;&#20026;&#38656;&#35201;&#30340;class&#31867;&#22411;&#65292;&#20363;&#22914;&#65306;<code>ArrayList&lt;String&gt;</code>&#65292;<code>ArrayList&lt;Number&gt;</code>&#31561;&#65307;</p>
+<p>&#21487;&#20197;&#30465;&#30053;&#32534;&#35793;&#22120;&#33021;&#33258;&#21160;&#25512;&#26029;&#20986;&#30340;&#31867;&#22411;&#65292;&#20363;&#22914;&#65306;<code>List&lt;String&gt; list = new ArrayList&lt;&gt;();</code>&#65307;</p>
+<p>&#19981;&#25351;&#23450;&#27867;&#22411;&#21442;&#25968;&#31867;&#22411;&#26102;&#65292;&#32534;&#35793;&#22120;&#20250;&#32473;&#20986;&#35686;&#21578;&#65292;&#19988;&#21482;&#33021;&#23558;<code>&lt;T&gt;</code>&#35270;&#20026;<code>Object</code>&#31867;&#22411;&#65307;</p>
+<p>&#21487;&#20197;&#22312;&#25509;&#21475;&#20013;&#23450;&#20041;&#27867;&#22411;&#31867;&#22411;&#65292;&#23454;&#29616;&#27492;&#25509;&#21475;&#30340;&#31867;&#24517;&#39035;&#23454;&#29616;&#27491;&#30830;&#30340;&#27867;&#22411;&#31867;&#22411;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

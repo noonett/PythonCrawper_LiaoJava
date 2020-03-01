@@ -1,0 +1,107 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#20351;&#29992;Jackson</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 9470</span>
+    	<a href="/manage/wiki/wikipage_update?id=1320418596093986" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#21069;&#38754;&#25105;&#20204;&#20171;&#32461;&#20102;DOM&#21644;SAX&#20004;&#31181;&#35299;&#26512;XML&#30340;&#26631;&#20934;&#25509;&#21475;&#12290;&#20294;&#26159;&#65292;&#26080;&#35770;&#26159;DOM&#36824;&#26159;SAX&#65292;&#20351;&#29992;&#36215;&#26469;&#37117;&#19981;&#30452;&#35266;&#12290;</p>
+<p>&#35266;&#23519;XML&#25991;&#26723;&#30340;&#32467;&#26500;&#65306;</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;book id="1"&gt;
+    &lt;name&gt;Java&#26680;&#24515;&#25216;&#26415;&lt;/name&gt;
+    &lt;author&gt;Cay S. Horstmann&lt;/author&gt;
+    &lt;isbn lang="CN"&gt;1234567&lt;/isbn&gt;
+    &lt;tags&gt;
+        &lt;tag&gt;Java&lt;/tag&gt;
+        &lt;tag&gt;Network&lt;/tag&gt;
+    &lt;/tags&gt;
+    &lt;pubDate/&gt;
+&lt;/book&gt;
+</code></pre>
+<p>&#25105;&#20204;&#21457;&#29616;&#65292;&#23427;&#23436;&#20840;&#21487;&#20197;&#23545;&#24212;&#21040;&#19968;&#20010;&#23450;&#20041;&#22909;&#30340;JavaBean&#20013;&#65306;</p>
+<pre><code>public class Book {
+    public long id;
+    public String name;
+    public String author;
+    public String isbn;
+    public List&lt;String&gt; tags;
+    public String pubDate;
+}
+</code></pre>
+<p>&#22914;&#26524;&#33021;&#30452;&#25509;&#20174;XML&#25991;&#26723;&#35299;&#26512;&#25104;&#19968;&#20010;JavaBean&#65292;&#37027;&#27604;DOM&#25110;&#32773;SAX&#19981;&#30693;&#36947;&#23481;&#26131;&#21040;&#21738;&#37324;&#21435;&#20102;&#12290;</p>
+<p>&#24184;&#36816;&#30340;&#26159;&#65292;&#19968;&#20010;&#21517;&#21483;Jackson&#30340;&#24320;&#28304;&#30340;&#31532;&#19977;&#26041;&#24211;&#21487;&#20197;&#36731;&#26494;&#20570;&#21040;XML&#21040;JavaBean&#30340;&#36716;&#25442;&#12290;&#25105;&#20204;&#35201;&#20351;&#29992;Jackson&#65292;&#20808;&#28155;&#21152;&#20004;&#20010;Maven&#30340;&#20381;&#36182;&#65306;</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.dataformat&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-dataformat-xml&lt;/artifactId&gt;
+    &lt;version&gt;2.10.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.codehaus.woodstox&lt;/groupId&gt;
+    &lt;artifactId&gt;woodstox-core-asl&lt;/artifactId&gt;
+    &lt;version&gt;4.4.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>&#28982;&#21518;&#65292;&#23450;&#20041;&#22909;JavaBean&#65292;&#23601;&#21487;&#20197;&#29992;&#19979;&#38754;&#20960;&#34892;&#20195;&#30721;&#35299;&#26512;&#65306;</p>
+<pre><code>InputStream input = Main.class.getResourceAsStream("/book.xml");
+JacksonXmlModule module = new JacksonXmlModule();
+XmlMapper mapper = new XmlMapper(module);
+Book book = mapper.readValue(input, Book.class);
+System.out.println(book.id);
+System.out.println(book.name);
+System.out.println(book.author);
+System.out.println(book.isbn);
+System.out.println(book.tags);
+System.out.println(book.pubDate);
+</code></pre>
+<p>&#27880;&#24847;&#21040;<code>XmlMapper</code>&#23601;&#26159;&#25105;&#20204;&#38656;&#35201;&#21019;&#24314;&#30340;&#26680;&#24515;&#23545;&#35937;&#65292;&#21487;&#20197;&#29992;<code>readValue(InputStream, Class)</code>&#30452;&#25509;&#35835;&#21462;XML&#24182;&#36820;&#22238;&#19968;&#20010;JavaBean&#12290;&#36816;&#34892;&#19978;&#36848;&#20195;&#30721;&#65292;&#23601;&#21487;&#20197;&#30452;&#25509;&#20174;Book&#23545;&#35937;&#20013;&#25343;&#21040;&#25968;&#25454;&#65306;</p>
+<pre><code>1
+Java&#26680;&#24515;&#25216;&#26415;
+Cay S. Horstmann
+1234567
+[Java, Network]
+null
+</code></pre>
+<p>&#22914;&#26524;&#35201;&#35299;&#26512;&#30340;&#25968;&#25454;&#26684;&#24335;&#19981;&#26159;Jackson&#20869;&#32622;&#30340;&#26631;&#20934;&#26684;&#24335;&#65292;&#37027;&#20040;&#38656;&#35201;&#32534;&#20889;&#19968;&#28857;&#39069;&#22806;&#30340;&#25193;&#23637;&#26469;&#21578;&#35785;Jackson&#22914;&#20309;&#33258;&#23450;&#20041;&#35299;&#26512;&#12290;&#36825;&#37324;&#25105;&#20204;&#19981;&#20570;&#28145;&#20837;&#35752;&#35770;&#65292;&#21487;&#20197;&#21442;&#32771;Jackson&#30340;<a href="https://github.com/FasterXML/jackson">&#23448;&#26041;&#25991;&#26723;</a>&#12290;</p>
+<h3>&#32451;&#20064;</h3>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/160.XML%E4%B8%8EJSON.1255945389334784/40.%E4%BD%BF%E7%94%A8Jackson.1320418596093986/xml-jackson.zip">&#20351;&#29992;Jackson&#35299;&#26512;XML</a></p>
+<h3>&#23567;&#32467;</h3>
+<p>&#20351;&#29992;Jackson&#35299;&#26512;XML&#65292;&#21487;&#20197;&#30452;&#25509;&#25226;XML&#35299;&#26512;&#20026;JavaBean&#65292;&#21313;&#20998;&#26041;&#20415;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

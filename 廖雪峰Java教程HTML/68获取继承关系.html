@@ -1,0 +1,140 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#33719;&#21462;&#32487;&#25215;&#20851;&#31995;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 152118</span>
+    	<a href="/manage/wiki/wikipage_update?id=1264804244564000" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#24403;&#25105;&#20204;&#33719;&#21462;&#21040;&#26576;&#20010;<code>Class</code>&#23545;&#35937;&#26102;&#65292;&#23454;&#38469;&#19978;&#23601;&#33719;&#21462;&#21040;&#20102;&#19968;&#20010;&#31867;&#30340;&#31867;&#22411;&#65306;</p>
+<pre><code>Class cls = String.class; // &#33719;&#21462;&#21040;String&#30340;Class
+</code></pre>
+<p>&#36824;&#21487;&#20197;&#29992;&#23454;&#20363;&#30340;<code>getClass()</code>&#26041;&#27861;&#33719;&#21462;&#65306;</p>
+<pre><code>String s = "";
+Class cls = s.getClass(); // s&#26159;String&#65292;&#22240;&#27492;&#33719;&#21462;&#21040;String&#30340;Class
+</code></pre>
+<p>&#26368;&#21518;&#19968;&#31181;&#33719;&#21462;<code>Class</code>&#30340;&#26041;&#27861;&#26159;&#36890;&#36807;<code>Class.forName("")</code>&#65292;&#20256;&#20837;<code>Class</code>&#30340;&#23436;&#25972;&#31867;&#21517;&#33719;&#21462;&#65306;</p>
+<pre><code>Class s = Class.forName("java.lang.String");
+</code></pre>
+<p>&#36825;&#19977;&#31181;&#26041;&#24335;&#33719;&#21462;&#30340;<code>Class</code>&#23454;&#20363;&#37117;&#26159;&#21516;&#19968;&#20010;&#23454;&#20363;&#65292;&#22240;&#20026;JVM&#23545;&#27599;&#20010;&#21152;&#36733;&#30340;<code>Class</code>&#21482;&#21019;&#24314;&#19968;&#20010;<code>Class</code>&#23454;&#20363;&#26469;&#34920;&#31034;&#23427;&#30340;&#31867;&#22411;&#12290;</p>
+<h3>&#33719;&#21462;&#29238;&#31867;&#30340;Class</h3>
+<p>&#26377;&#20102;<code>Class</code>&#23454;&#20363;&#65292;&#25105;&#20204;&#36824;&#21487;&#20197;&#33719;&#21462;&#23427;&#30340;&#29238;&#31867;&#30340;<code>Class</code>&#65306;</p>
+<pre><code class="language-x-java">// reflection
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Class i = Integer.class;
+        Class n = i.getSuperclass();
+        System.out.println(n);
+        Class o = n.getSuperclass();
+        System.out.println(o);
+        System.out.println(o.getSuperclass());
+    }
+}
+</code></pre>
+<p>&#36816;&#34892;&#19978;&#36848;&#20195;&#30721;&#65292;&#21487;&#20197;&#30475;&#21040;&#65292;<code>Integer</code>&#30340;&#29238;&#31867;&#31867;&#22411;&#26159;<code>Number</code>&#65292;<code>Number</code>&#30340;&#29238;&#31867;&#26159;<code>Object</code>&#65292;<code>Object</code>&#30340;&#29238;&#31867;&#26159;<code>null</code>&#12290;&#38500;<code>Object</code>&#22806;&#65292;&#20854;&#20182;&#20219;&#20309;&#38750;<code>interface</code>&#30340;<code>Class</code>&#37117;&#24517;&#23450;&#23384;&#22312;&#19968;&#20010;&#29238;&#31867;&#31867;&#22411;&#12290;</p>
+<h3>&#33719;&#21462;interface</h3>
+<p>&#30001;&#20110;&#19968;&#20010;&#31867;&#21487;&#33021;&#23454;&#29616;&#19968;&#20010;&#25110;&#22810;&#20010;&#25509;&#21475;&#65292;&#36890;&#36807;<code>Class</code>&#25105;&#20204;&#23601;&#21487;&#20197;&#26597;&#35810;&#21040;&#23454;&#29616;&#30340;&#25509;&#21475;&#31867;&#22411;&#12290;&#20363;&#22914;&#65292;&#26597;&#35810;<code>Integer</code>&#23454;&#29616;&#30340;&#25509;&#21475;&#65306;</p>
+<pre><code class="language-x-java">// reflection
+import java.lang.reflect.Method;
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Class s = Integer.class;
+        Class[] is = s.getInterfaces();
+        for (Class i : is) {
+            System.out.println(i);
+        }
+    }
+}
+</code></pre>
+<p>&#36816;&#34892;&#19978;&#36848;&#20195;&#30721;&#21487;&#30693;&#65292;<code>Integer</code>&#23454;&#29616;&#30340;&#25509;&#21475;&#26377;&#65306;</p>
+<ul>
+<li>java.lang.Comparable</li>
+<li>java.lang.constant.Constable</li>
+<li>java.lang.constant.ConstantDesc</li>
+</ul>
+<p>&#35201;&#29305;&#21035;&#27880;&#24847;&#65306;<code>getInterfaces()</code>&#21482;&#36820;&#22238;&#24403;&#21069;&#31867;&#30452;&#25509;&#23454;&#29616;&#30340;&#25509;&#21475;&#31867;&#22411;&#65292;&#24182;&#19981;&#21253;&#25324;&#20854;&#29238;&#31867;&#23454;&#29616;&#30340;&#25509;&#21475;&#31867;&#22411;&#65306;</p>
+<pre><code class="language-x-java">// reflection
+import java.lang.reflect.Method;
+----
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Class s = Integer.class.getSuperclass();
+        Class[] is = s.getInterfaces();
+        for (Class i : is) {
+            System.out.println(i);
+        }
+    }
+}
+</code></pre>
+<p><code>Integer</code>&#30340;&#29238;&#31867;&#26159;<code>Number</code>&#65292;<code>Number</code>&#23454;&#29616;&#30340;&#25509;&#21475;&#26159;<code>java.io.Serializable</code>&#12290;</p>
+<p>&#27492;&#22806;&#65292;&#23545;&#25152;&#26377;<code>interface</code>&#30340;<code>Class</code>&#35843;&#29992;<code>getSuperclass()</code>&#36820;&#22238;&#30340;&#26159;<code>null</code>&#65292;&#33719;&#21462;&#25509;&#21475;&#30340;&#29238;&#25509;&#21475;&#35201;&#29992;<code>getInterfaces()</code>&#65306;</p>
+<pre><code>System.out.println(java.io.DataInputStream.class.getSuperclass()); // java.io.FilterInputStream&#65292;&#22240;&#20026;DataInputStream&#32487;&#25215;&#33258;FilterInputStream
+System.out.println(java.io.Closeable.class.getSuperclass()); // null&#65292;&#23545;&#25509;&#21475;&#35843;&#29992;getSuperclass()&#24635;&#26159;&#36820;&#22238;null&#65292;&#33719;&#21462;&#25509;&#21475;&#30340;&#29238;&#25509;&#21475;&#35201;&#29992;getInterfaces()
+</code></pre>
+<p>&#22914;&#26524;&#19968;&#20010;&#31867;&#27809;&#26377;&#23454;&#29616;&#20219;&#20309;<code>interface</code>&#65292;&#37027;&#20040;<code>getInterfaces()</code>&#36820;&#22238;&#31354;&#25968;&#32452;&#12290;</p>
+<h3>&#32487;&#25215;&#20851;&#31995;</h3>
+<p>&#24403;&#25105;&#20204;&#21028;&#26029;&#19968;&#20010;&#23454;&#20363;&#26159;&#21542;&#26159;&#26576;&#20010;&#31867;&#22411;&#26102;&#65292;&#27491;&#24120;&#24773;&#20917;&#19979;&#65292;&#20351;&#29992;<code>instanceof</code>&#25805;&#20316;&#31526;&#65306;</p>
+<pre><code>Object n = Integer.valueOf(123);
+boolean isDouble = n instanceof Double; // false
+boolean isInteger = n instanceof Integer; // true
+boolean isNumber = n instanceof Number; // true
+boolean isSerializable = n instanceof java.io.Serializable; // true
+</code></pre>
+<p>&#22914;&#26524;&#26159;&#20004;&#20010;<code>Class</code>&#23454;&#20363;&#65292;&#35201;&#21028;&#26029;&#19968;&#20010;&#21521;&#19978;&#36716;&#22411;&#26159;&#21542;&#25104;&#31435;&#65292;&#21487;&#20197;&#35843;&#29992;<code>isAssignableFrom()</code>&#65306;</p>
+<pre><code>// Integer i = ?
+Integer.class.isAssignableFrom(Integer.class); // true&#65292;&#22240;&#20026;Integer&#21487;&#20197;&#36171;&#20540;&#32473;Integer
+// Number n = ?
+Number.class.isAssignableFrom(Integer.class); // true&#65292;&#22240;&#20026;Integer&#21487;&#20197;&#36171;&#20540;&#32473;Number
+// Object o = ?
+Object.class.isAssignableFrom(Integer.class); // true&#65292;&#22240;&#20026;Integer&#21487;&#20197;&#36171;&#20540;&#32473;Object
+// Integer i = ?
+Integer.class.isAssignableFrom(Number.class); // false&#65292;&#22240;&#20026;Number&#19981;&#33021;&#36171;&#20540;&#32473;Integer
+</code></pre>
+<h3>&#23567;&#32467;</h3>
+<p>&#36890;&#36807;<code>Class</code>&#23545;&#35937;&#21487;&#20197;&#33719;&#21462;&#32487;&#25215;&#20851;&#31995;&#65306;</p>
+<ul>
+<li>
+<code>Class getSuperclass()</code>&#65306;&#33719;&#21462;&#29238;&#31867;&#31867;&#22411;&#65307;</li>
+<li>
+<code>Class[] getInterfaces()</code>&#65306;&#33719;&#21462;&#24403;&#21069;&#31867;&#23454;&#29616;&#30340;&#25152;&#26377;&#25509;&#21475;&#12290;</li>
+</ul>
+<p>&#36890;&#36807;<code>Class</code>&#23545;&#35937;&#30340;<code>isAssignableFrom()</code>&#26041;&#27861;&#21487;&#20197;&#21028;&#26029;&#19968;&#20010;&#21521;&#19978;&#36716;&#22411;&#26159;&#21542;&#21487;&#20197;&#23454;&#29616;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

@@ -1,0 +1,138 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#26465;&#20214;&#27979;&#35797;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 20199</span>
+    	<a href="/manage/wiki/wikipage_update?id=1304073489874978" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#22312;&#36816;&#34892;&#27979;&#35797;&#30340;&#26102;&#20505;&#65292;&#26377;&#20123;&#26102;&#20505;&#65292;&#25105;&#20204;&#38656;&#35201;&#25490;&#20986;&#26576;&#20123;<code>@Test</code>&#26041;&#27861;&#65292;&#19981;&#35201;&#35753;&#23427;&#36816;&#34892;&#65292;&#36825;&#26102;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#32473;&#23427;&#26631;&#35760;&#19968;&#20010;<code>@Disabled</code>&#65306;</p>
+<pre><code>@Disabled
+@Test
+void testBug101() {
+    // &#36825;&#20010;&#27979;&#35797;&#19981;&#20250;&#36816;&#34892;
+}
+</code></pre>
+<p>&#20026;&#20160;&#20040;&#25105;&#20204;&#19981;&#30452;&#25509;&#27880;&#37322;&#25481;<code>@Test</code>&#65292;&#32780;&#26159;&#35201;&#21152;&#19968;&#20010;<code>@Disabled</code>&#65311;&#36825;&#26159;&#22240;&#20026;&#27880;&#37322;&#25481;<code>@Test</code>&#65292;JUnit&#23601;&#19981;&#30693;&#36947;&#36825;&#26159;&#20010;&#27979;&#35797;&#26041;&#27861;&#65292;&#32780;&#21152;&#19978;<code>@Disabled</code>&#65292;JUnit&#20173;&#28982;&#35782;&#21035;&#20986;&#36825;&#26159;&#20010;&#27979;&#35797;&#26041;&#27861;&#65292;&#21482;&#26159;&#26242;&#26102;&#19981;&#36816;&#34892;&#12290;&#23427;&#20250;&#22312;&#27979;&#35797;&#32467;&#26524;&#20013;&#26174;&#31034;&#65306;</p>
+<pre><code>Tests run: 68, Failures: 2, Errors: 0, Skipped: 5
+</code></pre>
+<p>&#31867;&#20284;<code>@Disabled</code>&#36825;&#31181;&#27880;&#35299;&#23601;&#31216;&#20026;&#26465;&#20214;&#27979;&#35797;&#65292;JUnit&#26681;&#25454;&#19981;&#21516;&#30340;&#26465;&#20214;&#27880;&#35299;&#65292;&#20915;&#23450;&#26159;&#21542;&#36816;&#34892;&#24403;&#21069;&#30340;<code>@Test</code>&#26041;&#27861;&#12290;</p>
+<p>&#25105;&#20204;&#26469;&#30475;&#19968;&#20010;&#20363;&#23376;&#65306;</p>
+<pre><code>public class Config {
+    public String getConfigFile(String filename) {
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("win")) {
+            return "C:\\" + filename;
+        }
+        if (os.contains("mac") || os.contains("linux") || os.contains("unix")) {
+            return "/usr/local/" + filename;
+        }
+        throw new UnsupportedOperationException();
+    }
+}
+</code></pre>
+<p>&#25105;&#20204;&#24819;&#35201;&#27979;&#35797;<code>getConfigFile()</code>&#36825;&#20010;&#26041;&#27861;&#65292;&#20294;&#26159;&#22312;Windows&#19978;&#36305;&#65292;&#21644;&#22312;Linux&#19978;&#36305;&#30340;&#20195;&#30721;&#36335;&#24452;&#19981;&#21516;&#65292;&#22240;&#27492;&#65292;&#38024;&#23545;&#20004;&#20010;&#31995;&#32479;&#30340;&#27979;&#35797;&#26041;&#27861;&#65292;&#20854;&#20013;&#19968;&#20010;&#21482;&#33021;&#22312;Windows&#19978;&#36305;&#65292;&#21478;&#19968;&#20010;&#21482;&#33021;&#22312;Mac/Linux&#19978;&#36305;&#65306;</p>
+<pre><code>@Test
+void testWindows() {
+    assertEquals("C:\\test.ini", config.getConfigFile("test.ini"));
+}
+
+@Test
+void testLinuxAndMac() {
+    assertEquals("/usr/local/test.cfg", config.getConfigFile("test.cfg"));
+}
+</code></pre>
+<p>&#22240;&#27492;&#65292;&#25105;&#20204;&#32473;&#19978;&#36848;&#20004;&#20010;&#27979;&#35797;&#26041;&#27861;&#20998;&#21035;&#21152;&#19978;&#26465;&#20214;&#22914;&#19979;&#65306;</p>
+<pre><code>@Test
+@EnabledOnOs(OS.WINDOWS)
+void testWindows() {
+    assertEquals("C:\\test.ini", config.getConfigFile("test.ini"));
+}
+
+@Test
+@EnabledOnOs({ OS.LINUX, OS.MAC })
+void testLinuxAndMac() {
+    assertEquals("/usr/local/test.cfg", config.getConfigFile("test.cfg"));
+}
+</code></pre>
+<p><code>@EnableOnOs</code>&#23601;&#26159;&#19968;&#20010;&#26465;&#20214;&#27979;&#35797;&#21028;&#26029;&#12290;</p>
+<p>&#25105;&#20204;&#26469;&#30475;&#19968;&#20123;&#24120;&#29992;&#30340;&#26465;&#20214;&#27979;&#35797;&#65306;</p>
+<p>&#19981;&#22312;Windows&#24179;&#21488;&#25191;&#34892;&#30340;&#27979;&#35797;&#65292;&#21487;&#20197;&#21152;&#19978;<code>@DisabledOnOs(OS.WINDOWS)</code>&#65306;</p>
+<pre><code>@Test
+@DisabledOnOs(OS.WINDOWS)
+void testOnNonWindowsOs() {
+    // TODO: this test is disabled on windows
+}
+</code></pre>
+<p>&#21482;&#33021;&#22312;Java 9&#25110;&#26356;&#39640;&#29256;&#26412;&#25191;&#34892;&#30340;&#27979;&#35797;&#65292;&#21487;&#20197;&#21152;&#19978;<code>@DisabledOnJre(JRE.JAVA_8)</code>&#65306;</p>
+<pre><code>@Test
+@DisabledOnJre(JRE.JAVA_8)
+void testOnJava9OrAbove() {
+    // TODO: this test is disabled on java 8
+}
+</code></pre>
+<p>&#21482;&#33021;&#22312;64&#20301;&#25805;&#20316;&#31995;&#32479;&#19978;&#25191;&#34892;&#30340;&#27979;&#35797;&#65292;&#21487;&#20197;&#29992;<code>@EnabledIfSystemProperty</code>&#21028;&#26029;&#65306;</p>
+<pre><code>@Test
+@EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*")
+void testOnlyOn64bitSystem() {
+    // TODO: this test is only run on 64 bit system
+}
+</code></pre>
+<p>&#38656;&#35201;&#20256;&#20837;&#29615;&#22659;&#21464;&#37327;<code>DEBUG=true</code>&#25165;&#33021;&#25191;&#34892;&#30340;&#27979;&#35797;&#65292;&#21487;&#20197;&#29992;<code>@EnabledIfEnvironmentVariable</code>&#65306;</p>
+<pre><code>@Test
+@EnabledIfEnvironmentVariable(named = "DEBUG", matches = "true")
+void testOnlyOnDebugMode() {
+    // TODO: this test is only run on DEBUG=true
+}
+</code></pre>
+<p>&#26368;&#21518;&#65292;&#19975;&#33021;&#30340;<code>@EnableIf</code>&#21487;&#20197;&#25191;&#34892;&#20219;&#24847;Java&#35821;&#21477;&#24182;&#26681;&#25454;&#36820;&#22238;&#30340;<code>boolean</code>&#20915;&#23450;&#26159;&#21542;&#25191;&#34892;&#27979;&#35797;&#12290;&#19979;&#38754;&#30340;&#20195;&#30721;&#28436;&#31034;&#20102;&#19968;&#20010;&#21482;&#33021;&#22312;&#26143;&#26399;&#26085;&#25191;&#34892;&#30340;&#27979;&#35797;&#65306;</p>
+<pre><code>@Test
+@EnabledIf("java.time.LocalDate.now().getDayOfWeek()==java.time.DayOfWeek.SUNDAY")
+void testOnlyOnSunday() {
+    // TODO: this test is only run on Sunday
+}
+</code></pre>
+<p>&#24403;&#25105;&#20204;&#22312;JUnit&#20013;&#36816;&#34892;&#25152;&#26377;&#27979;&#35797;&#30340;&#26102;&#20505;&#65292;JUnit&#20250;&#32473;&#20986;&#25191;&#34892;&#30340;&#32467;&#26524;&#12290;&#22312;IDE&#20013;&#65292;&#25105;&#20204;&#33021;&#24456;&#23481;&#26131;&#22320;&#30475;&#21040;&#27809;&#26377;&#25191;&#34892;&#30340;&#27979;&#35797;&#65306;</p>
+<p><img src="/static/img/loading.svg" data-src="/files/attachments/1304094455103553/l" alt="junit-conditional-test"></p>
+<p>&#24102;&#26377;&#8856;&#26631;&#35760;&#30340;&#27979;&#35797;&#26041;&#27861;&#34920;&#31034;&#27809;&#26377;&#25191;&#34892;&#12290;</p>
+<h3>&#32451;&#20064;</h3>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/100.%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95.1255945269146912/40.%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95.1304073489874978/junit-conditional.zip">&#26465;&#20214;&#27979;&#35797;</a>&#12290;</p>
+<h3>&#23567;&#32467;</h3>
+<p>&#26465;&#20214;&#27979;&#35797;&#26159;&#26681;&#25454;&#26576;&#20123;&#27880;&#35299;&#22312;&#36816;&#34892;&#26399;&#35753;JUnit&#33258;&#21160;&#24573;&#30053;&#26576;&#20123;&#27979;&#35797;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

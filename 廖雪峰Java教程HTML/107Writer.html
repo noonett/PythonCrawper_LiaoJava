@@ -1,0 +1,122 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>Writer</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 27490</span>
+    	<a href="/manage/wiki/wikipage_update?id=1298366912790561" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p><code>Reader</code>&#26159;&#24102;&#32534;&#30721;&#36716;&#25442;&#22120;&#30340;<code>InputStream</code>&#65292;&#23427;&#25226;<code>byte</code>&#36716;&#25442;&#20026;<code>char</code>&#65292;&#32780;<code>Writer</code>&#23601;&#26159;&#24102;&#32534;&#30721;&#36716;&#25442;&#22120;&#30340;<code>OutputStream</code>&#65292;&#23427;&#25226;<code>char</code>&#36716;&#25442;&#20026;<code>byte</code>&#24182;&#36755;&#20986;&#12290;</p>
+<p><code>Writer</code>&#21644;<code>OutputStream</code>&#30340;&#21306;&#21035;&#22914;&#19979;&#65306;</p>
+<table>
+<thead>
+<tr>
+<th>OutputStream</th>
+<th>Writer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#23383;&#33410;&#27969;&#65292;&#20197;<code>byte</code>&#20026;&#21333;&#20301;</td>
+<td>&#23383;&#31526;&#27969;&#65292;&#20197;<code>char</code>&#20026;&#21333;&#20301;</td>
+</tr>
+<tr>
+<td>&#20889;&#20837;&#23383;&#33410;&#65288;0~255&#65289;&#65306;<code>void write(int b)</code>
+</td>
+<td>&#20889;&#20837;&#23383;&#31526;&#65288;0~65535&#65289;&#65306;<code>void write(int c)</code>
+</td>
+</tr>
+<tr>
+<td>&#20889;&#20837;&#23383;&#33410;&#25968;&#32452;&#65306;<code>void write(byte[] b)</code>
+</td>
+<td>&#20889;&#20837;&#23383;&#31526;&#25968;&#32452;&#65306;<code>void write(char[] c)</code>
+</td>
+</tr>
+<tr>
+<td>&#26080;&#23545;&#24212;&#26041;&#27861;</td>
+<td>&#20889;&#20837;String&#65306;<code>void write(String s)</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><code>Writer</code>&#26159;&#25152;&#26377;&#23383;&#31526;&#36755;&#20986;&#27969;&#30340;&#36229;&#31867;&#65292;&#23427;&#25552;&#20379;&#30340;&#26041;&#27861;&#20027;&#35201;&#26377;&#65306;</p>
+<ul>
+<li>&#20889;&#20837;&#19968;&#20010;&#23383;&#31526;&#65288;0~65535&#65289;&#65306;<code>void write(int c)</code>&#65307;</li>
+<li>&#20889;&#20837;&#23383;&#31526;&#25968;&#32452;&#30340;&#25152;&#26377;&#23383;&#31526;&#65306;<code>void write(char[] c)</code>&#65307;</li>
+<li>&#20889;&#20837;String&#34920;&#31034;&#30340;&#25152;&#26377;&#23383;&#31526;&#65306;<code>void write(String s)</code>&#12290;</li>
+</ul>
+<h3>FileWriter</h3>
+<p><code>FileWriter</code>&#23601;&#26159;&#21521;&#25991;&#20214;&#20013;&#20889;&#20837;&#23383;&#31526;&#27969;&#30340;<code>Writer</code>&#12290;&#23427;&#30340;&#20351;&#29992;&#26041;&#27861;&#21644;<code>FileReader</code>&#31867;&#20284;&#65306;</p>
+<pre><code>try (Writer writer = new FileWriter("readme.txt", StandardCharsets.UTF_8)) {
+    writer.write('H'); // &#20889;&#20837;&#21333;&#20010;&#23383;&#31526;
+    writer.write("Hello".toCharArray()); // &#20889;&#20837;char[]
+    writer.write("Hello"); // &#20889;&#20837;String
+}
+</code></pre>
+<h3>CharArrayWriter</h3>
+<p><code>CharArrayWriter</code>&#21487;&#20197;&#22312;&#20869;&#23384;&#20013;&#21019;&#24314;&#19968;&#20010;<code>Writer</code>&#65292;&#23427;&#30340;&#20316;&#29992;&#23454;&#38469;&#19978;&#26159;&#26500;&#36896;&#19968;&#20010;&#32531;&#20914;&#21306;&#65292;&#21487;&#20197;&#20889;&#20837;<code>char</code>&#65292;&#26368;&#21518;&#24471;&#21040;&#20889;&#20837;&#30340;<code>char[]</code>&#25968;&#32452;&#65292;&#36825;&#21644;<code>ByteArrayOutputStream</code>&#38750;&#24120;&#31867;&#20284;&#65306;</p>
+<pre><code>try (CharArrayWriter writer = new CharArrayWriter()) {
+    writer.write(65);
+    writer.write(66);
+    writer.write(67);
+    char[] data = writer.toCharArray(); // { 'A', 'B', 'C' }
+}
+</code></pre>
+<h3>StringWriter</h3>
+<p><code>StringWriter</code>&#20063;&#26159;&#19968;&#20010;&#22522;&#20110;&#20869;&#23384;&#30340;<code>Writer</code>&#65292;&#23427;&#21644;<code>CharArrayWriter</code>&#31867;&#20284;&#12290;&#23454;&#38469;&#19978;&#65292;<code>StringWriter</code>&#22312;&#20869;&#37096;&#32500;&#25252;&#20102;&#19968;&#20010;<code>StringBuffer</code>&#65292;&#24182;&#23545;&#22806;&#25552;&#20379;&#20102;<code>Writer</code>&#25509;&#21475;&#12290;</p>
+<h3>OutputStreamWriter</h3>
+<p>&#38500;&#20102;<code>CharArrayWriter</code>&#21644;<code>StringWriter</code>&#22806;&#65292;&#26222;&#36890;&#30340;Writer&#23454;&#38469;&#19978;&#26159;&#22522;&#20110;<code>OutputStream</code>&#26500;&#36896;&#30340;&#65292;&#23427;&#25509;&#25910;<code>char</code>&#65292;&#28982;&#21518;&#22312;&#20869;&#37096;&#33258;&#21160;&#36716;&#25442;&#25104;&#19968;&#20010;&#25110;&#22810;&#20010;<code>byte</code>&#65292;&#24182;&#20889;&#20837;<code>OutputStream</code>&#12290;&#22240;&#27492;&#65292;<code>OutputStreamWriter</code>&#23601;&#26159;&#19968;&#20010;&#23558;&#20219;&#24847;&#30340;<code>OutputStream</code>&#36716;&#25442;&#20026;<code>Writer</code>&#30340;&#36716;&#25442;&#22120;&#65306;</p>
+<pre><code>try (Writer writer = new OutputStreamWriter(new FileOutputStream("readme.txt"), "UTF-8")) {
+    // TODO:
+}
+</code></pre>
+<p>&#19978;&#36848;&#20195;&#30721;&#23454;&#38469;&#19978;&#23601;&#26159;<code>FileWriter</code>&#30340;&#19968;&#31181;&#23454;&#29616;&#26041;&#24335;&#12290;&#36825;&#21644;&#19978;&#19968;&#33410;&#30340;<code>InputStreamReader</code>&#26159;&#19968;&#26679;&#30340;&#12290;</p>
+<h3>&#23567;&#32467;</h3>
+<p><code>Writer</code>&#23450;&#20041;&#20102;&#25152;&#26377;&#23383;&#31526;&#36755;&#20986;&#27969;&#30340;&#36229;&#31867;&#65306;</p>
+<ul>
+<li>
+<p><code>FileWriter</code>&#23454;&#29616;&#20102;&#25991;&#20214;&#23383;&#31526;&#27969;&#36755;&#20986;&#65307;</p>
+</li>
+<li>
+<p><code>CharArrayWriter</code>&#21644;<code>StringWriter</code>&#22312;&#20869;&#23384;&#20013;&#27169;&#25311;&#19968;&#20010;&#23383;&#31526;&#27969;&#36755;&#20986;&#12290;</p>
+</li>
+</ul>
+<p>&#20351;&#29992;<code>try (resource)</code>&#20445;&#35777;<code>Writer</code>&#27491;&#30830;&#20851;&#38381;&#12290;</p>
+<p><code>Writer</code>&#26159;&#22522;&#20110;<code>OutputStream</code>&#26500;&#36896;&#30340;&#65292;&#21487;&#20197;&#36890;&#36807;<code>OutputStreamWriter</code>&#23558;<code>OutputStream</code>&#36716;&#25442;&#20026;<code>Writer</code>&#65292;&#36716;&#25442;&#26102;&#38656;&#35201;&#25351;&#23450;&#32534;&#30721;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

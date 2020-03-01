@@ -1,0 +1,256 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>extends&#36890;&#37197;&#31526;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 152888</span>
+    	<a href="/manage/wiki/wikipage_update?id=1265105899616928" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#25105;&#20204;&#21069;&#38754;&#24050;&#32463;&#35762;&#21040;&#20102;&#27867;&#22411;&#30340;&#32487;&#25215;&#20851;&#31995;&#65306;<code>Pair&lt;Integer&gt;</code>&#19981;&#26159;<code>Pair&lt;Number&gt;</code>&#30340;&#23376;&#31867;&#12290;</p>
+<p>&#20551;&#35774;&#25105;&#20204;&#23450;&#20041;&#20102;<code>Pair&lt;T&gt;</code>&#65306;</p>
+<pre><code>public class Pair&lt;T&gt; { ... }
+</code></pre>
+<p>&#28982;&#21518;&#65292;&#25105;&#20204;&#21448;&#38024;&#23545;<code>Pair&lt;Number&gt;</code>&#31867;&#22411;&#20889;&#20102;&#19968;&#20010;&#38745;&#24577;&#26041;&#27861;&#65292;&#23427;&#25509;&#25910;&#30340;&#21442;&#25968;&#31867;&#22411;&#26159;<code>Pair&lt;Number&gt;</code>&#65306;</p>
+<pre><code>public class PairHelper {
+    static int add(Pair&lt;Number&gt; p) {
+        Number first = p.getFirst();
+        Number last = p.getLast();
+        return first.intValue() + last.intValue();
+    }
+}
+</code></pre>
+<p>&#19978;&#36848;&#20195;&#30721;&#26159;&#21487;&#20197;&#27491;&#24120;&#32534;&#35793;&#30340;&#12290;&#20351;&#29992;&#30340;&#26102;&#20505;&#65292;&#25105;&#20204;&#20256;&#20837;&#65306;</p>
+<pre><code>int sum = PairHelper.add(new Pair&lt;Number&gt;(1, 2));
+</code></pre>
+<p>&#27880;&#24847;&#65306;&#20256;&#20837;&#30340;&#31867;&#22411;&#26159;<code>Pair&lt;Number&gt;</code>&#65292;&#23454;&#38469;&#21442;&#25968;&#31867;&#22411;&#26159;<code>(Integer, Integer)</code>&#12290;</p>
+<p>&#26082;&#28982;&#23454;&#38469;&#21442;&#25968;&#26159;<code>Integer</code>&#31867;&#22411;&#65292;&#35797;&#35797;&#20256;&#20837;<code>Pair&lt;Integer&gt;</code>&#65306;</p>
+<pre><code class="language-x-java">public class Main {
+----
+    public static void main(String[] args) {
+        Pair&lt;Integer&gt; p = new Pair&lt;&gt;(123, 456);
+        int n = add(p);
+        System.out.println(n);
+    }
+
+    static int add(Pair&lt;Number&gt; p) {
+        Number first = p.getFirst();
+        Number last = p.getLast();
+        return first.intValue() + last.intValue();
+    }
+----
+}
+
+class Pair&lt;T&gt; {
+    private T first;
+    private T last;
+    public Pair(T first, T last) {
+        this.first = first;
+        this.last = last;
+    }
+    public T getFirst() {
+        return first;
+    }
+    public T getLast() {
+        return last;
+    }
+}
+</code></pre>
+<p>&#30452;&#25509;&#36816;&#34892;&#65292;&#20250;&#24471;&#21040;&#19968;&#20010;&#32534;&#35793;&#38169;&#35823;&#65306;</p>
+<pre><code>incompatible types: Pair&lt;Integer&gt; cannot be converted to Pair&lt;Number&gt;
+</code></pre>
+<p>&#21407;&#22240;&#24456;&#26126;&#26174;&#65292;&#22240;&#20026;<code>Pair&lt;Integer&gt;</code>&#19981;&#26159;<code>Pair&lt;Number&gt;</code>&#30340;&#23376;&#31867;&#65292;&#22240;&#27492;&#65292;<code>add(Pair&lt;Number&gt;)</code>&#19981;&#25509;&#21463;&#21442;&#25968;&#31867;&#22411;<code>Pair&lt;Integer&gt;</code>&#12290;</p>
+<p>&#20294;&#26159;&#20174;<code>add()</code>&#26041;&#27861;&#30340;&#20195;&#30721;&#21487;&#30693;&#65292;&#20256;&#20837;<code>Pair&lt;Integer&gt;</code>&#26159;&#23436;&#20840;&#31526;&#21512;&#20869;&#37096;&#20195;&#30721;&#30340;&#31867;&#22411;&#35268;&#33539;&#65292;&#22240;&#20026;&#35821;&#21477;&#65306;</p>
+<pre><code>Number first = p.getFirst();
+Number last = p.getLast();
+</code></pre>
+<p>&#23454;&#38469;&#31867;&#22411;&#26159;<code>Integer</code>&#65292;&#24341;&#29992;&#31867;&#22411;&#26159;<code>Number</code>&#65292;&#27809;&#26377;&#38382;&#39064;&#12290;&#38382;&#39064;&#22312;&#20110;&#26041;&#27861;&#21442;&#25968;&#31867;&#22411;&#23450;&#27515;&#20102;&#21482;&#33021;&#20256;&#20837;<code>Pair&lt;Number&gt;</code>&#12290;</p>
+<p>&#26377;&#27809;&#26377;&#21150;&#27861;&#20351;&#24471;&#26041;&#27861;&#21442;&#25968;&#25509;&#21463;<code>Pair&lt;Integer&gt;</code>&#65311;&#21150;&#27861;&#26159;&#26377;&#30340;&#65292;&#36825;&#23601;&#26159;&#20351;&#29992;<code>Pair&lt;? extends Number&gt;</code>&#20351;&#24471;&#26041;&#27861;&#25509;&#25910;&#25152;&#26377;&#27867;&#22411;&#31867;&#22411;&#20026;<code>Number</code>&#25110;<code>Number</code>&#23376;&#31867;&#30340;<code>Pair</code>&#31867;&#22411;&#12290;&#25105;&#20204;&#25226;&#20195;&#30721;&#25913;&#20889;&#22914;&#19979;&#65306;</p>
+<pre><code class="language-x-java">public class Main {
+----
+    public static void main(String[] args) {
+        Pair&lt;Integer&gt; p = new Pair&lt;&gt;(123, 456);
+        int n = add(p);
+        System.out.println(n);
+    }
+
+    static int add(Pair&lt;? extends Number&gt; p) {
+        Number first = p.getFirst();
+        Number last = p.getLast();
+        return first.intValue() + last.intValue();
+    }
+----
+}
+
+class Pair&lt;T&gt; {
+    private T first;
+    private T last;
+    public Pair(T first, T last) {
+        this.first = first;
+        this.last = last;
+    }
+    public T getFirst() {
+        return first;
+    }
+    public T getLast() {
+        return last;
+    }
+}
+</code></pre>
+<p>&#36825;&#26679;&#19968;&#26469;&#65292;&#32473;&#26041;&#27861;&#20256;&#20837;<code>Pair&lt;Integer&gt;</code>&#31867;&#22411;&#26102;&#65292;&#23427;&#31526;&#21512;&#21442;&#25968;<code>Pair&lt;? extends Number&gt;</code>&#31867;&#22411;&#12290;&#36825;&#31181;&#20351;&#29992;<code>&lt;? extends Number&gt;</code>&#30340;&#27867;&#22411;&#23450;&#20041;&#31216;&#20043;&#20026;&#19978;&#30028;&#36890;&#37197;&#31526;&#65288;Upper Bounds Wildcards&#65289;&#65292;&#21363;&#25226;&#27867;&#22411;&#31867;&#22411;<code>T</code>&#30340;&#19978;&#30028;&#38480;&#23450;&#22312;<code>Number</code>&#20102;&#12290;</p>
+<p>&#38500;&#20102;&#21487;&#20197;&#20256;&#20837;<code>Pair&lt;Integer&gt;</code>&#31867;&#22411;&#65292;&#25105;&#20204;&#36824;&#21487;&#20197;&#20256;&#20837;<code>Pair&lt;Double&gt;</code>&#31867;&#22411;&#65292;<code>Pair&lt;BigDecimal&gt;</code>&#31867;&#22411;&#31561;&#31561;&#65292;&#22240;&#20026;<code>Double</code>&#21644;<code>BigDecimal</code>&#37117;&#26159;<code>Number</code>&#30340;&#23376;&#31867;&#12290;</p>
+<p>&#22914;&#26524;&#25105;&#20204;&#32771;&#23519;&#23545;<code>Pair&lt;? extends Number&gt;</code>&#31867;&#22411;&#35843;&#29992;<code>getFirst()</code>&#26041;&#27861;&#65292;&#23454;&#38469;&#30340;&#26041;&#27861;&#31614;&#21517;&#21464;&#25104;&#20102;&#65306;</p>
+<pre><code>&lt;? extends Number&gt; getFirst();
+</code></pre>
+<p>&#21363;&#36820;&#22238;&#20540;&#26159;<code>Number</code>&#25110;<code>Number</code>&#30340;&#23376;&#31867;&#65292;&#22240;&#27492;&#65292;&#21487;&#20197;&#23433;&#20840;&#36171;&#20540;&#32473;<code>Number</code>&#31867;&#22411;&#30340;&#21464;&#37327;&#65306;</p>
+<pre><code>Number x = p.getFirst();
+</code></pre>
+<p>&#28982;&#21518;&#65292;&#25105;&#20204;&#19981;&#21487;&#39044;&#27979;&#23454;&#38469;&#31867;&#22411;&#23601;&#26159;<code>Integer</code>&#65292;&#20363;&#22914;&#65292;&#19979;&#38754;&#30340;&#20195;&#30721;&#26159;&#26080;&#27861;&#36890;&#36807;&#32534;&#35793;&#30340;&#65306;</p>
+<pre><code>Integer x = p.getFirst();
+</code></pre>
+<p>&#36825;&#26159;&#22240;&#20026;&#23454;&#38469;&#30340;&#36820;&#22238;&#31867;&#22411;&#21487;&#33021;&#26159;<code>Integer</code>&#65292;&#20063;&#21487;&#33021;&#26159;<code>Double</code>&#25110;&#32773;&#20854;&#20182;&#31867;&#22411;&#65292;&#32534;&#35793;&#22120;&#21482;&#33021;&#30830;&#23450;&#31867;&#22411;&#19968;&#23450;&#26159;<code>Number</code>&#30340;&#23376;&#31867;&#65288;&#21253;&#25324;<code>Number</code>&#31867;&#22411;&#26412;&#36523;&#65289;&#65292;&#20294;&#20855;&#20307;&#31867;&#22411;&#26080;&#27861;&#30830;&#23450;&#12290;</p>
+<p>&#25105;&#20204;&#20877;&#26469;&#32771;&#23519;&#19968;&#19979;<code>Pair&lt;T&gt;</code>&#30340;<code>set</code>&#26041;&#27861;&#65306;</p>
+<pre><code class="language-x-java">public class Main {
+----
+    public static void main(String[] args) {
+        Pair&lt;Integer&gt; p = new Pair&lt;&gt;(123, 456);
+        int n = add(p);
+        System.out.println(n);
+    }
+
+    static int add(Pair&lt;? extends Number&gt; p) {
+        Number first = p.getFirst();
+        Number last = p.getLast();
+        p.setFirst(new Integer(first.intValue() + 100));
+        p.setLast(new Integer(last.intValue() + 100));
+        return p.getFirst().intValue() + p.getFirst().intValue();
+    }
+----
+}
+
+class Pair&lt;T&gt; {
+    private T first;
+    private T last;
+
+    public Pair(T first, T last) {
+        this.first = first;
+        this.last = last;
+    }
+
+    public T getFirst() {
+        return first;
+    }
+    public T getLast() {
+        return last;
+    }
+    public void setFirst(T first) {
+        this.first = first;
+    }
+    public void setLast(T last) {
+        this.last = last;
+    }
+}
+</code></pre>
+<p>&#19981;&#20986;&#24847;&#22806;&#65292;&#25105;&#20204;&#20250;&#24471;&#21040;&#19968;&#20010;&#32534;&#35793;&#38169;&#35823;&#65306;</p>
+<pre><code>incompatible types: Integer cannot be converted to CAP#1
+where CAP#1 is a fresh type-variable:
+    CAP#1 extends Number from capture of ? extends Number
+</code></pre>
+<p>&#32534;&#35793;&#38169;&#35823;&#21457;&#29983;&#22312;<code>p.setFirst()</code>&#20256;&#20837;&#30340;&#21442;&#25968;&#26159;<code>Integer</code>&#31867;&#22411;&#12290;&#26377;&#20123;&#31461;&#38795;&#20250;&#38382;&#20102;&#65292;&#26082;&#28982;<code>p</code>&#30340;&#23450;&#20041;&#26159;<code>Pair&lt;? extends Number&gt;</code>&#65292;&#37027;&#20040;<code>setFirst(? extends Number)</code>&#20026;&#20160;&#20040;&#19981;&#33021;&#20256;&#20837;<code>Integer</code>&#65311;</p>
+<p>&#21407;&#22240;&#36824;&#22312;&#20110;&#25830;&#25325;&#27861;&#12290;&#22914;&#26524;&#25105;&#20204;&#20256;&#20837;&#30340;<code>p</code>&#26159;<code>Pair&lt;Double&gt;</code>&#65292;&#26174;&#28982;&#23427;&#28385;&#36275;&#21442;&#25968;&#23450;&#20041;<code>Pair&lt;? extends Number&gt;</code>&#65292;&#28982;&#32780;&#65292;<code>Pair&lt;Double&gt;</code>&#30340;<code>setFirst()</code>&#26174;&#28982;&#26080;&#27861;&#25509;&#21463;<code>Integer</code>&#31867;&#22411;&#12290;</p>
+<p>&#36825;&#23601;&#26159;<code>&lt;? extends Number&gt;</code>&#36890;&#37197;&#31526;&#30340;&#19968;&#20010;&#37325;&#35201;&#38480;&#21046;&#65306;&#26041;&#27861;&#21442;&#25968;&#31614;&#21517;<code>setFirst(? extends Number)</code>&#26080;&#27861;&#20256;&#36882;&#20219;&#20309;<code>Number</code>&#31867;&#22411;&#32473;<code>setFirst(? extends Number)</code>&#12290;</p>
+<p>&#36825;&#37324;&#21807;&#19968;&#30340;&#20363;&#22806;&#26159;&#21487;&#20197;&#32473;&#26041;&#27861;&#21442;&#25968;&#20256;&#20837;<code>null</code>&#65306;</p>
+<pre><code>p.setFirst(null); // ok, &#20294;&#26159;&#21518;&#38754;&#20250;&#25243;&#20986;NullPointerException
+p.getFirst().intValue(); // NullPointerException
+</code></pre>
+<h3>extends&#36890;&#37197;&#31526;&#30340;&#20316;&#29992;</h3>
+<p>&#22914;&#26524;&#25105;&#20204;&#32771;&#23519;Java&#26631;&#20934;&#24211;&#30340;<code>java.util.List&lt;T&gt;</code>&#25509;&#21475;&#65292;&#23427;&#23454;&#29616;&#30340;&#26159;&#19968;&#20010;&#31867;&#20284;&#8220;&#21487;&#21464;&#25968;&#32452;&#8221;&#30340;&#21015;&#34920;&#65292;&#20027;&#35201;&#21151;&#33021;&#21253;&#25324;&#65306;</p>
+<pre><code>public interface List&lt;T&gt; {
+    int size(); // &#33719;&#21462;&#20010;&#25968;
+    T get(int index); // &#26681;&#25454;&#32034;&#24341;&#33719;&#21462;&#25351;&#23450;&#20803;&#32032;
+    void add(T t); // &#28155;&#21152;&#19968;&#20010;&#26032;&#20803;&#32032;
+    void remove(T t); // &#21024;&#38500;&#19968;&#20010;&#24050;&#26377;&#20803;&#32032;
+}
+</code></pre>
+<p>&#29616;&#22312;&#65292;&#35753;&#25105;&#20204;&#23450;&#20041;&#19968;&#20010;&#26041;&#27861;&#26469;&#22788;&#29702;&#21015;&#34920;&#30340;&#27599;&#20010;&#20803;&#32032;&#65306;</p>
+<pre><code>int sumOfList(List&lt;? extends Integer&gt; list) {
+    int sum = 0;
+    for (int i=0; i&lt;list.size(); i++) {
+        Integer n = list.get(i);
+        sum = sum + n;
+    }
+    return sum;
+}
+</code></pre>
+<p>&#20026;&#20160;&#20040;&#25105;&#20204;&#23450;&#20041;&#30340;&#26041;&#27861;&#21442;&#25968;&#31867;&#22411;&#26159;<code>List&lt;? extends Integer&gt;</code>&#32780;&#19981;&#26159;<code>List&lt;Integer&gt;</code>&#65311;&#20174;&#26041;&#27861;&#20869;&#37096;&#20195;&#30721;&#30475;&#65292;&#20256;&#20837;<code>List&lt;? extends Integer&gt;</code>&#25110;&#32773;<code>List&lt;Integer&gt;</code>&#26159;&#23436;&#20840;&#19968;&#26679;&#30340;&#65292;&#20294;&#26159;&#65292;&#27880;&#24847;&#21040;<code>List&lt;? extends Integer&gt;</code>&#30340;&#38480;&#21046;&#65306;</p>
+<ul>
+<li>&#20801;&#35768;&#35843;&#29992;<code>get()</code>&#26041;&#27861;&#33719;&#21462;<code>Integer</code>&#30340;&#24341;&#29992;&#65307;</li>
+<li>&#19981;&#20801;&#35768;&#35843;&#29992;<code>set(? extends Integer)</code>&#26041;&#27861;&#24182;&#20256;&#20837;&#20219;&#20309;<code>Integer</code>&#30340;&#24341;&#29992;&#65288;<code>null</code>&#38500;&#22806;&#65289;&#12290;</li>
+</ul>
+<p>&#22240;&#27492;&#65292;&#26041;&#27861;&#21442;&#25968;&#31867;&#22411;<code>List&lt;? extends Integer&gt;</code>&#34920;&#26126;&#20102;&#35813;&#26041;&#27861;&#20869;&#37096;&#21482;&#20250;&#35835;&#21462;<code>List</code>&#30340;&#20803;&#32032;&#65292;&#19981;&#20250;&#20462;&#25913;<code>List</code>&#30340;&#20803;&#32032;&#65288;&#22240;&#20026;&#26080;&#27861;&#35843;&#29992;<code>add(? extends Integer)</code>&#12289;<code>remove(? extends Integer)</code>&#36825;&#20123;&#26041;&#27861;&#12290;&#25442;&#21477;&#35805;&#35828;&#65292;&#36825;&#26159;&#19968;&#20010;&#23545;&#21442;&#25968;<code>List&lt;? extends Integer&gt;</code>&#36827;&#34892;&#21482;&#35835;&#30340;&#26041;&#27861;&#65288;&#24694;&#24847;&#35843;&#29992;<code>set(null)</code>&#38500;&#22806;&#65289;&#12290;</p>
+<h3>&#20351;&#29992;extends&#38480;&#23450;T&#31867;&#22411;</h3>
+<p>&#22312;&#23450;&#20041;&#27867;&#22411;&#31867;&#22411;<code>Pair&lt;T&gt;</code>&#30340;&#26102;&#20505;&#65292;&#20063;&#21487;&#20197;&#20351;&#29992;<code>extends</code>&#36890;&#37197;&#31526;&#26469;&#38480;&#23450;<code>T</code>&#30340;&#31867;&#22411;&#65306;</p>
+<pre><code>public class Pair&lt;T extends Number&gt; { ... }
+</code></pre>
+<p>&#29616;&#22312;&#65292;&#25105;&#20204;&#21482;&#33021;&#23450;&#20041;&#65306;</p>
+<pre><code>Pair&lt;Number&gt; p1 = null;
+Pair&lt;Integer&gt; p2 = new Pair&lt;&gt;(1, 2);
+Pair&lt;Double&gt; p3 = null;
+</code></pre>
+<p>&#22240;&#20026;<code>Number</code>&#12289;<code>Integer</code>&#21644;<code>Double</code>&#37117;&#31526;&#21512;<code>&lt;T extends Number&gt;</code>&#12290;</p>
+<p>&#38750;<code>Number</code>&#31867;&#22411;&#23558;&#26080;&#27861;&#36890;&#36807;&#32534;&#35793;&#65306;</p>
+<pre><code>Pair&lt;String&gt; p1 = null; // compile error!
+Pair&lt;Object&gt; p2 = null; // compile error!
+</code></pre>
+<p>&#22240;&#20026;<code>String</code>&#12289;<code>Object</code>&#37117;&#19981;&#31526;&#21512;<code>&lt;T extends Number&gt;</code>&#65292;&#22240;&#20026;&#23427;&#20204;&#19981;&#26159;<code>Number</code>&#31867;&#22411;&#25110;<code>Number</code>&#30340;&#23376;&#31867;&#12290;</p>
+<h3>&#23567;&#32467;</h3>
+<p>&#20351;&#29992;&#31867;&#20284;<code>&lt;? extends Number&gt;</code>&#36890;&#37197;&#31526;&#20316;&#20026;&#26041;&#27861;&#21442;&#25968;&#26102;&#34920;&#31034;&#65306;</p>
+<ul>
+<li>
+<p>&#26041;&#27861;&#20869;&#37096;&#21487;&#20197;&#35843;&#29992;&#33719;&#21462;<code>Number</code>&#24341;&#29992;&#30340;&#26041;&#27861;&#65292;&#20363;&#22914;&#65306;<code>Number n = obj.getFirst();</code>&#65307;</p>
+</li>
+<li>
+<p>&#26041;&#27861;&#20869;&#37096;&#26080;&#27861;&#35843;&#29992;&#20256;&#20837;<code>Number</code>&#24341;&#29992;&#30340;&#26041;&#27861;&#65288;<code>null</code>&#38500;&#22806;&#65289;&#65292;&#20363;&#22914;&#65306;<code>obj.setFirst(Number n);</code>&#12290;</p>
+</li>
+</ul>
+<p>&#21363;&#19968;&#21477;&#35805;&#24635;&#32467;&#65306;&#20351;&#29992;<code>extends</code>&#36890;&#37197;&#31526;&#34920;&#31034;&#21487;&#20197;&#35835;&#65292;&#19981;&#33021;&#20889;&#12290;</p>
+<p>&#20351;&#29992;&#31867;&#20284;<code>&lt;T extends Number&gt;</code>&#23450;&#20041;&#27867;&#22411;&#31867;&#26102;&#34920;&#31034;&#65306;</p>
+<ul>
+<li>&#27867;&#22411;&#31867;&#22411;&#38480;&#23450;&#20026;<code>Number</code>&#20197;&#21450;<code>Number</code>&#30340;&#23376;&#31867;&#12290;</li>
+</ul>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

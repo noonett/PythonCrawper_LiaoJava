@@ -1,0 +1,143 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>ZonedDateTime</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 35054</span>
+    	<a href="/manage/wiki/wikipage_update?id=1303904694304801" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p><code>LocalDateTime</code>&#24635;&#26159;&#34920;&#31034;&#26412;&#22320;&#26085;&#26399;&#21644;&#26102;&#38388;&#65292;&#35201;&#34920;&#31034;&#19968;&#20010;&#24102;&#26102;&#21306;&#30340;&#26085;&#26399;&#21644;&#26102;&#38388;&#65292;&#25105;&#20204;&#23601;&#38656;&#35201;<code>ZonedDateTime</code>&#12290;</p>
+<p>&#21487;&#20197;&#31616;&#21333;&#22320;&#25226;<code>ZonedDateTime</code>&#29702;&#35299;&#25104;<code>LocalDateTime</code>&#21152;<code>ZoneId</code>&#12290;<code>ZoneId</code>&#26159;<code>java.time</code>&#24341;&#20837;&#30340;&#26032;&#30340;&#26102;&#21306;&#31867;&#65292;&#27880;&#24847;&#21644;&#26087;&#30340;<code>java.util.TimeZone</code>&#21306;&#21035;&#12290;</p>
+<p>&#35201;&#21019;&#24314;&#19968;&#20010;<code>ZonedDateTime</code>&#23545;&#35937;&#65292;&#26377;&#20197;&#19979;&#20960;&#31181;&#26041;&#27861;&#65292;&#19968;&#31181;&#26159;&#36890;&#36807;<code>now()</code>&#26041;&#27861;&#36820;&#22238;&#24403;&#21069;&#26102;&#38388;&#65306;</p>
+<pre><code class="language-x-java">import java.time.*;
+----
+public class Main {
+    public static void main(String[] args) {
+        ZonedDateTime zbj = ZonedDateTime.now(); // &#40664;&#35748;&#26102;&#21306;
+        ZonedDateTime zny = ZonedDateTime.now(ZoneId.of("America/New_York")); // &#29992;&#25351;&#23450;&#26102;&#21306;&#33719;&#21462;&#24403;&#21069;&#26102;&#38388;
+        System.out.println(zbj);
+        System.out.println(zny);
+    }
+}
+</code></pre>
+<p>&#35266;&#23519;&#25171;&#21360;&#30340;&#20004;&#20010;<code>ZonedDateTime</code>&#65292;&#21457;&#29616;&#23427;&#20204;&#26102;&#21306;&#19981;&#21516;&#65292;&#20294;&#34920;&#31034;&#30340;&#26102;&#38388;&#37117;&#26159;&#21516;&#19968;&#26102;&#21051;&#65288;&#27627;&#31186;&#25968;&#19981;&#21516;&#26159;&#25191;&#34892;&#35821;&#21477;&#26102;&#30340;&#26102;&#38388;&#24046;&#65289;&#65306;</p>
+<pre><code>2019-09-15T20:58:18.786182+08:00[Asia/Shanghai]
+2019-09-15T08:58:18.788860-04:00[America/New_York]
+</code></pre>
+<p>&#21478;&#19968;&#31181;&#26041;&#24335;&#26159;&#36890;&#36807;&#32473;&#19968;&#20010;<code>LocalDateTime</code>&#38468;&#21152;&#19968;&#20010;<code>ZoneId</code>&#65292;&#23601;&#21487;&#20197;&#21464;&#25104;<code>ZonedDateTime</code>&#65306;</p>
+<pre><code class="language-x-java">import java.time.*;
+----
+public class Main {
+    public static void main(String[] args) {
+        LocalDateTime ldt = LocalDateTime.of(2019, 9, 15, 15, 16, 17);
+        ZonedDateTime zbj = ldt.atZone(ZoneId.systemDefault());
+        ZonedDateTime zny = ldt.atZone(ZoneId.of("America/New_York"));
+        System.out.println(zbj);
+        System.out.println(zny);
+    }
+}
+</code></pre>
+<p>&#20197;&#36825;&#31181;&#26041;&#24335;&#21019;&#24314;&#30340;<code>ZonedDateTime</code>&#65292;&#23427;&#30340;&#26085;&#26399;&#21644;&#26102;&#38388;&#19982;<code>LocalDateTime</code>&#30456;&#21516;&#65292;&#20294;&#38468;&#21152;&#30340;&#26102;&#21306;&#19981;&#21516;&#65292;&#22240;&#27492;&#26159;&#20004;&#20010;&#19981;&#21516;&#30340;&#26102;&#21051;&#65306;</p>
+<pre><code>2019-09-15T15:16:17+08:00[Asia/Shanghai]
+2019-09-15T15:16:17-04:00[America/New_York]
+</code></pre>
+<h3>&#26102;&#21306;&#36716;&#25442;</h3>
+<p>&#35201;&#36716;&#25442;&#26102;&#21306;&#65292;&#39318;&#20808;&#25105;&#20204;&#38656;&#35201;&#26377;&#19968;&#20010;<code>ZonedDateTime</code>&#23545;&#35937;&#65292;&#28982;&#21518;&#65292;&#36890;&#36807;<code>withZoneSameInstant()</code>&#23558;&#20851;&#32852;&#26102;&#21306;&#36716;&#25442;&#21040;&#21478;&#19968;&#20010;&#26102;&#21306;&#65292;&#36716;&#25442;&#21518;&#26085;&#26399;&#21644;&#26102;&#38388;&#37117;&#20250;&#30456;&#24212;&#35843;&#25972;&#12290;</p>
+<p>&#19979;&#38754;&#30340;&#20195;&#30721;&#28436;&#31034;&#20102;&#22914;&#20309;&#23558;&#21271;&#20140;&#26102;&#38388;&#36716;&#25442;&#20026;&#32445;&#32422;&#26102;&#38388;&#65306;</p>
+<pre><code class="language-x-java">import java.time.*;
+----
+public class Main {
+    public static void main(String[] args) {
+        // &#20197;&#20013;&#22269;&#26102;&#21306;&#33719;&#21462;&#24403;&#21069;&#26102;&#38388;:
+        ZonedDateTime zbj = ZonedDateTime.now(ZoneId.of("Asia/Shanghai"));
+        // &#36716;&#25442;&#20026;&#32445;&#32422;&#26102;&#38388;:
+        ZonedDateTime zny = zbj.withZoneSameInstant(ZoneId.of("America/New_York"));
+        System.out.println(zbj);
+        System.out.println(zny);
+    }
+}
+</code></pre>
+<p>&#35201;&#29305;&#21035;&#27880;&#24847;&#65292;&#26102;&#21306;&#36716;&#25442;&#30340;&#26102;&#20505;&#65292;&#30001;&#20110;&#22799;&#20196;&#26102;&#30340;&#23384;&#22312;&#65292;&#19981;&#21516;&#30340;&#26085;&#26399;&#36716;&#25442;&#30340;&#32467;&#26524;&#24456;&#21487;&#33021;&#26159;&#19981;&#21516;&#30340;&#12290;&#36825;&#26159;&#21271;&#20140;&#26102;&#38388;9&#26376;15&#26085;&#30340;&#36716;&#25442;&#32467;&#26524;&#65306;</p>
+<pre><code>2019-09-15T21:05:50.187697+08:00[Asia/Shanghai]
+2019-09-15T09:05:50.187697-04:00[America/New_York]
+</code></pre>
+<p>&#36825;&#26159;&#21271;&#20140;&#26102;&#38388;11&#26376;15&#26085;&#30340;&#36716;&#25442;&#32467;&#26524;&#65306;</p>
+<pre><code>2019-11-15T21:05:50.187697+08:00[Asia/Shanghai]
+2019-11-15T08:05:50.187697-05:00[America/New_York]
+</code></pre>
+<p>&#20004;&#27425;&#36716;&#25442;&#21518;&#30340;&#32445;&#32422;&#26102;&#38388;&#26377;1&#23567;&#26102;&#30340;&#22799;&#20196;&#26102;&#26102;&#24046;&#12290;</p>
+<pre><code class="language-!">&#28041;&#21450;&#21040;&#26102;&#21306;&#26102;&#65292;&#21315;&#19975;&#19981;&#35201;&#33258;&#24049;&#35745;&#31639;&#26102;&#24046;&#65292;&#21542;&#21017;&#38590;&#20197;&#27491;&#30830;&#22788;&#29702;&#22799;&#20196;&#26102;&#12290;
+</code></pre>
+<p>&#26377;&#20102;<code>ZonedDateTime</code>&#65292;&#23558;&#20854;&#36716;&#25442;&#20026;&#26412;&#22320;&#26102;&#38388;&#23601;&#38750;&#24120;&#31616;&#21333;&#65306;</p>
+<pre><code>ZonedDateTime zdt = ...
+LocalDateTime ldt = zdt.toLocalDateTime();
+</code></pre>
+<p>&#36716;&#25442;&#20026;<code>LocalDateTime</code>&#26102;&#65292;&#30452;&#25509;&#20002;&#24323;&#20102;&#26102;&#21306;&#20449;&#24687;&#12290;</p>
+<h3>&#32451;&#20064;</h3>
+<p>&#26576;&#33322;&#32447;&#20174;&#21271;&#20140;&#39134;&#21040;&#32445;&#32422;&#38656;&#35201;13&#23567;&#26102;20&#20998;&#38047;&#65292;&#35831;&#26681;&#25454;&#21271;&#20140;&#36215;&#39134;&#26085;&#26399;&#21644;&#26102;&#38388;&#35745;&#31639;&#21040;&#36798;&#32445;&#32422;&#30340;&#24403;&#22320;&#26085;&#26399;&#21644;&#26102;&#38388;&#12290;</p>
+<pre><code class="language-x-java">import java.time.*;
+----
+public class Main {
+    public static void main(String[] args) {
+        LocalDateTime departureAtBeijing = LocalDateTime.of(2019, 9, 15, 13, 0, 0);
+        int hours = 13;
+        int minutes = 20;
+        LocalDateTime arrivalAtNewYork = calculateArrivalAtNY(departureAtBeijing, hours, minutes);
+        System.out.println(departureAtBeijing + " -&gt; " + arrivalAtNewYork);
+        // test:
+        if (!LocalDateTime.of(2019, 10, 15, 14, 20, 0)
+                .equals(calculateArrivalAtNY(LocalDateTime.of(2019, 10, 15, 13, 0, 0), 13, 20))) {
+            System.err.println("&#27979;&#35797;&#22833;&#36133;!");
+        } else if (!LocalDateTime.of(2019, 11, 15, 13, 20, 0)
+                .equals(calculateArrivalAtNY(LocalDateTime.of(2019, 11, 15, 13, 0, 0), 13, 20))) {
+            System.err.println("&#27979;&#35797;&#22833;&#36133;!");
+        }
+    }
+
+    static LocalDateTime calculateArrivalAtNY(LocalDateTime bj, int h, int m) {
+        return bj;
+    }
+}
+</code></pre>
+<p>&#25552;&#31034;&#65306;<code>ZonedDateTime</code>&#20173;&#28982;&#25552;&#20379;&#20102;<code>plusDays()</code>&#31561;&#21152;&#20943;&#25805;&#20316;&#12290;</p>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/90.%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4.1255943660631584/40.ZonedDateTime.1303904694304801/datetime-flight.zip">flight-time&#32451;&#20064;</a></p>
+<h3>&#23567;&#32467;</h3>
+<p><code>ZonedDateTime</code>&#26159;&#24102;&#26102;&#21306;&#30340;&#26085;&#26399;&#21644;&#26102;&#38388;&#65292;&#21487;&#29992;&#20110;&#26102;&#21306;&#36716;&#25442;&#65307;</p>
+<p><code>ZonedDateTime</code>&#21644;<code>LocalDateTime</code>&#21487;&#20197;&#30456;&#20114;&#36716;&#25442;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

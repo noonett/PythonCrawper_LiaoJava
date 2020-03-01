@@ -1,0 +1,124 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#33258;&#23450;&#20041;&#24322;&#24120;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 230858</span>
+    	<a href="/manage/wiki/wikipage_update?id=1264737765214592" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>Java&#26631;&#20934;&#24211;&#23450;&#20041;&#30340;&#24120;&#29992;&#24322;&#24120;&#21253;&#25324;&#65306;</p>
+<pre><code class="language-ascii">Exception
+&#9474;
+&#9500;&#9472; RuntimeException
+&#9474;  &#9474;
+&#9474;  &#9500;&#9472; NullPointerException
+&#9474;  &#9474;
+&#9474;  &#9500;&#9472; IndexOutOfBoundsException
+&#9474;  &#9474;
+&#9474;  &#9500;&#9472; SecurityException
+&#9474;  &#9474;
+&#9474;  &#9492;&#9472; IllegalArgumentException
+&#9474;     &#9474;
+&#9474;     &#9492;&#9472; NumberFormatException
+&#9474;
+&#9500;&#9472; IOException
+&#9474;  &#9474;
+&#9474;  &#9500;&#9472; UnsupportedCharsetException
+&#9474;  &#9474;
+&#9474;  &#9500;&#9472; FileNotFoundException
+&#9474;  &#9474;
+&#9474;  &#9492;&#9472; SocketException
+&#9474;
+&#9500;&#9472; ParseException
+&#9474;
+&#9500;&#9472; GeneralSecurityException
+&#9474;
+&#9500;&#9472; SQLException
+&#9474;
+&#9492;&#9472; TimeoutException
+</code></pre>
+<p>&#24403;&#25105;&#20204;&#22312;&#20195;&#30721;&#20013;&#38656;&#35201;&#25243;&#20986;&#24322;&#24120;&#26102;&#65292;&#23613;&#37327;&#20351;&#29992;JDK&#24050;&#23450;&#20041;&#30340;&#24322;&#24120;&#31867;&#22411;&#12290;&#20363;&#22914;&#65292;&#21442;&#25968;&#26816;&#26597;&#19981;&#21512;&#27861;&#65292;&#24212;&#35813;&#25243;&#20986;<code>IllegalArgumentException</code>&#65306;</p>
+<pre><code>static void process1(int age) {
+    if (age &lt;= 0) {
+        throw new IllegalArgumentException();
+    }
+}
+</code></pre>
+<p>&#22312;&#19968;&#20010;&#22823;&#22411;&#39033;&#30446;&#20013;&#65292;&#21487;&#20197;&#33258;&#23450;&#20041;&#26032;&#30340;&#24322;&#24120;&#31867;&#22411;&#65292;&#20294;&#26159;&#65292;&#20445;&#25345;&#19968;&#20010;&#21512;&#29702;&#30340;&#24322;&#24120;&#32487;&#25215;&#20307;&#31995;&#26159;&#38750;&#24120;&#37325;&#35201;&#30340;&#12290;</p>
+<p>&#19968;&#20010;&#24120;&#35265;&#30340;&#20570;&#27861;&#26159;&#33258;&#23450;&#20041;&#19968;&#20010;<code>BaseException</code>&#20316;&#20026;&#8220;&#26681;&#24322;&#24120;&#8221;&#65292;&#28982;&#21518;&#65292;&#27966;&#29983;&#20986;&#21508;&#31181;&#19994;&#21153;&#31867;&#22411;&#30340;&#24322;&#24120;&#12290;</p>
+<p><code>BaseException</code>&#38656;&#35201;&#20174;&#19968;&#20010;&#36866;&#21512;&#30340;<code>Exception</code>&#27966;&#29983;&#65292;&#36890;&#24120;&#24314;&#35758;&#20174;<code>RuntimeException</code>&#27966;&#29983;&#65306;</p>
+<pre><code>public class BaseException extends RuntimeException {
+}
+</code></pre>
+<p>&#20854;&#20182;&#19994;&#21153;&#31867;&#22411;&#30340;&#24322;&#24120;&#23601;&#21487;&#20197;&#20174;<code>BaseException</code>&#27966;&#29983;&#65306;</p>
+<pre><code>public class UserNotFoundException extends BaseException {
+}
+
+public class LoginFailedException extends BaseException {
+}
+
+...
+</code></pre>
+<p>&#33258;&#23450;&#20041;&#30340;<code>BaseException</code>&#24212;&#35813;&#25552;&#20379;&#22810;&#20010;&#26500;&#36896;&#26041;&#27861;&#65306;</p>
+<pre><code>public class BaseException extends RuntimeException {
+    public BaseException() {
+        super();
+    }
+
+    public BaseException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public BaseException(String message) {
+        super(message);
+    }
+
+    public BaseException(Throwable cause) {
+        super(cause);
+    }
+}
+</code></pre>
+<p>&#19978;&#36848;&#26500;&#36896;&#26041;&#27861;&#23454;&#38469;&#19978;&#37117;&#26159;&#21407;&#26679;&#29031;&#25220;<code>RuntimeException</code>&#12290;&#36825;&#26679;&#65292;&#25243;&#20986;&#24322;&#24120;&#30340;&#26102;&#20505;&#65292;&#23601;&#21487;&#20197;&#36873;&#25321;&#21512;&#36866;&#30340;&#26500;&#36896;&#26041;&#27861;&#12290;&#36890;&#36807;IDE&#21487;&#20197;&#26681;&#25454;&#29238;&#31867;&#24555;&#36895;&#29983;&#25104;&#23376;&#31867;&#30340;&#26500;&#36896;&#26041;&#27861;&#12290;</p>
+<h3>&#32451;&#20064;</h3>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/30.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.1255943543190176/40.%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8.1264737765214592/exception-custom.zip">&#20174;BaseException&#27966;&#29983;&#33258;&#23450;&#20041;&#24322;&#24120;</a></p>
+<h3>&#23567;&#32467;</h3>
+<p>&#25243;&#20986;&#24322;&#24120;&#26102;&#65292;&#23613;&#37327;&#22797;&#29992;JDK&#24050;&#23450;&#20041;&#30340;&#24322;&#24120;&#31867;&#22411;&#65307;</p>
+<p>&#33258;&#23450;&#20041;&#24322;&#24120;&#20307;&#31995;&#26102;&#65292;&#25512;&#33616;&#20174;<code>RuntimeException</code>&#27966;&#29983;&#8220;&#26681;&#24322;&#24120;&#8221;&#65292;&#20877;&#27966;&#29983;&#20986;&#19994;&#21153;&#24322;&#24120;&#65307;</p>
+<p>&#33258;&#23450;&#20041;&#24322;&#24120;&#26102;&#65292;&#24212;&#35813;&#25552;&#20379;&#22810;&#31181;&#26500;&#36896;&#26041;&#27861;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

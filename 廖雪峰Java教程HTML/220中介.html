@@ -1,0 +1,243 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>&#20013;&#20171;</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 296</span>
+    	<a href="/manage/wiki/wikipage_update?id=1281319541669922" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<blockquote>
+<p>&#29992;&#19968;&#20010;&#20013;&#20171;&#23545;&#35937;&#26469;&#23553;&#35013;&#19968;&#31995;&#21015;&#30340;&#23545;&#35937;&#20132;&#20114;&#12290;&#20013;&#20171;&#32773;&#20351;&#21508;&#20010;&#23545;&#35937;&#19981;&#38656;&#35201;&#26174;&#24335;&#22320;&#30456;&#20114;&#24341;&#29992;&#65292;&#20174;&#32780;&#20351;&#20854;&#32806;&#21512;&#26494;&#25955;&#65292;&#32780;&#19988;&#21487;&#20197;&#29420;&#31435;&#22320;&#25913;&#21464;&#23427;&#20204;&#20043;&#38388;&#30340;&#20132;&#20114;&#12290;</p>
+</blockquote>
+<p>&#20013;&#20171;&#27169;&#24335;&#65288;Mediator&#65289;&#21448;&#31216;&#35843;&#20572;&#32773;&#27169;&#24335;&#65292;&#23427;&#30340;&#30446;&#30340;&#26159;&#25226;&#22810;&#26041;&#20250;&#35848;&#21464;&#25104;&#21452;&#26041;&#20250;&#35848;&#65292;&#20174;&#32780;&#23454;&#29616;&#22810;&#26041;&#30340;&#26494;&#32806;&#21512;&#12290;</p>
+<p>&#26377;&#20123;&#31461;&#38795;&#21548;&#21040;&#20013;&#20171;&#31435;&#21051;&#24819;&#21040;&#25151;&#20135;&#20013;&#20171;&#65292;&#31435;&#21051;&#27668;&#19981;&#25171;&#19968;&#22788;&#26469;&#12290;&#36825;&#20010;&#20013;&#20171;&#27169;&#24335;&#19982;&#25151;&#20135;&#20013;&#20171;&#36824;&#30495;&#26377;&#28857;&#20687;&#65292;&#25152;&#20197;&#28040;&#28040;&#27668;&#65292;&#20808;&#30475;&#20363;&#23376;&#12290;</p>
+<p>&#32771;&#34385;&#19968;&#20010;&#31616;&#21333;&#30340;&#28857;&#39184;&#36755;&#20837;&#65306;</p>
+<script>
+$(function () {
+    function Mediator ($selections, $selectAll, $selectNone, $selectInverse) {
+        this.onSelectionChanged = function () {
+            var selected = $selections.map(function () { return $(this).prop('checked'); }).get();
+            $selectAll.prop('disabled', selected.indexOf(false) < 0);
+            $selectNone.prop('disabled', selected.indexOf(true) < 0);
+        };
+        this.selectAll = function () {
+            $selections.each(function () { $(this).prop('checked', true); });
+            this.onSelectionChanged();
+        };
+        this.selectNone = function () {
+            $selections.each(function () { $(this).prop('checked', false); });
+            this.onSelectionChanged();
+        };
+        this.selectInverse = function () {
+            $selections.each(function () { $(this).prop('checked', !$(this).prop('checked')); });
+            this.onSelectionChanged();
+        };
+        $selections.change(this.onSelectionChanged.bind(this));
+        $selectAll.click(this.selectAll.bind(this));
+        $selectNone.click(this.selectNone.bind(this));
+        $selectInverse.click(this.selectInverse.bind(this));
+        this.onSelectionChanged();
+    };
+    var $root = $('#x-menu-select');
+    var mediator = new Mediator(
+        $root.find('input[type=checkbox]'),
+        $root.find('button[name=selectAll]'),
+        $root.find('button[name=selectNone]'),
+        $root.find('button[name=selectInverse]')
+    );
+});
+</script>
+<div id="x-menu-select">
+<div><label><input type="checkbox" name="hamburger"> &#27721;&#22561;</label></div>
+<div><label><input type="checkbox" name="nugget"> &#40481;&#22359;</label></div>
+<div><label><input type="checkbox" name="chip"> &#34223;&#26465;</label></div>
+<div><label><input type="checkbox" name="coffee"> &#21654;&#21857;</label></div>
+<p><button type="button" name="selectAll" class="uk-button">&#36873;&#25321;&#20840;&#37096;</button> <button type="button" name="selectNone" class="uk-button">&#21462;&#28040;&#25152;&#26377;</button> <button type="button" name="selectInverse" class="uk-button">&#21453;&#36873;</button></p>
+</div>
+<p>&#36825;&#20010;&#23567;&#31995;&#32479;&#26377;4&#20010;&#21442;&#19982;&#23545;&#35937;&#65306;</p>
+<ul>
+<li>&#22810;&#36873;&#26694;&#65307;</li>
+<li>&#8220;&#36873;&#25321;&#20840;&#37096;&#8221;&#25353;&#38062;&#65307;</li>
+<li>&#8220;&#21462;&#28040;&#25152;&#26377;&#8221;&#25353;&#38062;&#65307;</li>
+<li>&#8220;&#21453;&#36873;&#8221;&#25353;&#38062;&#12290;</li>
+</ul>
+<p>&#23427;&#30340;&#22797;&#26434;&#24615;&#22312;&#20110;&#65292;&#24403;&#22810;&#36873;&#26694;&#21464;&#21270;&#26102;&#65292;&#23427;&#20250;&#24433;&#21709;&#8220;&#36873;&#25321;&#20840;&#37096;&#8221;&#21644;&#8220;&#21462;&#28040;&#25152;&#26377;&#8221;&#25353;&#38062;&#30340;&#29366;&#24577;&#65288;&#26159;&#21542;&#21487;&#28857;&#20987;&#65289;&#65292;&#24403;&#29992;&#25143;&#28857;&#20987;&#26576;&#20010;&#25353;&#38062;&#26102;&#65292;&#20363;&#22914;&#8220;&#21453;&#36873;&#8221;&#65292;&#38500;&#20102;&#20250;&#24433;&#21709;&#22810;&#36873;&#26694;&#30340;&#29366;&#24577;&#65292;&#23427;&#21448;&#21487;&#33021;&#24433;&#21709;&#8220;&#36873;&#25321;&#20840;&#37096;&#8221;&#21644;&#8220;&#21462;&#28040;&#25152;&#26377;&#8221;&#25353;&#38062;&#30340;&#29366;&#24577;&#12290;</p>
+<p>&#25152;&#20197;&#36825;&#26159;&#19968;&#20010;&#22810;&#26041;&#20250;&#35848;&#65292;&#36923;&#36753;&#20889;&#36215;&#26469;&#24456;&#22797;&#26434;&#65306;</p>
+<pre><code class="language-ascii">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;     &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;  CheckBox List  &#9474;&lt;&#9472;&#9472;&#9472;&gt;&#9474;SelectAll Button &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;     &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+         &#9650; &#9650;                     &#9650;
+         &#9474; &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9508;
+         &#9660;                       &#9474;
+&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;     &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;SelectNone Button&#9474;&lt;&#9472;&#9472;&#9472;&#9472;&#9474; Inverse Button  &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;     &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+</code></pre>
+<p>&#22914;&#26524;&#25105;&#20204;&#24341;&#20837;&#19968;&#20010;&#20013;&#20171;&#65292;&#25226;&#22810;&#26041;&#20250;&#35848;&#21464;&#25104;&#22810;&#20010;&#21452;&#26041;&#20250;&#35848;&#65292;&#34429;&#28982;&#22810;&#20102;&#19968;&#20010;&#23545;&#35937;&#65292;&#20294;&#23545;&#35937;&#20043;&#38388;&#30340;&#20851;&#31995;&#23601;&#21464;&#31616;&#21333;&#20102;&#65306;</p>
+<pre><code class="language-ascii">            &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+     &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&gt;&#9474;  CheckBox List  &#9474;
+     &#9474;      &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+     &#9474;      &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+     &#9474; &#9484;&#9472;&#9472;&#9472;&gt;&#9474;SelectAll Button &#9474;
+     &#9660; &#9660;    &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;Mediator &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+     &#9650; &#9650;    &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+     &#9474; &#9492;&#9472;&#9472;&#9472;&gt;&#9474;SelectNone Button&#9474;
+     &#9474;      &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+     &#9474;      &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+     &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&gt;&#9474; Inverse Button  &#9474;
+            &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+</code></pre>
+<p>&#19979;&#38754;&#25105;&#20204;&#29992;&#20013;&#20171;&#27169;&#24335;&#26469;&#23454;&#29616;&#21508;&#20010;UI&#32452;&#20214;&#30340;&#20132;&#20114;&#12290;&#39318;&#20808;&#25226;UI&#32452;&#20214;&#32473;&#30011;&#20986;&#26469;&#65306;</p>
+<pre><code>public class Main {
+    public static void main(String[] args) {
+        new OrderFrame("Hanburger", "Nugget", "Chip", "Coffee");
+    }
+}
+
+class OrderFrame extends JFrame {
+    public OrderFrame(String... names) {
+        setTitle("Order");
+        setSize(460, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = getContentPane();
+        c.setLayout(new FlowLayout(FlowLayout.LEADING, 20, 20));
+        c.add(new JLabel("Use Mediator Pattern"));
+        List&lt;JCheckBox&gt; checkboxList = addCheckBox(names);
+        JButton selectAll = addButton("Select All");
+        JButton selectNone = addButton("Select None");
+        selectNone.setEnabled(false);
+        JButton selectInverse = addButton("Inverse Select");
+        setVisible(true);
+    }
+
+    private List&lt;JCheckBox&gt; addCheckBox(String... names) {
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Menu:"));
+        List&lt;JCheckBox&gt; list = new ArrayList&lt;&gt;();
+        for (String name : names) {
+            JCheckBox checkbox = new JCheckBox(name);
+            list.add(checkbox);
+            panel.add(checkbox);
+        }
+        getContentPane().add(panel);
+        return list;
+    }
+
+    private JButton addButton(String label) {
+        JButton button = new JButton(label);
+        getContentPane().add(button);
+        return button;
+    }
+}
+</code></pre>
+<p>&#28982;&#21518;&#65292;&#25105;&#20204;&#35774;&#35745;&#19968;&#20010;Mediator&#31867;&#65292;&#23427;&#24341;&#29992;4&#20010;UI&#32452;&#20214;&#65292;&#24182;&#36127;&#36131;&#36319;&#23427;&#20204;&#20132;&#20114;&#65306;</p>
+<pre><code>public class Mediator {
+    // &#24341;&#29992;UI&#32452;&#20214;:
+    private List&lt;JCheckBox&gt; checkBoxList;
+    private JButton selectAll;
+    private JButton selectNone;
+    private JButton selectInverse;
+
+    public Mediator(List&lt;JCheckBox&gt; checkBoxList, JButton selectAll, JButton selectNone, JButton selectInverse) {
+        this.checkBoxList = checkBoxList;
+        this.selectAll = selectAll;
+        this.selectNone = selectNone;
+        this.selectInverse = selectInverse;
+        // &#32465;&#23450;&#20107;&#20214;:
+        this.checkBoxList.forEach(checkBox -&gt; {
+            checkBox.addChangeListener(this::onCheckBoxChanged);
+        });
+        this.selectAll.addActionListener(this::onSelectAllClicked);
+        this.selectNone.addActionListener(this::onSelectNoneClicked);
+        this.selectInverse.addActionListener(this::onSelectInverseClicked);
+    }
+
+    // &#24403;checkbox&#26377;&#21464;&#21270;&#26102;:
+    public void onCheckBoxChanged(ChangeEvent event) {
+        boolean allChecked = true;
+        boolean allUnchecked = true;
+        for (var checkBox : checkBoxList) {
+            if (checkBox.isSelected()) {
+                allUnchecked = false;
+            } else {
+                allChecked = false;
+            }
+        }
+        selectAll.setEnabled(!allChecked);
+        selectNone.setEnabled(!allUnchecked);
+    }
+
+    // &#24403;&#28857;&#20987;select all:
+    public void onSelectAllClicked(ActionEvent event) {
+        checkBoxList.forEach(checkBox -&gt; checkBox.setSelected(true));
+        selectAll.setEnabled(false);
+        selectNone.setEnabled(true);
+    }
+
+    // &#24403;&#28857;&#20987;select none:
+    public void onSelectNoneClicked(ActionEvent event) {
+        checkBoxList.forEach(checkBox -&gt; checkBox.setSelected(false));
+        selectAll.setEnabled(true);
+        selectNone.setEnabled(false);
+    }
+
+    // &#24403;&#28857;&#20987;select inverse:
+    public void onSelectInverseClicked(ActionEvent event) {
+        checkBoxList.forEach(checkBox -&gt; checkBox.setSelected(!checkBox.isSelected()));
+        onCheckBoxChanged(null);
+    }
+}
+</code></pre>
+<p>&#36816;&#34892;&#19968;&#19979;&#30475;&#30475;&#25928;&#26524;&#65306;</p>
+<p><img src="/static/img/loading.svg" data-src="/files/attachments/1326792507916322/l" alt="mediator"></p>
+<p>&#20351;&#29992;Mediator&#27169;&#24335;&#21518;&#65292;&#25105;&#20204;&#24471;&#21040;&#20102;&#20197;&#19979;&#22909;&#22788;&#65306;</p>
+<ul>
+<li>&#21508;&#20010;UI&#32452;&#20214;&#20114;&#19981;&#24341;&#29992;&#65292;&#36825;&#26679;&#23601;&#20943;&#23569;&#20102;&#32452;&#20214;&#20043;&#38388;&#30340;&#32806;&#21512;&#20851;&#31995;&#65307;</li>
+<li>Mediator&#29992;&#20110;&#24403;&#19968;&#20010;&#32452;&#20214;&#21457;&#29983;&#29366;&#24577;&#21464;&#21270;&#26102;&#65292;&#26681;&#25454;&#24403;&#21069;&#25152;&#26377;&#32452;&#20214;&#30340;&#29366;&#24577;&#20915;&#23450;&#26356;&#26032;&#26576;&#20123;&#32452;&#20214;&#65307;</li>
+<li>&#22914;&#26524;&#26032;&#22686;&#19968;&#20010;UI&#32452;&#20214;&#65292;&#25105;&#20204;&#21482;&#38656;&#35201;&#20462;&#25913;Mediator&#26356;&#26032;&#29366;&#24577;&#30340;&#36923;&#36753;&#65292;&#29616;&#26377;&#30340;&#20854;&#20182;UI&#32452;&#20214;&#20195;&#30721;&#19981;&#21464;&#12290;</li>
+</ul>
+<p>Mediator&#27169;&#24335;&#32463;&#24120;&#29992;&#22312;&#26377;&#20247;&#22810;&#20132;&#20114;&#32452;&#20214;&#30340;UI&#19978;&#12290;&#20026;&#20102;&#31616;&#21270;UI&#31243;&#24207;&#65292;MVC&#27169;&#24335;&#20197;&#21450;MVVM&#27169;&#24335;&#37117;&#21487;&#20197;&#30475;&#20316;&#26159;Mediator&#27169;&#24335;&#30340;&#25193;&#23637;&#12290;</p>
+<h3>&#32451;&#20064;</h3>
+<p><a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/practices/Java%E6%95%99%E7%A8%8B/190.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.1264742167474528/30.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F.1281319453589538/50.%E4%B8%AD%E4%BB%8B.1281319541669922/pattern-mediator.zip">&#20351;&#29992;Mediator&#27169;&#24335;</a></p>
+<h3>&#23567;&#32467;</h3>
+<p>&#20013;&#20171;&#27169;&#24335;&#26159;&#36890;&#36807;&#24341;&#20837;&#19968;&#20010;&#20013;&#20171;&#23545;&#35937;&#65292;&#25226;&#22810;&#36793;&#20851;&#31995;&#21464;&#25104;&#22810;&#20010;&#21452;&#36793;&#20851;&#31995;&#65292;&#20174;&#32780;&#31616;&#21270;&#31995;&#32479;&#32452;&#20214;&#30340;&#20132;&#20114;&#32806;&#21512;&#24230;&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											

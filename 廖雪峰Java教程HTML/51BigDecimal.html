@@ -1,0 +1,131 @@
+<div class="uk-flex-item-1" style="padding-left:15px; ">
+							<div id="x-content-top">
+								<!-- __snippet__.contentTop -->
+																<!-- // __snippet__.contentTop -->
+							</div>
+							<div id="x-content">
+								    <h4>BigDecimal</h4>
+    <div class="x-wiki-info">
+    	<span>Reads: 324445</span>
+    	<a href="/manage/wiki/wikipage_update?id=1279768011997217" target="_blank" class="x-can-edit uk-text-danger">Edit</a>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content">
+<p>&#21644;<code>BigInteger</code>&#31867;&#20284;&#65292;<code>BigDecimal</code>&#21487;&#20197;&#34920;&#31034;&#19968;&#20010;&#20219;&#24847;&#22823;&#23567;&#19988;&#31934;&#24230;&#23436;&#20840;&#20934;&#30830;&#30340;&#28014;&#28857;&#25968;&#12290;</p>
+<pre><code>BigDecimal bd = new BigDecimal("123.4567");
+System.out.println(bd.multiply(bd)); // 15241.55677489
+</code></pre>
+<p><code>BigDecimal</code>&#29992;<code>scale()</code>&#34920;&#31034;&#23567;&#25968;&#20301;&#25968;&#65292;&#20363;&#22914;&#65306;</p>
+<pre><code>BigDecimal d1 = new BigDecimal("123.45");
+BigDecimal d2 = new BigDecimal("123.4500");
+BigDecimal d3 = new BigDecimal("1234500");
+System.out.println(d1.scale()); // 2,&#20004;&#20301;&#23567;&#25968;
+System.out.println(d2.scale()); // 4
+System.out.println(d3.scale()); // 0
+</code></pre>
+<p>&#36890;&#36807;<code>BigDecimal</code>&#30340;<code>stripTrailingZeros()</code>&#26041;&#27861;&#65292;&#21487;&#20197;&#23558;&#19968;&#20010;<code>BigDecimal</code>&#26684;&#24335;&#21270;&#20026;&#19968;&#20010;&#30456;&#31561;&#30340;&#65292;&#20294;&#21435;&#25481;&#20102;&#26411;&#23614;0&#30340;<code>BigDecimal</code>&#65306;</p>
+<pre><code>BigDecimal d1 = new BigDecimal("123.4500");
+BigDecimal d2 = d1.stripTrailingZeros();
+System.out.println(d1.scale()); // 4
+System.out.println(d2.scale()); // 2,&#22240;&#20026;&#21435;&#25481;&#20102;00
+
+BigDecimal d3 = new BigDecimal("1234500");
+BigDecimal d4 = d3.stripTrailingZeros();
+System.out.println(d3.scale()); // 0
+System.out.println(d4.scale()); // -2
+</code></pre>
+<p>&#22914;&#26524;&#19968;&#20010;<code>BigDecimal</code>&#30340;<code>scale()</code>&#36820;&#22238;&#36127;&#25968;&#65292;&#20363;&#22914;&#65292;<code>-2</code>&#65292;&#34920;&#31034;&#36825;&#20010;&#25968;&#26159;&#20010;&#25972;&#25968;&#65292;&#24182;&#19988;&#26411;&#23614;&#26377;2&#20010;0&#12290;</p>
+<p>&#21487;&#20197;&#23545;&#19968;&#20010;<code>BigDecimal</code>&#35774;&#32622;&#23427;&#30340;<code>scale</code>&#65292;&#22914;&#26524;&#31934;&#24230;&#27604;&#21407;&#22987;&#20540;&#20302;&#65292;&#37027;&#20040;&#25353;&#29031;&#25351;&#23450;&#30340;&#26041;&#27861;&#36827;&#34892;&#22235;&#33293;&#20116;&#20837;&#25110;&#32773;&#30452;&#25509;&#25130;&#26029;&#65306;</p>
+<pre><code class="language-x-java">import java.math.BigDecimal;
+import java.math.RoundingMode;
+----
+public class Main {
+    public static void main(String[] args) {
+        BigDecimal d1 = new BigDecimal("123.456789");
+        BigDecimal d2 = d1.setScale(4, RoundingMode.HALF_UP); // &#22235;&#33293;&#20116;&#20837;&#65292;123.4568
+        BigDecimal d3 = d1.setScale(4, RoundingMode.DOWN); // &#30452;&#25509;&#25130;&#26029;&#65292;123.4567
+        System.out.println(d2);
+        System.out.println(d3);
+    }
+}
+</code></pre>
+<p>&#23545;<code>BigDecimal</code>&#20570;&#21152;&#12289;&#20943;&#12289;&#20056;&#26102;&#65292;&#31934;&#24230;&#19981;&#20250;&#20002;&#22833;&#65292;&#20294;&#26159;&#20570;&#38500;&#27861;&#26102;&#65292;&#23384;&#22312;&#26080;&#27861;&#38500;&#23613;&#30340;&#24773;&#20917;&#65292;&#36825;&#26102;&#65292;&#23601;&#24517;&#39035;&#25351;&#23450;&#31934;&#24230;&#20197;&#21450;&#22914;&#20309;&#36827;&#34892;&#25130;&#26029;&#65306;</p>
+<pre><code>BigDecimal d1 = new BigDecimal("123.456");
+BigDecimal d2 = new BigDecimal("23.456789");
+BigDecimal d3 = d1.divide(d2, 10, RoundingMode.HALF_UP); // &#20445;&#30041;10&#20301;&#23567;&#25968;&#24182;&#22235;&#33293;&#20116;&#20837;
+BigDecimal d4 = d1.divide(d2); // &#25253;&#38169;&#65306;ArithmeticException&#65292;&#22240;&#20026;&#38500;&#19981;&#23613;
+</code></pre>
+<p>&#36824;&#21487;&#20197;&#23545;<code>BigDecimal</code>&#20570;&#38500;&#27861;&#30340;&#21516;&#26102;&#27714;&#20313;&#25968;&#65306;</p>
+<pre><code class="language-x-java">import java.math.BigDecimal;
+----
+public class Main {
+    public static void main(String[] args) {
+        BigDecimal n = new BigDecimal("12.345");
+        BigDecimal m = new BigDecimal("0.12");
+        BigDecimal[] dr = n.divideAndRemainder(m);
+        System.out.println(dr[0]); // 102
+        System.out.println(dr[1]); // 0.105
+    }
+}
+</code></pre>
+<p>&#35843;&#29992;<code>divideAndRemainder()</code>&#26041;&#27861;&#26102;&#65292;&#36820;&#22238;&#30340;&#25968;&#32452;&#21253;&#21547;&#20004;&#20010;<code>BigDecimal</code>&#65292;&#20998;&#21035;&#26159;&#21830;&#21644;&#20313;&#25968;&#65292;&#20854;&#20013;&#21830;&#24635;&#26159;&#25972;&#25968;&#65292;&#20313;&#25968;&#19981;&#20250;&#22823;&#20110;&#38500;&#25968;&#12290;&#25105;&#20204;&#21487;&#20197;&#21033;&#29992;&#36825;&#20010;&#26041;&#27861;&#21028;&#26029;&#20004;&#20010;<code>BigDecimal</code>&#26159;&#21542;&#26159;&#25972;&#25968;&#20493;&#25968;&#65306;</p>
+<pre><code>BigDecimal n = new BigDecimal("12.75");
+BigDecimal m = new BigDecimal("0.15");
+BigDecimal[] dr = n.divideAndRemainder(m);
+if (dr[1].signum() == 0) {
+    // n&#26159;m&#30340;&#25972;&#25968;&#20493;
+}
+</code></pre>
+<h3>&#27604;&#36739;BigDecimal</h3>
+<p>&#22312;&#27604;&#36739;&#20004;&#20010;<code>BigDecimal</code>&#30340;&#20540;&#26159;&#21542;&#30456;&#31561;&#26102;&#65292;&#35201;&#29305;&#21035;&#27880;&#24847;&#65292;&#20351;&#29992;<code>equals()</code>&#26041;&#27861;&#19981;&#20294;&#35201;&#27714;&#20004;&#20010;<code>BigDecimal</code>&#30340;&#20540;&#30456;&#31561;&#65292;&#36824;&#35201;&#27714;&#23427;&#20204;&#30340;<code>scale()</code>&#30456;&#31561;&#65306;</p>
+<pre><code>BigDecimal d1 = new BigDecimal("123.456");
+BigDecimal d2 = new BigDecimal("123.45600");
+System.out.println(d1.equals(d2)); // false,&#22240;&#20026;scale&#19981;&#21516;
+System.out.println(d1.equals(d2.stripTrailingZeros())); // true,&#22240;&#20026;d2&#21435;&#38500;&#23614;&#37096;0&#21518;scale&#21464;&#20026;2
+System.out.println(d1.compareTo(d2)); // 0
+</code></pre>
+<p>&#24517;&#39035;&#20351;&#29992;<code>compareTo()</code>&#26041;&#27861;&#26469;&#27604;&#36739;&#65292;&#23427;&#26681;&#25454;&#20004;&#20010;&#20540;&#30340;&#22823;&#23567;&#20998;&#21035;&#36820;&#22238;&#36127;&#25968;&#12289;&#27491;&#25968;&#21644;<code>0</code>&#65292;&#20998;&#21035;&#34920;&#31034;&#23567;&#20110;&#12289;&#22823;&#20110;&#21644;&#31561;&#20110;&#12290;</p>
+<pre><code class="language-!">&#24635;&#26159;&#20351;&#29992;compareTo()&#27604;&#36739;&#20004;&#20010;BigDecimal&#30340;&#20540;&#65292;&#19981;&#35201;&#20351;&#29992;equals()&#65281;
+</code></pre>
+<p>&#22914;&#26524;&#26597;&#30475;<code>BigDecimal</code>&#30340;&#28304;&#30721;&#65292;&#21487;&#20197;&#21457;&#29616;&#65292;&#23454;&#38469;&#19978;&#19968;&#20010;<code>BigDecimal</code>&#26159;&#36890;&#36807;&#19968;&#20010;<code>BigInteger</code>&#21644;&#19968;&#20010;<code>scale</code>&#26469;&#34920;&#31034;&#30340;&#65292;&#21363;<code>BigInteger</code>&#34920;&#31034;&#19968;&#20010;&#23436;&#25972;&#30340;&#25972;&#25968;&#65292;&#32780;<code>scale</code>&#34920;&#31034;&#23567;&#25968;&#20301;&#25968;&#65306;</p>
+<pre><code>public class BigDecimal extends Number implements Comparable&lt;BigDecimal&gt; {
+    private final BigInteger intVal;
+    private final int scale;
+}
+</code></pre>
+<p><code>BigDecimal</code>&#20063;&#26159;&#20174;<code>Number</code>&#32487;&#25215;&#30340;&#65292;&#20063;&#26159;&#19981;&#21487;&#21464;&#23545;&#35937;&#12290;</p>
+<h3>&#23567;&#32467;</h3>
+<p><code>BigDecimal</code>&#29992;&#20110;&#34920;&#31034;&#31934;&#30830;&#30340;&#23567;&#25968;&#65292;&#24120;&#29992;&#20110;&#36130;&#21153;&#35745;&#31639;&#65307;</p>
+<p>&#27604;&#36739;<code>BigDecimal</code>&#30340;&#20540;&#26159;&#21542;&#30456;&#31561;&#65292;&#24517;&#39035;&#20351;&#29992;<code>compareTo()</code>&#32780;&#19981;&#33021;&#20351;&#29992;<code>equals()</code>&#12290;</p>
+</div>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix"></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+							</div>
+							<div id="x-content-bottom">
+								<!-- __snippet__.contentBottom -->
+								<div id="sponsor-a" class="uk-margin-bottom"></div>
+								<!-- // __snippet__.contentBottom -->
+							</div>
+							<div id="x-content-comment">
+								    <h3>Comments</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list">
+    </ul>
+
+    <h3>Make a comment</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> Sign in to make a comment</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+							</div>
+						</div>
+											
